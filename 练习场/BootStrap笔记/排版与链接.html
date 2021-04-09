@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title> BootStrap 排版与链接</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 
+
+        本人采用  BootStrap4 
+
+     -->
+    <!-- <script src="../bootstrap/js/bootstrap.min.js"></!-->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <!-- 
+        笔记：
+            1*  在下载好  BooStrap 文件之后，还需下载  jquery.min.js  文件 （ https://code.jquery.com/jquery-3.1.1.min.js ）
+            2*  引用 BootStrap 样式  必须引入  bootstrap.min.js 和 jquery.min.js  且放在最后面
+            3*  自己下载的 BootStrap文件 与 直接使用 BootCDN 提供的免费 CDN 加速服务 （ 通过链接而来的样式 ）不同 
+                因为教程的链接版本较低一点（但对与  bootstrap 3 与 4 均可使用）
+            4*  关于  bootstrap.css 和 boostrap.min.css 的区别( js 文件也是一样)
+                .css 是未压缩的
+                    没有把 空格 换行等去掉
+                   
+                .min.css  是已压缩的
+                    代码所占空间更小，从而提升 web 性能
+                    在未压缩的开发环境下，程序出错方便调试 
+                    大大减少网络传输量，更快，更节省流量
+                    压缩了的  可读性差，代码挤在一起，没法阅读
+            5*  bootstrap3  与  bootstrap4 的栅格系统的区别在于
+                BootStrap3:
+                    col-xs-             width < 768px
+                    col-sm-     768px ≤ width < 992px
+                    col-md-     992px ≤ width < 1200px
+                    col-lg-     1200px ≤ width 
+
+                    偏移列通过 offset- 类来设置
+                    
+                    用 float 布局
+                BootStrap4:
+                    col-                width < 544px
+                    col-sm-     544px ≤ width < 768px
+                    col-md-     768px ≤ widht < 992px
+                    col-lg-     992px ≤ width < 1200px
+                    col-xl-     1200px ≤ width 
+
+                    bootstrap3 偏移 使用 push 和 pull 向左和向右移动 
+
+                    flex 布局     (需要了解)
+            6*  同等宽度
+                1） 即当使用相同界点(即：col 、sm、md、lg、xl中的一种),且没有再其后面跟数字(如：col-sm-3)
+                2） 且当上述情况中有项后面跟随了数字，如： col、col-6、col(div 设置的样式).
+                    其余两项会自动调整自己的宽度( 即将其他剩余宽度 等分)，
+                    且分完后的宽度是弹性的，即可随内容而增长宽度
+                小结： div 没设宽度的会自动设置宽度
+                3） 根据内容而可变宽度      col-auto  ，可加入界点，如： col-md-auto
+
+            7*  水平对齐 与 垂直对齐
+                1） 垂直对齐
+                        A.如：<div class="row align-items-start"> </div> 即，在 div 行( row ) 中设置样式
+                          align-items-start、 align-items-centener 、align-items-end
+                          表示： 子集元素 在垂直的方向上以该元素的 哪个位置对齐(start、centener、end)
+                        B.align-self-start、align-self-cnetener、align-self-end
+                          表示 自身元素相对父级元素如何对齐，且也有三种对齐方式
+                2） 水平对齐
+                        A.如：<div class="row justify-content-start"> </div> (同上)
+                          表示：  子集元素 在水平的方向上以该元素的 哪个位置对齐(start、centener、end)
+                          水平对齐 另外还有: -around、 -between(具体可以到 bootstrap4 中查看)
+            8*  no-gutters   移除 columns 之间的 间隙
+            9*  列再分裂
+                    在 <div class="row"> </div>  行中 加入以下这句：
+                    <div class="w-100 d-none d-md-block"></div>
+                    即可将 行 再复制一份且紧接着 本行
+                    例子：
+                        <div class="row">
+                            <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
+                            <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
+
+                            <div class="w-100 d-none d-md-block"></div>
+                            (
+                                 A.  有无  d-none d-md-block
+                                 d-md-block 意思是  界点断点，即在 什么样的情况下 执行 列分裂
+                            ) 
+                            <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
+                            <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
+                        </div>
+            10* 重新排序
+                    1)  order-类来控制内容的可视顺序 (order-  0、1、2、3、4、5、6、7、8、9、10、11、12)
+                        (如 ：class="order-1" 或  class="order-md-1")
+                        在行(row)内 的 元素 中 设置 oreder 样式
+                        A.若 设置以 数字 结尾的 order样式
+                            a.  同级元素 全部都设有，且就按顺序排序
+                            b.  若有一些元素没有设置  排序样式，就只会按照原来的位置(不会受 排序样式的影响)
+                    2)  .order-first和.order-last类
+                        优先级 最高 (且不管你有无设置  order 样式)
+                    3)  在 order 样式中  可加  界点 判断，  如: order-md-1(且在 md 条件下有效)
+            11* 偏移列  如： offset-md-4
+                offset-(界点)-数字 ；  数字即 偏移的单元格距离
+                除响应断点处的列清除外，您可能还需要重置偏移量
+                如：<div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0"> </div>
+                假象 设置了  offset-sm-2 样式，如果不设置 更高级 的样式重置
+                那就会一直应用这个样式且无法回归到原来没有偏移的样子
+            12* 左右 margin自动      mr-auto  和  ml-auto 
+                设置了 该样式后，会尽可能的 空出 margin
+                若 row 子集中都是  ml-auto  或  mr-auto ，就会向左尽可能的空出，且空出的距离一致
+                当然也可加如 界点 ，如：mr-md-auto  
+                
+                
+                        
+                        
+
+
+    -->
+    <style>
+        .box {
+            max-width: 80%;
+            /* min-width: 360px; */
+            margin: 50px auto;
+            background-color: rgb(74, 149, 235);
+        }
+        
+        .cole {
+            /* background-color: rgb(209, 209, 209); */
+            border: 1px solid black;
+        }
+        
+        .bigBox {
+            height: 300px;
+            background-color: bisque;
+        }
+        
+        .chilBox {
+            height: 100px;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container ">
+        <div class="row bigBox">
+            <div class="col align-self-start chilBox border">
+                One of three columnsAAAAAAAAAAAA
+            </div>
+            <div class="col align-self-center chilBox border">
+                One of three columnsBBBBBBBBBBBB
+            </div>
+            <div class="col align-self-end chilBox border">
+                One of three columnsCCCCCCCCCCCC
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid box ">
+        <div class="row">
+            <div class="col-4 border">.col-md-4</div>
+            <div class="col-4 col-md-auto border">
+                .col-md-4 .ml-auto .l-auto .ml-auto .col-md-4 .ml-auto
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row border border-danger">
+            <div class="col-6 col-sm-3">.col-6 .sm-4</div>
+            <div class="col-6 col-sm-3">.col-6 .sm-4</div>
+
+            <!-- Force next columns to break to new line at md breakpoint and up -->
+            <div class="w-100 d-none d-sm-block"></div>
+
+            <div class="col-6 col-sm-3">.col-6 .sm-4</div>
+            <div class="col-6 col-sm-3">.col-6 .sm-4</div>
+        </div>
+
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 border">.col-md-4</div>
+            <div class="col-md-4 ml-auto border">.col-md-4 .ml-auto</div>
+        </div>
+        <div class="row">
+            <div class="col ">
+                First, but unordered
+            </div>
+            <div class="col order-first">
+                Second, but last
+            </div>
+            <div class="col order-0 ">
+                Third, but first
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="../bootstrap/jquery.min.js "></script>
+    <script src=" https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js "></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js "></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+</body>
+
+</html>

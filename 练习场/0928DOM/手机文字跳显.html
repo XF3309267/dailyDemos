@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>利用 Text 类型实现文字逐个显示</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <!-- JS 链接请放置 </body> 前面 -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row mt-4 head d-flex justify-content-center ">
+            <input type="text" placeholder="请输入你想说的话" id="saveText" value="我们都是">
+            <button id="bttt">提交</button>
+        </div>
+        <div id="showDiv" class="mt-5 d-flex justify-content-center" style="height: 70%">
+            <h1 id="showText" style="font-size: 2000%; font-family:cursive">
+
+            </h1>
+            <audio preload="auto" style="display: none" id="music">
+                    <source src="http://img-cdn2.yespik.com/sound/00/27/15/64/271564_638516c4f7800721c6c4881ef759af4d.mp3" type="audio/mpeg">
+                    <!-- <source src="/i/song.mp3" type="audio/mpeg"> -->
+            </audio>
+        </div>
+    </div>
+    <script>
+        window.onload = function() {
+            var saveText = document.getElementById("saveText");
+            var showText = document.getElementById("showText");
+            var bttt = document.getElementById("bttt");
+            var music = document.getElementById("music");
+            var exp = /\p{Unified_Ideograph}/ug;
+
+            bttt.onclick = function showtt() {
+                music.play();
+                var i = 0;
+                var txtList = saveText.value.match(exp);
+                var ele = document.createTextNode(txtList[i]);
+                // 判断数组的长度
+                if (txtList.length == 0) {
+                    alert("没有可以展示的文字")
+                    return false;
+                }
+
+                // if (txtList[i] == txtList[3]) {
+                //     alert("success");
+                // }
+
+
+                function showw() {
+                    music.pause();
+                    //  展示文字数组
+                    music.play();
+                    console.log(String(txtList[i]));
+                    console.log(txtList.length);
+                    showText.firstChild.nodeValue = txtList[i];
+                    if (String(txtList[i]) == String(txtList[txtList.length - 1])) {
+                        music.pause();
+                        music.currentTime = 0;
+                        return false;
+                    }
+                    i++;
+                    // music.pause();
+                    setTimeout(showw, 300);
+                    //  显示文字后判断，是否到了数组尾部，到了结束超时调用方法
+                };
+                setTimeout(showw, 300);
+            }
+
+        }
+    </script>
+
+
+
+    <script src="../bootstrap/jquery.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <!-- <script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script> -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

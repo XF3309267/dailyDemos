@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>JS中的 style 对应着html中哪些内容 </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <!-- <style>
+        .h {
+            background-color: green;
+            color: black;
+            align-content: center;
+        }
+    </style> -->
+</head>
+
+<body>
+    <div id="div1" class="h" style="background-color: blue;">
+
+    </div>
+    <script>
+        window.onload = function() {
+            var div1 = document.getElementById("div1");
+            console.log(div1.style.cssText);
+            console.log("style.background-color: " + div1.style.backgroundColor);
+            console.log("backgroundColor: " + div1.style.getPropertyValue("background-color"));
+            console.log("***************");
+            console.log(" ");
+
+            console.log("样式表长度： " + document.styleSheets.length);
+
+            // var sheet = null;
+            // for (let i = 0; i < document.styleSheets.length; i++) {
+            //     console.log("样式表长度： " + document.styleSheets.length);
+            //     const element = document.styleSheets[i];
+
+
+            // }
+
+        }
+    </script>
+</body>
+
+</html>

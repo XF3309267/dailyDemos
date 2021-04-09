@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <td>11</td>
+                <td>22</td>
+                <td>33</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>111</td>
+                <td>222</td>
+                <td>333</td>
+                <td>444</td>
+            </tr>
+        </tbody>
+    </table>
+    <ul id="ull">
+        <li>
+            123333333
+        </li>
+        <li>
+            222222
+        </li>
+        <li>
+            <ul>
+                <li id="lii" name="myLi">333333333333</li>
+            </ul>
+        </li>
+    </ul>
+    <div id="textDiv">textDiv</div>
+    <script>
+        //   关于 nodeName 、 nodeValue 等的使用
+        //    1. 是对于节点中的特性的使用  或者 文本节点的使用
+        //    2. 对于文本节点的使用，只有当你真正的指向了 文本节点了，才会真正有效
+        //      （注：不是包含文本节点 的标签, 指向了文本内容才算是指向了 文本节点）
+        window.onload = function() {
+            var ull = document.getElementById("ull");
+            var ull1 = ull.attributes.getNamedItem("id").nodeValue;
+            var liList = ull.getElementsByTagName("li");
+            //  返回0
+            var lii = document.getElementById("lii");
+            var liiText = lii.firstChild;
+
+            var textdiv = document.getElementById("textDiv");
+
+            // console.log(lii.attributes["class"].nodeValue);
+
+            //  *******   removeAttribute  和  attributes.removeNamedItem区别 ************
+            //  不仅会清除特性的值，还会从元素中完全删除特性
+            //   removeAttribute  和  attributes.removeNamedItem
+            //   两者的相同之处  直接删除具有给定名称的特性
+            // var liResult = lii.attributes.removeNamedItem("name");
+            // console.log(liResult);
+            //  该方法返回 被删除的特性节点
+            //  返回结果，如：  name = "myLi";
+            // var liResult = lii.removeAttribute("name");
+            // console.log(liResult);
+            //   该方法不会返回任何值
+
+            //  *************   若要获得节点上的特性   ************
+            //   Element 类型 拥有一个  attributes 属性（其他类型没有该属性）
+            //      每一个特性以  Attr节点(表示不懂)  的形式表示
+            //  attributes 包含一个 NameNodeMap对象  "动态集合"，该对象拥有下列方法
+            //    
+            //      1.   getNamedItem(name)    name:  特性的名字
+            //      2.   removeNamedItem(name)
+            //      3.   setNmaeItem()
+            //      4.   item(pos)          返回位于数字位置处的节点
+            //      5.   nodeName       特性的名字
+            //      6.   nodeValue      特性的值
+            // ****************  
+            //  如下创建特性，并将特性插入到 节点中
+            var ty = document.createAttribute("class");
+            ty.nodeValue = "demoClass";
+            lii.attributes.setNamedItem(ty);
+
+            //                  **************************
+            // attributes  与   element.getAttribute()  、 setAttribute()  、 removeAttribute()
+            // 后者只能对元素的 单个特性 进行操作
+            //  attributes 操作起来比较复杂，不过它可以遍历元素的所有特性
+            //      element.attribute.length     元素特性长度
+            //      在 IE7 版本中会返回 HTML元素中的所有可能的特性，包括没有指定的特性
+
+            // 
+            //     **********   创建元素    ******************
+            //      document.createElement("div")  
+            //      对于 IE 中创建元素
+            //      建议：document.createElement("<div id=\"myNewDiv\" class = \"box\"></div>")
+            //      其他浏览器不支持使用该方法      
+
+            //       因为在 IE7 及低版本 创建元素有以下的问题
+            //     **不能设置动态创建 <iframe> 元素的name特性
+            //     **不能通过表单的 reset()方法重设动态创建的 <input>元素
+            //     **动态创建的 type 特性值为  "reset" 的 <button> 元素重设不了表单
+            //     **动态创建的一批 name 相同的单选按钮彼此毫无关系，本应该用以表示同一选项的不同值
+
+            //    对于 IE7 的弊端。每个特性都有一个 specified 的属性，如果该值为 true 
+            //       意味着要么是  在HTML中指定了的特性，要么是用  setAttribute() 方法设置了该特性
+            //       在IE中 未设置过的特性的属性该值为 false，而在其他浏览器中不会为该特性生成相应的节点（P267）
+            //       
+
+            //      ***********  Text 类型  **********
+            //      属性
+            //      nodeType    值为3 
+            //      nodeName    值恒为 "#text"
+            //      nodeValue   节点所包含的文本
+            //      parentNode
+            //      方法  用以操作节点中的文本
+            //      appendData(text)                text 添加至节点末尾
+            //      deleteData(offset,count)        offset 指定位置,count长度
+            //      insertData(offset,text)         插入text
+            //      replaceData(offset,count,text)  替换指定位置的文本
+            //      splitText(offset)               从指定位置将文本分为两个文本
+            //      substringData(offset,count)     提取文本
+
+            //      创建文本节点
+            //      document.createTextNode("fdf");
+            //      允许一个元素中含有两个文本节点
+            //      不过这也是弊端,分不清哪些字符串属于哪个文本节点
+            //      在他们的父元素上调用  normalize()方法会合并文本节点
+            //          也可在文本节点中使用  splitText(num),分成两个文本节点
+            //          num 至末尾 返回成一个新的文本节点
+            //          从开始 至 num 之前的文本 留置为原来文本节点
+
+            setTimeout(function() {
+                textdiv.firstChild.nodeValue = "Some &lt;strong &gt;other&lt;/strong&gt;message";
+            }, 2000);
+
+            console.log("text:");
+            console.log(liiText.nodeName);
+
+            console.log(liList.length);
+            console.log(ull1);
+        }
+    </script>
+</body>
+
+</html>

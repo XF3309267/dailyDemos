@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>0923 JS 类 对象 继承 实验</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+</head>
+
+<body>
+    <script>
+        // 实现一个动物类
+        //  name、性别、年龄（动物类）
+        //  人 继承动物类 >>>> （性别: 男 或 女）  +  （ 属性： 工作 ）
+        //  猫 继承动物类 >>>>  (性别：雄 或 雌)   +   （属性： 毛色）
+
+
+        // function Animal(name, sex, age) {
+        //     //  返回属性值
+        //     this.getName = function() {
+        //         return name;
+        //     };
+        //     this.getSex = function() {
+        //         return sex;
+        //     };
+        //     this.getAge = function() {
+        //         return age;
+        //     };
+        //     // 更改属性值
+        //     this.setName = function(value) {
+        //         name = value;
+        //     }
+        //     this.setSex = function(value) {
+        //         sex = value;
+        //     }
+        //     this.setAge = function(value) {
+        //             if (isNaN(Number(value))) {
+        //                 console.log("setAge 函数判断：输入的值有误！！");
+        //             } else {
+        //                 age = Number(value);
+        //             }
+        //         }
+        //         //  以上是默认初始属性值
+        // }
+
+
+
+        function MyObj(value) {
+            var name = value;
+            MyObj.prototype.getName = function() {
+                return name;
+            };
+            MyObj.prototype.setName = function(value) {
+                name = value;
+            }
+        }
+
+        function object(o) {
+            function F() {}
+            F.prototype = o;
+            return new F();
+        }
+
+        function inheritPrototype(subType, superType) {
+            var prototype = object(superType.prototype);
+            prototype.constructor = subType;
+            subType.prototype = prototype;
+        }
+
+        function man(name, valueJob) {
+            MyObj.call(this, name);
+            var job = valueJob;
+            man.prototype.setJob = function(value) {
+                job = value;
+            };
+            man.prototype.getJob = function() {
+                return job;
+            };
+        }
+        inheritPrototype(man, MyObj);
+
+        var obj1 = new MyObj("obj1");
+        var obj2 = new MyObj("obj2");
+        console.log("before name = " + obj1.getName());
+        obj1.setName("obj11");
+        console.log("after name = " + obj1.getName());
+
+        console.log("before name = " + obj2.getName());
+        obj1.setName("obj22");
+        console.log("after name = " + obj2.getName());
+        console.log("^^^^^^^^^^^^^^^^^^^^^^^^^");
+
+
+
+
+
+
+
+
+
+
+
+
+        // var man1 = new man("张三", "张三工作1");
+        // var man2 = new man("李四", "李四工作1 ");
+
+        // console.log(man1.getName());
+        // console.log(man1.getJob());
+
+        // man1.setName("张三1")
+        // man1.setJob("张三工作2")
+        // console.log("改后");
+        // console.log(man1.getName());
+        // console.log(man1.getJob());
+
+
+        // console.log("*********************");
+
+
+        // console.log(man2.getName());
+        // console.log(man2.getJob());
+        // man2.setName("李四1");
+        // man2.setJob("李四工作2");
+        // console.log("改后");
+        // console.log(man2.getName());
+        // console.log(man2.getJob());
+
+
+
+
+
+
+
+
+
+        // var p1 = new MyObj();
+        // console.log(p1.publicMethod());
+        // var p2 = new MyObj();
+        // console.log(p2.publicMethod());
+    </script>
+</body>
+
+</html>

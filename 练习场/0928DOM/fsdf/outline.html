@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/index.css">
+    <style>
+        .container{
+            width: 100vw;
+            min-height: 100vh;
+            margin: auto;
+            background:url('https://cdn.jsdelivr.net/gh/XF3309267/imgs/website-imgf4131bc77889e084f2b3648261cc43df.jpg') no-repeat  center center;
+            background-size:cover;
+        }
+        .container .modal{
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top:200%;
+            left: 0;
+            background-color:rgba(0,0,0,0);
+        }
+        .toasts{
+            position: absolute;
+            width: 400px;
+            height: 450px;
+            border-radius: 5px;
+            top: 55%;
+            left: 70%;
+            transform: translate(-50%,-50%);
+            transition: all 1s ease-in-out;
+            background-color: rgba(72, 144, 245,0.2);
+            margin: auto;
+        }
+        
+        .container .modal:target{
+            background-color:rgba(0,0,0,0.5);
+            top:0;
+        }
+        .container .modal:target .toasts{
+            top: 50%;
+            background-color:rgba(72, 144, 245,1);
+            transition: all 1s ease-in-out;
+        }
+        .init-a{
+            text-decoration: none;
+            color: black;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a class="init-a a-toasts" href="#toast">
+            弹出框
+        </a>
+        <div class="modal"  id="toast">
+            <div class="toasts">
+            </div>
+        </div>
+       
+    </div>
+</body>
+</html>

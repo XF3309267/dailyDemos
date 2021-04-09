@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      function foo() {
+        setTimeout(() => {
+            console.log('id:', this.id);
+        }, 100);
+      }
+      function foo1() {
+          console.log('fdasf: ',this.id)
+          this.fun  = function(){
+              console.log(this.id)
+          }
+        setTimeout(this.fun, 100);
+      }
+
+
+        var id = 21;
+
+        foo.call({ id: 42 });
+        foo1.call({ id: 42 });
+    </script>
+</body>
+</html>

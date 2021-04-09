@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>范围测试</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+    <script>
+        window.onload = function() {
+            var p1 = document.getElementById("p1"),
+                helloNode = p1.firstChild.firstChild,
+                worldNode = p1.lastChild;
+            var range = document.createRange();
+            range.setStart(helloNode, 2);
+            range.setEnd(worldNode, 3);
+
+            var fragment = range.cloneContents();
+            p1.parentNode.appendChild(fragment);
+            // var range1 = document.createRange();
+            // var range2 = document.createRange(),
+            //     p = document.getElementById("p1");
+            // range1.selectNode(p1);
+            // range2.selectNodeContents(p1);
+
+            // console.log("range1.startOffset = " + range1.startOffset);
+            // console.log("range1.endOffset = " + range1.endOffset);
+            // console.log(" :" + range2);
+            // console.log(range2.endContainer);
+
+            // console.log("range2.endOffset = " + range2.endOffset);
+        }
+    </script>
+</head>
+
+<body>
+    <p id="p1"><b>Hello</b> world!</p>
+</body>
+
+</html>

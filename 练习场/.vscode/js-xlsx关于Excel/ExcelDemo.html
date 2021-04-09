@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> js 关于 Excel 的读取与导出</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+    <script type="text/javascript" src="js/xlsx.core.min.js">
+    </script>
+</head>
+
+<body>
+
+    <script>
+        function readWorkbookFromLocalFile(file, callback) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                var data = e.target.result;
+                var workbook = XLSX.read(data, {
+                    type: 'binary'
+                });
+                if (callback) callback(workbook);
+            };
+            reader.readAsBinaryString(file);
+        }
+        readWorkbookFromLocalFile()
+    </script>
+</body>
+
+</html>

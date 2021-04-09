@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./jQuery/jquery.js"></script>
+
+    <style>
+        .redd{
+            background-color: red;
+        }
+        .bluee{
+            background-color: blue;
+        }
+        div{
+            margin: 20px;
+            height: 30px;
+            border: 2px solid black;
+        }
+    </style>
+
+</head>
+<body>
+    <div>
+        1
+    </div>
+    <div>
+        2
+    </div>
+    <button>
+        1
+    </button>
+    <button>
+        2
+    </button>
+    <script>
+        const divs = document.getElementsByTagName('div')
+        const buttons = document.getElementsByTagName('button')
+
+        const bodd = document.getElementsByTagName('body')
+        console.log(divs)
+        // document.onclick = function (e) {
+        //     e = window.event ? window.event :e;
+        //     console.log('e.target: ',e.target)
+        //     console.log('e.currentTarget: ',e.currentTarget)
+        //     console.log('e.srcElement: ',e.srcElement)
+        //     $('body').toggleClass('bluee')  
+        // }
+        // divs.addEventListener('click',function(){
+        //     alert(5);
+        // });
+        $('div').on('click',function (e) {
+            $('body').toggleClass('bluee')  
+        })
+
+
+
+    </script>
+</body>
+</html>

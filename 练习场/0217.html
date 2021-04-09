@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0rem;
+				padding: 0rem;
+			}
+
+			@media screen and (min-width: 1200px) {
+				body{
+					background-color: deepskyblue;
+					background: -webkit-gradient(radial,center center,right bottom ,from(green),to(yellow));
+				}
+				div.box {
+					float: right;
+					margin-top: 3.5rem;
+					margin-right: 6.25rem;
+				}
+
+				div.logo {
+					width: 24rem;
+					height: 4rem;
+					background-color: white;
+
+				}
+
+				div.input {
+					width: 24rem;
+					height: 20rem;
+					background-color: ghostwhite;
+					
+				}
+				
+				form {
+					height: 100%;
+					width: 100%;
+					font-size: 1.5rem;
+					background-color: white;
+					text-align: center;
+				}
+				
+				form.F1>input {
+					height: 12%;
+					width: 80%;
+					margin-top: 10%;
+					font-size: 1.4rem;
+					/* background-color: lightgrey; */
+					border: 2px solid lightgray;
+					border-radius: 6px;
+					padding-top: 1% ;
+				}
+				
+				form.F1>input:hover{
+					
+					border: 2px solid lightgray;
+					font-size: 1.5rem;
+					margin-top: 9%;
+					
+				}
+				form.F1>input:last-child{
+					background-color: bisque;
+					border: 4px solid bisque;
+					border-radius: 6px;
+					color: white;
+				}
+			}
+
+			/* @media screen and (min-width: 480px) and (max-width: 767px){
+				div.logo{
+					width: 100%;
+					height: 20rem;
+					background-color: red;
+					margin-top: 7%;
+				}
+			} */
+			@media screen and (max-device-width: 479px) {
+				div.logo {
+					width: 100%;
+					height: 20rem;
+					background-color: dimgrey;
+					margin-top: 7%;
+				}
+				
+				div.log>h1{
+					color: white;
+					font-size: 12px;
+					font-family: "微软雅黑";
+				}
+				
+				div.input {
+					width: 100%;
+					height: 50rem;
+					/* width: 13.5rem; */
+					/* height: 13.5rem; */
+					background-color: white;
+					margin: 0 auto;
+					text-align: center;
+				}
+				
+				form {
+					height: 100%;
+					width: 100%;
+					font-size: 3rem;
+				}
+				
+				form.F1>input {
+					height: 17%;
+					width: 85%;
+					margin-top: 11%;
+					font-size: 2rem;
+					/* background-color: aqua; */
+				
+					border-style: solid;
+					border-color: black;
+					border-width: 0 0 2px 0;
+					/* border-radius: 1px; */
+				
+					/* color: white; */
+					padding-top: 1% ;
+				}
+				
+					form.F1>input:last-child{
+						border-width: 0px;
+					}
+			}
+
+			/* 
+
+			form.F1>input {
+				height: 17%;
+				width: 85%;
+				margin-top: 11%;
+				font-size: 2rem;
+
+				border-style: solid;
+				border-color: black;
+				border-width: 0 0 2px 0;
+
+				padding-top: 1% ;
+			} */
+		</style>
+	</head>
+	<body>
+		<div id="" class="box">
+
+
+			<div class="logo">
+				<h1>我拦不住风，也保不住整片天空！</h1>
+			</div>
+			<div id="" class="input">
+				<form onsubmit="" class="F1" method="get">
+					学号 <input type="text" name="StID" placeholder="输入学号" />
+					
+					密码 <input type="password" name="StPW" placeholder="输入密码" />
+
+					<input type="submit" value="提交" />
+				</form>
+			</div>
+		</div>
+	</body>
+</html>

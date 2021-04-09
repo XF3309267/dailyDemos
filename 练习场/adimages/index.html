@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> 广告轮播 </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .main {
+            width: 948px;
+            height: 260px;
+            margin: 30px auto;
+            border: 5px solid black;
+            position: relative;
+        }
+        
+        .tabs {
+            display: none;
+        }
+        
+        .tabs+label dl {
+            width: 261px;
+            height: 65px;
+            background: #414141;
+            filter: Alpha(opacity=80);
+            -moz-opacity: 0.8;
+            opacity: 0.8;
+        }
+        
+        .tabs+label dl:hover {
+            cursor: pointer;
+        }
+        
+        input.tabs:checked+label dl {
+            background: -webkit-gradient(linear, left top, right bottom, color-stop(0, rgba(0, 0, 0, .65)), color-stop(1, transparent));
+        }
+        
+        .tabs+label dl dt {
+            width: 40px;
+            height: 40px;
+            margin-top: 8px;
+            margin-left: 15px;
+            float: left;
+        }
+        
+        .tabs+label dl dt img {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .tabs+label dl dd.title {
+            font-size: 14px;
+            line-height: 30px;
+            margin-top: 5px;
+        }
+        
+        .tabs+label dl dd {
+            text-indent: 15px;
+            font-size: 12px;
+            line-height: 10px;
+            color: white;
+        }
+        
+        #tab1+label dl {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+        }
+        
+        #tab2+label dl {
+            position: absolute;
+            top: 65px;
+            right: 0px;
+        }
+        
+        #tab3+label dl {
+            position: absolute;
+            top: 130px;
+            right: 0px;
+        }
+        
+        #tab4+label dl {
+            position: absolute;
+            top: 195px;
+            right: 0px;
+        }
+        
+        .tp {
+            height: 0px;
+            -webkit-transition: height 0.5s ease;
+            display: block;
+        }
+        
+        input#tab1:checked~#img1 {
+            height: 260px;
+        }
+        
+        input#tab2:checked~#img2 {
+            height: 260px;
+        }
+        
+        input#tab3:checked~#img3 {
+            height: 260px;
+        }
+        
+        input#tab4:checked~#img4 {
+            height: 260px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        dl就是定义一个列表
+        dt说明白了就是这个列表的标题
+        dd就是内容,能缩进
+     -->
+    <div class="main">
+
+        <input type="radio" name="tab" id="tab1" class="tabs" checked="checked">
+        <label for="tab1">
+                <dl>
+                    <dt>
+                        <img   src="images/but1.png" alt="">
+                    </dt>
+                    <dd class="title">精心挑选，倾情推荐</dd>
+                    <dd>推荐精品应用，享受多彩上网</dd>
+                </dl>
+        </label>
+        <img src="images/1.png" class="tp" id="img1" />
+
+
+        <input type="radio" name="tab" id="tab2" class="tabs">
+        <label for="tab2">
+            <dl>
+                <dt>
+                    <img   src="images/but2.png" alt="">
+                </dt>
+                <dd class="title">精心挑选，倾情推荐</dd>
+                <dd>推荐精品应用，享受多彩上网</dd>
+            </dl>
+        </label>
+        <img src="images/2.png" class="tp" id="img2" />
+
+        <input type="radio" name="tab" id="tab3" class="tabs">
+        <label for="tab3">
+                <dl>
+                    <dt>
+                        <img   src="images/but3.png" alt="">
+                    </dt>
+                    <dd class="title">精心挑选，倾情推荐</dd>
+                    <dd>推荐精品应用，享受多彩上网</dd>
+                </dl>
+        </label>
+        <img src="images/3.png" class="tp" id="img3" />
+
+
+        <input type="radio" name="tab" id="tab4" class="tabs">
+        <label for="tab4">
+                <dl>
+                    <dt>
+                        <img   src="images/but4.png" alt="">
+                    </dt>
+                    <dd class="title">精心挑选，倾情推荐</dd>
+                    <dd>推荐精品应用，享受多彩上网</dd>
+                </dl>
+        </label>
+        <img src="images/4.png" class="tp" id="img4" />
+
+    </div>
+</body>
+
+</html>

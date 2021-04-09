@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>js ActiveXObject 对象</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+</head>
+
+<body>
+    <!-- 
+        ActiveX软件
+            Microsoft ActiveX 控件是由软件提供商开发的可重用的软件组件。
+            使用 ActiveX 控件，可以很快地在网址、台式应用程序、以及开发工具中加入特殊的功能。例如，StockTicker 控件可以用来在网页上即时地加入活动信息，
+            动画控件可用来向网页中加入动画特性。
+            ActiveX 控件广泛用于 Internet。它们可以通过提供视频、动画内容等来增加浏览的乐趣。
+            不过，这些程序可能出问题或者向您提供不需要的内容。
+            ActiveX插件是当用户浏览到特定的网页时，IE浏览器即可自动下载并提示用户安装。
+            ActiveX插件安装的一个前提是必须经过用户的同意及确认。考虑到这些风险，您应该在完全信任发行商的情况下才安装这些程序。
+        ActiveX Object  对象详解
+            JavaScript中ActiveXObject对象是启用并返回 Automation对象的引用。
+            使用方法：newObj = new ActiveXObject( servername.typename[, location])
+                其中newObj是必选项。要赋值为 ActiveXObject 的变量名。
+                servername是必选项。提供该对象的应用程序的名称。
+                typename是必选项。要创建的对象的类型或类。
+                location是可选项。创建该对象的网络服务器的名称。
+            A.  var WshNetwork = new ActiveXObject("WScript.Network");  
+                获得机器名，登录名及登录用户名    
+            B.  WScript.shell      获得系统目录
+            C.  var calc=new ActiveXObject("WScript.shell");       
+                calc.Run("calc");      
+                启动计算器 
+            
+            D.  Scripting.filesystemobject
+                1. 
+                    var fs=new ActiveXObject("scripting.filesystemobject");       
+                    d=fs.GetDrive('C');             获取磁盘信息
+                    
+                    fi=fs.GetFile('C:\\test.pdf');   读取文件信息
+                    fi.type     fi.size     fi.DateLastAcccessed（最后一次访问时间）
+                2.  遍历目录     调用方式  enumFolders('c:\\')
+                    function enumFolders(para){  
+                    var fso = new ActiveXObject("Scripting.FileSystemObject");  
+                    var fldr = fso.GetFolder(para);  
+                    var file = new Enumerator(fldr.files);  
+                    var folderArr = [];  
+                    var folder = new Enumerator(fldr.SubFolders);  
+                    for (; !folder.atEnd(); folder.moveNext()){  
+                            var folderStr = String(folder.item());  
+                            folderArr.push(String(folder.item()).substring(folderStr.lastIndexOf("\\")+1,folderStr.length));  
+                    }  
+                    
+                    alert(folderArr.join(" "));  
+                    }     
+                3.  创建文件
+                    var fso = new ActiveXObject("Scripting.FileSystemObject");  
+                    var f1 = fso.createtextfile("c:\\myjstest.txt",true);  
+                    f1.WriteLine("这是内容");   
+                    f1.close();  
+            D.  利用 ActiveXobject("Scripting.FileSystemObject")
+            例如：
+                var fso = new ActiveXObject("Scripting.FileSystemObject");
+                var f1 = fso.CreateTextFile("C:\\test2.txt", true);
+                f1.WriteLine("这是内容");
+                f1.close();
+            问题：  不能将文件写入  C盘  中
+         -->
+
+</body>
+
+</html>

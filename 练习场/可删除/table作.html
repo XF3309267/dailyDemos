@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+    <table class="table table-striped table-bordered">
+        <thead class="dark">
+            <tr>
+                <th scope="col">
+                    <!-- scope="col"  表示列头 -->
+                    #
+                </th>
+                <th scope="col">
+                    组1
+                </th>
+                <th scope="col">
+                    组2
+                </th>
+                <th scope="col">
+                    组3
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">
+                    <!-- scope="row"  表示行头 -->
+                    1
+                </th>
+                <td>
+                    tr1-td2
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        window.onload = function() {
+            var tbody = document.getElementsByTagName("tbody")[0];
+            console.log(tbody);
+            tbody.addEventListener('click', function() {
+                alert("success");
+            });
+            // setTimeout(function() {
+            //     tbody.insertRow(0);
+            //     tbody.rows[0].insertCell(1);
+            //     tbody.rows[0].cells[1].appendChild(document.createTextNode("cell 1,1"));
+            // }, 1000);
+        }
+
+
+        //  关于 table 的插入操作
+        //      insertRow(num);   insertCell(num);
+        //      num 指的是插入的位置（以 0 开始），不能隔行插入、不能隔单元格插入
+
+        //       tbody.rows[0].cells[0].appendChild(document.createTextNode("cell 1,1"));
+        //       如果上述  第一行第一个有内容，则会将新创建的文本节点插入其后（而不是替换）
+    </script>
+
+    <script src="bootstrap/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

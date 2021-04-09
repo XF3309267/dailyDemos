@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>js 记忆</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+</head>
+
+<body>
+    <script>
+        //  memo        存放记忆中的数据
+        //  formula     函数（从此例子看该函数含有 两个形参）
+        var memoizer = function(memo, formula) {
+            var recur = function(n) {
+                var result = memo[n];
+                if (typeof(result) !== 'number') {
+                    result = formula(recur, n);
+                    memo[n] = result;
+                }
+                return result;
+            };
+            return recur;
+        }
+        var f = function() {
+            var t = new Date();
+            f = function() {
+                return t;
+            }
+            return f();
+        }
+        f();
+        (function() {
+            var set = setInterval(demo1, 1000);
+            var i = 0;
+
+
+            function demo1() {
+                i++;
+
+                var result = f();
+                console.log("i = " + i + ",  result = " + result);
+                if (i == 9) {
+                    clearInterval(set);
+                }
+
+            }
+
+        });
+    </script>
+</body>
+
+</html>

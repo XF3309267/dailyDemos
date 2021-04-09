@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>JavaScript练习</title>
+
+    <meta charset="UTF-8">
+    <style type="text/css">
+        input {
+            width: 50px;
+        }
+    </style>
+
+    <script>
+        function get() {            
+            var a = parseInt(document.getElementById("a").value);            
+            var b = parseInt(document.getElementById("b").value);            
+            document.getElementById("c").value = a + b;        
+        }
+    </script>
+</head>
+
+<body>
+
+    <input type="text" id="a" value=""> +
+    <input type="text" id="b" value="">     =
+    <input type="text" id="c" value="">
+    <input type="button" value="运算" onclick="get()">
+</body>
+
+</html>

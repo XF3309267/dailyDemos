@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>location 对象</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+</head>
+
+<body>
+    <button onclick="goWard()">
+        前进一页
+    </button>
+    <button onclick="goBack()">
+        后退一页
+    </button>
+    <button onclick="linkTo()">
+        linkTo
+    </button>
+    <a href="https://www.baidu.com/">baidu</a>
+    <script>
+        // function hasPlugin(name) {
+        //     name = name.toLowerCase();
+        //     for (let i = 0; i < navigator.plugins.length; i++) {
+        //         const element = navigator.plugins[i];
+        //         alert(element.name + "   " + navigator.plugins.length);
+        //         if (element.name.toLowerCase().indexOf(name) > -1) {
+        //             return true;
+        //         }
+        //     }
+        //     return false;
+        // }
+        // alert(hasPlugin("Flash"));
+
+        function goWard() {
+            console.log("前进一页");
+
+            window.history.go(1);
+        }
+
+        function goBack() {
+            console.log("后退一页");
+
+            window.history.go(-1);
+        }
+
+        function linkTo() {
+            console.log("跳转百度");
+
+            window.history.go("www.baidu.com");
+        }
+    </script>
+</body>
+
+</html>

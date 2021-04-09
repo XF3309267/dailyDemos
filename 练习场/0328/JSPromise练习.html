@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var p1 = new Promise(function(reslove,reject){
+            var time = Math.floor((Math.random() * 10));;
+            if(time>5){
+                console.log('有条件进行上传')
+                console.log('上传 p1 中...')
+                setTimeout(reslove,3000,'成功')
+                
+            }else{
+                reject(time)
+            }
+        })
+        function ppp2 (reslove,reject){
+            console.log('上传 p2 中...')
+            setTimeout(reslove,5000,'p2上传成功')
+        }
+        function ppp3 (reslove,reject){
+            console.log('p3p3p3')
+        }
+        
+        // var p3 = new Promise (ppp3)
+        function succ(res){
+            console.log('p1 上传'+res)
+            var p2 = new Promise(ppp2)
+            p2
+            .then(function(res){
+                console.log('里面：',res)
+            })
+            return '非异步pp2 出来了'
+        }
+        function succ2(res){
+            console.log('外面： '+res)
+        }
+        function fail(res){
+            console.log('抱歉，没有条件上传，时间：'+res)
+            console.log('2s后 自动刷新')
+            setTimeout(function(){
+                getSource()
+                
+            },2000)
+        }
+        function getSource(){
+            p1
+            .then(succ)
+            .then(succ2)
+            .catch(fail)
+        }
+        getSource()
+        console.log('主队列已加载完成')
+        //      .then() 的参数里，可以是  函数名、函数表达式
+        //      
+
+        // var p2 = p1.then(function(res){
+        //     console.log(res)
+        // })
+        // p2.catch(function(res){
+        //     console.log('很抱歉'+res+',请稍后重试')
+        // })
+        
+    </script>
+</body>
+</html>

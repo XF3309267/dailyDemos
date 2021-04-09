@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Document</title>
+    <script src="../jQuery/jquery.js"></script>
+
+</head>
+<body>
+    <input type="radio" checked/>
+    <div style="width: 500px;margin: auto; padding: 5px; border: blue solid 2px;">
+        <input class="box1" type="checkbox"  name="vv" value="str1" checked="false" />  str1
+        <input class="box2" type="checkbox"  name="vv" value="str2"  />  str2
+        <input type="text" class="box3" value="ee" >
+    </div>
+    <button class="btn1">
+        str1
+    </button>
+    <button class="btn2">
+        str2
+    </button>
+    <script>
+        const box1 = document.getElementsByClassName('box1')[0];
+        const box3 = document.getElementsByClassName('box3')[0];
+        $('.box1:first').change(function(){
+            console.log($('.box1:first').attr("checked"));
+            console.log("box1 getAttribute('checked'):",box1.checked)
+        })
+        $('.box3:first').attr({"value":"vvvvv"})
+        $('.box3:first').change(function(){
+            console.log($('.box3:first').attr({"value":"vvvvv"}));
+            console.log( "box3 input value" ,box3.getAttribute("value"));
+        })
+        $('.btn1').click(function(){
+            console.log("dfsdfsdf",$('.box1:first').attr('checked'));
+            $('.box1:first').prop({'checked':($('.box1:first').is(":checked")?false:true)})  
+        })
+        console.log($('.box1:first').attr("checked"));
+        // $('.box1:first').prop({'checked':'false'})
+        // box1.setAttribute('checked','false')
+        console.log('====================================');
+        console.log($('.box1:first').prop('checked'))
+        console.log('====================================');
+        /*
+            attr 的局限性
+            attr 只能获取 标签内已 设置的属性
+
+            checked 属性，在标签内设置时，只要有  checked 属性就相当于 被选中（所以不能设置 true 或 false）
+                所以  attr 在获取 checked 属性时，
+                若 表单标签没有设置 checked 属性，就不能获取 准确的 checked 的值
+                若 表单标签 设置了 checked 属性， attr("checked") 就 只能 返回 'checked'  字符串
+                
+            getAttribute() 
+                获取属性的值（是 ‘值’ 对， 若该属性 只有属性，而没有值，则会取得为 空
+                该方法 和 attr() 方法 差不多
+
+            getAttribute() 和 attr() 
+                共同点：
+                    1.  不会随 属性值 的改变 而 改变
+                不同点：
+                    1.  getAttribute()  是 DOM 元素的方法
+                        attr()          是 jQuery 对象的方法
+                    1.  对于获取 类似 checked(这种 单个属性名就可以 充当一个属性，且不需要 属性值的属性),
+                        attr()          可以获得属性名
+                        getAttribute()  只会尝试去 获取属性值，所以他去获取单属性的值时，返回 null
+
+            jQuery 对象获得 标签的几种方式： 
+                prop()  也可设置属性值 prop({'checked':'true'}) 
+                attr()  也可以如上  设置属性值
+
+                对于利用代码 设置 单属性 时， 前提条件是：不在标签内设置 这类属性  （ 不然 利用代码设置的属性值会 无效）
+                所以  对于 单属性， 初始阶段：不建议直接在 标签设置 属性 ， 特别时 checked
+
+                如果 源代码的 标签 已有 单属性，那么就只能利用属性的添加 移除 方法 实现
+                
+        */
+    </script>
+</body>
+</html>
+

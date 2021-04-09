@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>appendChild 会转移节点</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+
+
+    <style>
+        .fff {
+            height: 150px;
+        }
+        
+        .fir {
+            background-color: blanchedalmond;
+            transition-property: height;
+            transition-duration: 2s;
+            -moz-transition-property: height;
+            /* Firefox 4 */
+            -moz-transition-duration: 2s;
+            /* Firefox 4 */
+            -webkit-transition-property: height;
+            /* Safari and Chrome */
+            -webkit-transition-duration: 2s;
+            /* Safari and Chrome */
+            -o-transition-property: height;
+            /* Opera */
+            -o-transition-duration: 2s;
+            /* Opera */
+        }
+        /* #first1 {
+            height: 0px;
+            background-color: red;
+        }
+         */
+        
+        .ho {
+            height: 0px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+
+        <table class=" ">
+            <thead class="">
+                <tr>
+                    <th>
+                        <div id="first1" class=" fir">
+                        </div>
+                        <th scope="col">
+                            #
+                        </th>
+                        <th scope="col"> first</th>
+                        <th scope="col"> seond</th>
+                        <th scope="col"> thrid</th>
+
+                    </th>
+
+                </tr>
+
+
+            </thead>
+
+            <tbody>
+                <tr>
+                    <th> 1</th>
+                    <td>
+                        Mark11
+                    </td>
+                    <td>
+                        Jack11
+                    </td>
+                    <td>
+                        Bob11
+                    </td>
+                </tr>
+                <tr>
+                    <th> 2</th>
+                    <td>
+                        Marry11
+                    </td>
+                    <td>
+                        Jucy11
+                    </td>
+                    <td>
+                        Kula11
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="row">
+            <table class="table" id="table2">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col"> first</th>
+                        <th scope="col"> seond</th>
+                        <th scope="col"> thrid</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th> 1</th>
+                        <td>
+                            Mark22
+                        </td>
+                        <td>
+                            Jack22
+                        </td>
+                        <td>
+                            Bob22
+                        </td>
+                    </tr>
+                    <tr>
+                        <th> 2</th>
+                        <td>
+                            Marry22
+                        </td>
+                        <td>
+                            Jucy22
+                        </td>
+                        <td>
+                            Kula22
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button onclick="lic()">
+                lick
+            </button>
+        </div>
+    </div>
+    <script>
+        var T1Tr = document.getElementById("first1");
+        var tab2 = document.getElementById("table2");
+        var old = T1Tr.className;
+        T1Tr.className = old + " " + "fff";
+        // setTimeout(function() {
+        //     console.log("start");
+        //     // str = "height: 0px;"
+        //     T1Tr.className = old + " " + "ho";
+        //     // T1Tr.style = "height:0px";
+        // }, 5000);
+        function lic() {
+            T1Tr.className = old + " " + "ho";
+        }
+        // setTimeout(function() {
+        //     tab2.appendChild(T1Tr);
+        // }, 3000);
+    </script>
+    <script src="../bootstrap/jquery.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

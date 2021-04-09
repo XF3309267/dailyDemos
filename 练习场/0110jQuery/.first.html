@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./jQuery/jquery.js"></script>
+    <style>
+        .active{
+            background-color: red;
+        }
+    </style>
+
+</head>
+<!-- 
+    end() 方法关闭嵌套
+    这里就需要  回顾一下    children()   find() ,这两个  寻找后代的  方法
+    children()  只寻找  子元素
+    find()      寻找后代元素
+
+
+    在寻找元素时，不乏  嵌套寻找，如：
+    $('ul')
+    .find('.p2').css({"background-color":"green"})
+    .find('.p1').css({"background-color":"red"})
+
+    1. 找到  ul 下  class 为 p2 的元素，并将其的背景色 改为 green；（设置在行内样式
+    2. 找到  ul 下  clss  为 p2 的元素，并在在这些元素中 找到  后代元素的 class 是 p1 的元素，并为其设定样式
+
+    $('ul')
+    .find('.p2').css({"background-color":"green"})
+    .end()      // end() 方法让后面所接的  寻找后代元素的方法 断开前面的一句语句寻找到的结果，
+    .find('.p1').css({"background-color":"red"})
+
+
+ -->
+<body>
+    <button class="btn">
+     <div>
+         ddded
+     </div>
+    </button>
+    <p>
+        p1111111111111111111
+    </p>
+    <button class="btn">
+        改变 p 的位置
+    </button>
+    <div id="content" style="background-color: yellow;">
+        <button class="btn2">
+            div-btn
+        </button>
+    </div>
+    <div class="mydiv">
+        <ul>
+            <li class="p1">
+                1-1
+                <p>
+                    p22222222222
+                </p>
+            </li>
+            <li class="p2">
+                1-2
+                <ul>
+                    <li class="p1">
+                        1-2-1
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <div class="p1">
+            div  p1
+        </div>
+    </div>
+    <ul>
+        <li>
+            2-1
+        </li>
+    </ul>
+  
+    <p>
+        <h6>
+            h5h5h5
+        </h6>
+        p33333333333333
+    </p>
+    <script>
+        $('.mydiv')
+        .find('ul')         // 有 end() 方法会在这个 结果（res1）下 寻找（这里的 res1 结果包括  res2
+        .find('.p2').css({"background-color":"green"})// 没有 end() 方法会在这个 结果（res2）下 寻找
+        .end()
+        .find('.p1').css({"background-color":"red"})
+
+
+
+        $('.btn').click(function(){
+            $("p").wrapInner(document.getElementById('content'));
+        })
+        $('.btn2').click(function(){
+            // $("p").wrap(document.getElementById('content'));
+            $('body').css({"background-color":"green"})
+        })
+    </script>
+</body>
+</html>

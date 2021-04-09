@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> jQuery  文档插入操作</title>
+    <script src="../jQuery/jquery.js"></script>
+    <style>
+        .box{
+            text-align: left;
+        }
+        .outerBody{
+            width:1000px;
+            margin:auto;
+            padding: 10px;
+            border: rgb(179, 178, 174) dashed 2px;
+        }
+        .caseHead{
+            font-size: 1.6em;
+            text-align: center;
+        }
+        .caseBody{
+            margin-top: 20px;
+            padding: 10px;
+            border: blue dashed 2px;
+        }
+        .caseFun{
+            font-size: 1.5em;
+        }
+        .funExplain{
+            color:rgb(122, 122, 121)
+        }
+        .bodyColor{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="outerHead">
+            <ul>
+                <li class="caseFun">
+                    A.append(content/fn)
+                    <p class="">
+                        解释：
+                        <span class="funExplain">
+                           A 要扩展什么
+                        </span>
+                        <p>
+                            content:
+                            <span class="funExplain">
+                               content 可以是原本文档中没有的元素
+                             </span>
+                        </p>
+                    </p>
+                </li>
+            </ul>
+            <p >
+               
+            </p>
+        </div>
+
+        <div class="outerBody">
+            <div class="caseHead">
+                案例
+            </div>
+            <div class="caseBody">
+                <div class="testArea">
+                    <p>
+                        最外层盒子
+                        <span>
+                            深层
+                        </span>
+                        <p class="showArea">
+
+                        </p>
+                    </p>
+                </div>
+                
+            </div>
+            <div class="caseBody">
+                <div class="testArea">
+                    <p>
+                        最外层盒子
+                        <span>
+                            深层
+                        </span>
+                        <!-- <button class="btn">
+                            控制 body 背景色
+                        </button> -->
+                    </p>
+                </div>
+                
+            </div>
+            <p style="color: red;" class="test">
+                测试
+            </p>
+        </div>
+        <div class="intoArea">
+            <p>
+                ddddddaaaaaaaa
+            </p>
+          
+        </div>
+        <button class="btn">
+            控制 body 背景色
+        </button>
+        <input type="text" id="inpu">
+    </div>
+    <div class="box" id="mybox" style="background-color:yellow">
+        <p> 第二个 box</p>
+    </div>
+    <span id="myspan" style="background-color: red;">
+        应该在 第二个 box 中
+    </span>
+    <script>
+        const myspan = document.getElementById('myspan')
+        const secondBox = document.getElementById('mybox')
+        // $('#mybox').append(myspan)
+        //  $('.testArea:first').append($('.testArea:first'))
+        // setTimeout(function(){
+        //     // $('.testArea:first').append($('.test:first'))
+        //     $('.testArea:first').append(function(index,html){
+        //         console.log(html)
+        //         return html;
+        //     })
+        // },2000)
+        $('.btn').click(function () {
+            $('body').toggleClass('bodyColor')
+        })
+        $("#inpu").keyup(function(event){
+            // $("div").html("Key: " + event.which);
+            // if(event.which===13){
+            //     $('.testArea').append(re($('#inpu').val()))
+            //     $('.showArea:first').text($('#inpu').val())
+            // }
+            $('.showArea:first').text($('#inpu').val())
+            // $('.testArea').append(re(''))
+            // $('.testArea').append(re($('#inpu').val()))
+        });
+
+
+        function re(content) {
+            console.log(" re   content",content)
+            function ff(index,html) {
+                html =content
+                console.log('====================================');
+                console.log(content)
+                console.log('====================================');
+                return content
+        }
+        return ff;
+        }
+
+        // let result = $('.testArea').append(re($('#inpu').val()))
+        
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color:rgb(235, 235, 235);
+        }
+        img{
+                position:absolute;
+                clip:rect(20px,100px,100px,100px);
+        }
+        .container{
+            width: 360px;
+            height: 360px;  
+            padding: 10px 10px;
+            margin: 50px auto;
+            border-radius: 20px;
+            background-color: white;
+            display: flex;
+            flex-flow: row wrap;
+            align-items: stretch;
+            align-content: stretch;
+        }
+        .item{
+            width: 100px;
+            /* height: 100px; */
+            margin: 10px 10px;
+            border-radius: 30px;
+            color: white;
+            text-align: center;
+            line-height: 100px;
+            font-size: 60px;
+            
+        }
+        .color1{
+            background: #FF352B;
+        }
+        .color2{
+            background:#00AAFF;
+            
+        }
+        .color3{
+            background:#E69900;
+        }
+        .color_red{
+            background:red;
+        }
+        .column1{
+            /* align-self: flex-start; */
+            /* flex-grow: 1; */
+            /* 
+                align-self: stretch; 
+                stretch 只有当 元素没有设置宽度的时候，
+                stretch 才会 拉伸至了交叉轴能体现的  长度
+            */
+        }
+        .column2{
+            /* align-self:  flex-start; */
+        }
+        .column3{
+            /* align-self:  flex-start; */
+        }
+    </style>
+</head>
+<body>
+    <img src="https://cdn.jsdelivr.net/gh/XF3309267/imgs/website-imgf4131bc77889e084f2b3648261cc43df.jpg" alt="">
+    <div class="container">
+        <div class="color1 item column1"> A </div>
+        <div class="color2 item column2"> B </div>
+        <div class="color3 item column3"> C </div>
+        <!-- <div class="color1 item column1"> A </div> -->
+      
+
+
+        <!-- <div class="color1 item"></div>
+        <div class="color2 item"></div>
+        <div class="color3 item"></div>
+        <div class="color1 item"></div>
+        <div class="color2 item"></div>
+        <div class="color3 item"></div> -->
+    </div>
+    <script>
+    class Mother{
+        constructor(money){
+            this.money = money
+        }
+        static saymoney(){
+        console.log('money');
+        }
+    }
+    class Parent{
+        constructor(name){
+            this.name = name
+        }
+        static sayHello(){
+        console.log('hello');
+        }
+    }
+    class Child extends Parent{
+        constructor(name,age){
+            super(name)
+            this.age = age
+        }
+        static sayBye(){
+        console.log('Bye');
+        }
+    }
+    Child.prototype.__proto__ = Mother.prototype
+    let  chil_1 = new Child('Jack',22)
+    console.log(chil_1.__proto__ === Child.prototype )
+    console.log(chil_1.__proto__.__proto__ ===  Mother.prototype)
+    console.log(chil_1)
+    // console.log(Child.__proto__  === Parent)
+    // console.log(Child instanceof Parent)
+    // console.log(Parent)
+    </script>
+</body>
+</html>

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- 
+
+        ****************    写注释一定要尽量详细
+
+-->
+
+
+<head>
+    <title>
+        localStorage
+    </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+
+    <!-- <script src="//cdn.bootcss.com/jquery/2.1.1/bootstrap.min.js"></script> -->
+    <!-- <script src="//cdn.bootcss.com/bootstrap/css/bootstrap.min.css"></script> -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+
+
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script> -->
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+
+
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+        
+        .container {
+            /* width: 250px; */
+            /* height: 260px; */
+            /* margin: 20px auto;
+            padding-top: 40px; */
+        }
+        
+        .container1 {
+            border: 2px solid black;
+            padding: 30px;
+            background-color: #FFF;
+            border-radius: 5px;
+            font-size: 1.2rem;
+        }
+        
+        .input {
+            /* height: 1.8rem; */
+            /* width: 170px; */
+            width: 80%;
+            /* width: 260px; */
+            margin: 0 auto 50px auto;
+        }
+        
+        .inputText {
+            /* float: right; */
+            width: 170px;
+            width: 100%;
+            height: 2rem;
+            border: 2px solid black;
+            font-size: 1.2rem;
+            border-radius: 5px;
+        }
+        
+        .inputBut {
+            width: 40px;
+            height: 30px;
+            /* margin-left: 30px; */
+            margin-right: auto;
+            margin-left: 20px;
+            background-color: rgb(91, 91, 235);
+            color: white;
+            border-style: none;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+        /* .showBox {
+            height: auto;
+            margin: 20px auto 0 auto;
+        }
+         */
+        
+        .frontTab {
+            padding: 0px 3px 0px 3px;
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        
+        .table {
+            text-align: center;
+            font-size: 1.2rem;
+        }
+        /* #clearBt {
+            display: none;
+        } */
+        
+        #value {
+            min-width: 90%;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <div class="row">
+            <div class=" col-sm-2  col-md-2">
+
+            </div>
+            <div class="container1 col-sm-8  col-md-8">
+                <!-- <h4 class="text-center "> 我想要的东西 <strong class="text-primary"> 很贵 </strong> ，我想去的地方很远，我想得到的人很完美 </h4> -->
+
+                <div class="input">
+                    <input type="text" id="keyName" class="inputText hidden" placeholder="key">
+                </div>
+                <form class="form-horizontal">
+                    <div class="form-group">
+
+                        <label for="value" class="sr-only col-sm-1 col-md-1 control-label">内容</label>
+                        <div class="col-sm-12 col-md-12">
+                            <textarea class="form-control" rows="5" id="value" placeholder="填写内容...."></textarea>
+                        </div>
+                        <!-- <input type="text" id="value" class="inputText" placeholder="value"> -->
+                    </div>
+                    <div class="row">
+
+                        <div class="col-xs-4 col-sm-4 col-md-3">
+                            <input type="button" value="显示" class=" btn btn-default " id="showBt">
+                        </div>
+                        <div class="col-xs-4 col-sm-4 col-md-3">
+                            <input type="button" value="提交" class="btn btn-default " id="bt">
+                        </div>
+                        <div class="col-xs-4 col-sm-4 col-md-3 hidden">
+                            <input type="button" value="清除" class=" btn btn-default" id="clearBt">
+                        </div>
+                        <div class="col-xs-4 col-sm-4 col-md-3">
+                            <input type="button" value="保存" class="btn btn-default" id="reserve">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-2 col-md-2">
+
+            </div>
+            <div class="showBox table-responsive col-sm-8 col-sm-8">
+                <table class="table table-striped table-bordered  table-hover table-condensed ">
+                    <thead>
+                        <tr>
+                            <td>
+                                <strong>
+                                             Date1
+                                        </strong>
+
+                            </td>
+                            <td>
+                                <strong>
+                                                value
+                                        </strong>
+
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody class="tab">
+
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        window.onload = function() {
+            var key = document.getElementById("keyName");
+            var keyV = document.getElementById("value");
+            var showBt = document.getElementById("showBt");
+            var bt = document.getElementById("bt");
+            var clearBt = document.getElementById("clearBt");
+            var showBox = document.getElementsByClassName("showBox")[0];
+            var reserveBt = document.getElementById("reserve");
+            var txtValue = "";
+            var txtValue2 = "";
+            //localStorage.setItem("name", "小米");
+
+            // 将字符串转换为 二进制数
+            function strToBinary(str) {
+                // 在此并未判断输入的字符串是否为 空
+                //  所以 在使用此方法之前必须判断并给予提示
+                var result = []; // 用以存放转换后的 二进制
+                var strList = str.split("");
+                for (let i = 0; i < strList.length; i++) {
+                    if (i != 0) {
+                        result.push(" ");
+
+                    }
+                    var item = strList[i];
+                    //var binaryStr = item.charCodeAt().toString(2);
+                    // charCodeAt() 方法可返回指定位置的字符的 Unicode 编码
+                    // str.charCodeAt(0)  将字符串中第一位转换为  Unicode 编码
+                    var binaryStr = item.charCodeAt().toString(); // 转换 第一位
+                    result.push(binaryStr);
+                }
+
+                return result.join("");
+            }
+
+            // 二进制数转换为  字符串
+            function binaryToStr(str) {
+                var result = [];
+                var List = str.split(" ");
+                for (let i = 0; i < List.length; i++) {
+                    const element = List[i];
+                    // 将 item ， 以 二进制数为基地转换 为 十进制数 
+                    //var asciiCode = parseInt(element, 2);
+                    var asciiCode = parseInt(element);
+
+                    var charValue = String.fromCharCode(asciiCode);
+                    result.push(charValue);
+                }
+                return result.join("");
+            }
+
+            function compile(code) {
+                var c = String.fromCharCode(code.charCodeAt(0) + code.length);
+                for (var i = 1; i < code.length; i++) {
+                    c += String.fromCharCode(code.charCodeAt(i) + code.charCodeAt(i - 1));
+                }
+                c = escape(c);
+                return c;
+            }
+
+            function uncompile(code) {
+                code = unescape(code);
+                var c = String.fromCharCode(code.charCodeAt(0) - code.length);
+                for (var i = 1; i < code.length; i++) {
+                    c += String.fromCharCode(code.charCodeAt(i) - c.charCodeAt(i - 1));
+                }
+                return c;
+            }
+
+            // 存入 localStorage
+            function store(name, value) {
+                let date = new Date(+new Date() + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '');
+                date = compile(date);
+                value = compile(value);
+                localStorage.setItem(date, value);
+            }
+
+            //  将本地存储信息 存入到一个对象当中，并返回
+            function showStorage() {
+                var storage = window.localStorage;
+                var o = {};
+                for (let i = 0; i < storage.length; i++) {
+                    var key = storage.key(i);
+                    var val = storage.getItem(key);
+                    o[key] = val;
+                }
+                return o;
+            }
+
+            // 提交信息
+            function storeInfo() {
+                // alert("key: " + key.value + ",  value: " + keyV.value);
+                var keyName = key.value;
+                var keyValue = keyV.value;
+                if (keyValue == "") {
+                    alert("填入的值不能为空");
+                    return;
+                }
+                store(keyName, keyValue);
+                showInfo();
+
+                autoPerserve();
+                clearInputInfo();
+                console.log(txtValue);
+            }
+
+
+            // 显示信息按钮
+            function showInfo() {
+                //location.reload();
+                // 存储文本 
+                //showBox.innerHTML = "";
+                // tab.innerHTML = "";
+                // ************************
+                //  
+                //        在以下 删除 tr 时，出现一个问题
+                //        即在利用 for 循环执行删除 tr数组的时候，因为获得的 tr数组是动态的
+                //        所以 删除 a[1]时，数组长度已经发生变化，
+                //        而你在 for循环的限制条件中的length 并没有变  
+                // *****************
+
+                var tab = clearTable();
+                txtValue = "";
+                var o = showStorage(); // 从 localstorage 从获取本地存储
+                var num = 0;
+
+                for (const i in o) {
+                    if (o.hasOwnProperty(i)) {
+                        num++;
+                        //var str = " key: " + i + '\t' + "value: " + o[i];
+                        var trr = document.createElement("tr");
+                        var keyTd = document.createElement("td");
+                        var valueTd = document.createElement("td");
+                        keyTd.innerHTML = i;
+                        valueTd.innerHTML = o[i];
+                        txtValue += i + "\n" + o[i] + "\n";
+                        // console.log("txtValue = " + txtValue);
+                        // valueTd.innerHTML = binaryToStr(o[i]);
+                        tab.appendChild(trr);
+                        trr.appendChild(keyTd);
+                        trr.appendChild(valueTd);
+                        //autoPerserve();
+                    }
+                }
+                // txtValue 因为闭包，导致  txtValue 一直在 始终页面一开始的值
+
+                //  保存 文本文件 还有很大的问题
+                // if (num >= 7) {
+                //     productTxt();
+                // }
+
+                clearInputInfo(); // 清除输入框中的内容，防止用户再次按下提交按钮，提交重复信息
+
+            }
+
+            //  获取 tab 属性，并且清除 table 中的各个 tr 的值
+            function clearTable() {
+                var tab = document.getElementsByClassName("tab")[0];
+                var tabChildList = tab.querySelectorAll("tr");
+                var len = tabChildList.length;
+                // 清除 除了table 中头部以外的其他 tr 元素 
+                for (let i = 0; i < len; i++) {
+                    const element = tabChildList[i];
+                    tab.removeChild(element);
+                }
+                return tab;
+            }
+            //  满七条，自动保存
+            function autoPerserve() {
+                var storage = window.localStorage;
+                // console.log("判断");
+                if (storage.length >= 4) {
+                    TxtPreserve();
+                }
+            }
+
+            //  将信息保存为文本
+            function TxtPreserve() {
+                if (txtValue == "" || txtValue == null) {
+                    alert("内容为空，无需保存");
+                } else {
+                    download(txtValue.substr(-5), txtValue);
+                    txtValue = "";
+                    alert("请记得将下载的文本集中保存，以免丢失");
+                    clearInfo();
+                    // 暂时 每次保存完 都清除 本地 localstorage
+                }
+
+            };
+
+            reserveBt.addEventListener("click", TxtPreserve);
+
+            // 清除本地存储信息
+            function clearInfo() {
+                localStorage.clear();
+                //showBox.innerHTML = "";
+                clearInputInfo();
+                // showInfo();
+            }
+            //清除输入框的信息
+            function clearInputInfo() {
+                key.innerHTML = "";
+                key.value = "";
+                keyV.innerHTML = "";
+                keyV.value = "";
+            }
+            ///  这个 方法 还需了解 一下
+            function download(filename, text) {
+                var pom = document.createElement('a');
+                pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+                pom.setAttribute('download', filename);
+                if (document.createEvent) {
+                    var event = document.createEvent('MouseEvents');
+                    event.initEvent('click', true, true);
+                    pom.dispatchEvent(event);
+                } else {
+                    pom.click();
+                }
+            }
+            //  getElementBy    是动态集合
+            //  querySelect     是静态集合
+            // tbod.innerHTML = "123";
+            //console.log(tbod);
+
+            //  还需了解  事件绑定
+            bt.addEventListener("click", storeInfo);
+            showBt.addEventListener("click", showInfo);
+            clearBt.addEventListener("click", clearInfo);
+
+        }
+    </script>
+    <script src="../bootstrap/jquery.min.js"></script>
+
+</body>
+
+</html>

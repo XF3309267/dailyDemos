@@ -1,0 +1,63 @@
+<!--这只是简单的js请求上传的示例，仅供参考-->
+<meta charset="utf-8" />
+<script type="text/javascript" src="http://common.jb51.net/jslib/jquery/jquery.min.js"></script>
+<form enctype="multipart/form-data">
+    <input type="text" name="artifact_title" placeholder="artifact_title">
+    <input type="text" name="artifact_name" placeholder="artifact_name">
+    <input type="text" name="artifact_url" placeholder="artifact_url">
+    <input name="file" type="file" id="file"/>
+    <input type="text" name="artifact_info" placeholder="artifact_info">
+    <!--贴图库Token-->
+    <!-- <input name="Token" type="hidden" id="Token" value="98c292e5f5684ca1d7d902aaea8c7a008ba2c2d3:MgxNFaidgJb06Md0p0uSx3R3J-M=:eyJkZWFkbGluZSI6MTU4NDg2NDUxNCwiYWN0aW9uIjoiZ2V0IiwidWlkIjoiNzEzNjM3IiwiYWlkIjoiMTY3MzM2MiIsImZyb20iOiJmaWxlIn0=" /> -->
+    <input type="button" value="Upload" />
+</form>
+<progress style="display:none"></progress>
+<div id="res"></div>
+<script>
+$(':button').click(function(){
+    var formData = new FormData($('form')[0]);
+    console.log(formData)
+    $.ajax({
+        url: 'http://49.235.250.77:9080/BinaryStudio/handleArtifact/addArtifactInfo',
+        type: 'POST',
+        xhr: function() {
+            myXhr = $.ajaxSettings.xhr();
+            if(myXhr.upload){
+                myXhr.upload.addEventListener('progress',progressHandlingFunction, false);
+            }
+            return myXhr;
+        },
+        beforeSend: function(arg){
+            console.log('beforeSend: ',arg)
+            $('progress').show();
+            // return false;
+		},
+        success: function(evt,request,settings){
+            console.log('Success  --  evt: ',evt)
+            console.log('Success  --  request: ',request)
+            console.log('Success  --  setting: ',settings)
+            console.log('Success  --  $(this): ',this)
+            console.log('Success  --  $(this): ',$(this))
+
+			// console.log(data);
+			// $('#res').html(JSON.stringify(data));
+            // $('#res').append(data.linkurl)
+		},
+        error: function(data){
+			console.log("###:  ",data);
+        },
+        complete: function(){
+            console.log('complete--this : ', this)
+        },
+        data:formData,
+        cache: false,
+        contentType: false,
+        processData: false
+    });
+});
+function progressHandlingFunction(e){
+    if(e.lengthComputable){
+        $('progress').attr({value:e.loaded,max:e.total});
+    }
+}
+</script>

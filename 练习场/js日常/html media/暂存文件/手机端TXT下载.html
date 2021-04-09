@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			  function download(filename, text) {
+      var pom = document.createElement("a");
+      pom.setAttribute(
+        "href",
+        "data:text/plain;charset=utf-8," + encodeURIComponent(text)
+      );
+      pom.setAttribute("download", filename);
+      if (document.createEvent) {
+        var event = document.createEvent("MouseEvents");
+        event.initEvent("click", true, true);
+        pom.dispatchEvent(event);
+      } else {
+        pom.click();
+      }
+    }
+	function downFile(content, filename) {
+    // 创建隐藏的可下载链接
+    var eleLink = document.createElement('a');
+    eleLink.download = filename;
+    eleLink.style.display = 'none';
+    // 字符内容转变成blob地址
+    var blobObj = new Blob([content]);
+    //eleLink.href = URL.createObjectURL(blobObj);
+    // 触发点击
+   // document.body.appendChild(eleLink);
+    //eleLink.click();
+    // 然后移除
+    //document.body.removeChild(eleLink);
+	window.navigator.msSaveOrOpenBlob(blobObj, filename);
+};
+
+// --------------------- 
+// 作者：weixin_33995481 
+// 来源：CSDN 
+// 原文：https://blog.csdn.net/weixin_33995481/article/details/88038261 
+// 版权声明：本文为博主原创文章，转载请附上博文链接！
+alert("new");
+			// download("DemoTXT","Hello,World!!!");
+			downFile("Hello","Demo.txt");
+		</script>
+	</body>
+</html>

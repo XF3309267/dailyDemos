@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>JS 正则练习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+</head>
+
+<body>
+    <!--
+        
+        
+        正则我所知道的太少太少了，我的知识面懂得太少了
+        还有
+        
+
+
+        正则笔记2：
+        A. 创建一个正则表达式
+            a.  正则表达式字面量，包含在斜杠之间的模式组成
+                如： const regex = /ab+c/;
+            b.  调用 RegExp 对象的构造函数
+                如： let regex = new RegExp("ab+c");
+        B. 编写正则表达式的模式
+            a.  简单模式
+                如： /abc/ 。即简单的匹配字符 'abc'.
+            b.  使用特殊字符
+                1）
+        C(1).匹配方法：  string 的方法
+            1.  match  replace  search  split
+                str.match( RegExp );
+
+                '@abc2018'.match(/@(?<lowerCase>[a-z]+)(?<upperCase>[A-Z]+)?/);
+    返回结果： ["@abc", "abc", undefined, index: 0, input: "@abc2018", groups: { lowerCase: "abc", upperCase: undefined }]
+            返回一个数组
+            (1). 若不是全局匹配
+                    返回如上
+                第一项： 匹配的结果 （包括 子表达式）
+                        index 前面的都是匹配的结果
+                idnex： 标明匹配结果在文本中的起始位置
+                input： 显示源文本
+                groups： 存储的是 捕获命名的信息 以及 匹配的结果
+
+
+
+
+            2.  str.replace('abc','biu');
+                replace 有两个参数  
+                第一个  参数 可以是 字符串 或 正则表达式，用以匹配
+                第二个  参数 可以是 字符串 或  函数，用以替换
+              (1).  第二个参数是字符串的方式提供了一些特殊变量
+                    $数字  代表相应的捕获组（子表达式）
+                    '@abc-xyz-$abc'.replace(/([^-]+)abc/g, '$1biu');
+                    结果为： "@biu-xyz-$biu"
+
+                    $&  代表匹配的结果
+
+                    $`  代表匹配结果 左边的文本
+
+                    `$  代表匹配结果  右边的文本
+                    
+
+            3.  serach  找出首次匹配项的索引
+                str.search(/xyz/); 接受正则表达式作为唯一参数
+                'abc-xyz-abc'.search();  结果： 0
+                如果传入一个非正则表达式，它会调用 new RegExp(),将其转换成一个正则实例
+
+            4.  split   根据传入的分隔符切割源文本，返回被切割的数组
+                有两个参数
+                第一个参数 字符串 或 正则表达式，它是分隔符
+                第二个参数（可选） ，限制返回数组的最大的长度
+                (a).  'abc-def_mno+xyz'.split(/[-_+]/g);
+                        结果： ["abc", "def", "mno", "xyz"]
+                (b).  'abc-def_mno+xyz'.split(/[-_+]/, 3);
+                        结果： ["abc", "def", "mno"]   (因为 3 限制了结果数组)
+                
+        C(2).匹配方法：    
+            RegExp 方法
+                    exec  RegExp 实例匹配方法
+                1.  /xyz/.exec('abc-xyz-abc');
+                     ["xyz", index: 4, input: "abc-xyz-abc",groups: undefined]
+                2.  /xyz/.exec();   null
+                3.  RegExp实例有一个   lastIndex 属性，每匹配一次就会更新
+                    所以当  lastIndex 在非 0 的情况下，匹配其他的字符串时
+                    会发生意想不到的  错误
+                    test    RegExp 实例匹配方法
+                1.  /abc/.test('abc-xyz-abc');  
+                    与 search 方法类似
+                    不过  search  是 string 实例的方法
+                    search  返回 索引（以 0 开始）
+                    test    返回  布尔类型的值  
+
+        D. ES2015为RegExp实例新增了四个方法
+            RegExp.prototype[Symbol.match]
+            RegExp.prototype[Symbol.replace]
+            RegExp.prototype[Symbol.search]
+            RegExp.prototype[Symbol.split]       
+            
+            'abc-mno-xyz'.match(/mno/);
+            结果位：["mno", index: 4, input: "abc-mno-xyz", groups: undefined]
+            /mno/[Symbol.match]('abc-mno-xyz');
+            结果为：["mno", index: 4, input: "abc-mno-xyz", groups: undefined]
+
+     -->
+    <script>
+        //  特殊字符  ？ 
+        //      a. 匹配前面一个表达式 0次 或 1次  等价于{0，1}
+        //      b. 如果紧跟在任何量词（*、+、？或{}）的后面
+        //          则使量词变为非贪婪（匹配尽量少的字符）
+        //          如： "123abc"  应用 /\d+/ 返回 "123"
+        //              /\d+?/ 就只会匹配到  "1"
+        //      
+        //  (?:x)  匹配 'x' 但不记住匹配项，非捕获括号
+
+        const pat1 = /a\*/;
+        console.log('pat1.test("a*") = ' + pat1.test("a*"));
+
+        const pat2 = /e?le?/;
+        var pat2Result = "oslo".match(pat2);
+        console.log('pat2.test("oslo") = ' + pat2.test("oslo"));
+        console.log("pat2Result =" + pat2Result);
+
+        const pat3 = /(?:foo){1,2}/;
+        const pat = /a(foo){1,3}/;
+        //  const pat = /foo{1,2}/;
+        //   对于上述两个有无括号的 正则表达式，
+        //      在此讲一下区别  括号内的即表示  子表达式，
+        //      整个正则表达式作为匹配结果数组的第一项，
+        //      而对子表达式中的内容也进行了匹配，且也保留在结果数组中
+        //  而有时候我们只是想用括号 包裹内容，对整个小型的字符串进行筛选量
+        //  且又不想对其进行保存
+        //  可以用  非捕获型括号   (?:)
+        //  如：  const pat3 = /(?:foo){1,2}/;
+
+        //      1.  正则内捕获
+        //      '<App>hello regex</App><p>A</p><p>hello regex</p>'.match(/<((A|a)pp)>(hello regex)+<\/\1><p>\2<\/p><p>\3<\/p>/);
+        //      结果为：["<App>hello regex</App><p>A</p><p>hello regex</p>", "App", "A", "hello regex", index: 0, input: "<App>hello regex</App><p>A</p><p>hello regex</p>", groups: undefined]
+        //      正则内捕获  使用  \数字 表示 对应子表达式所匹配到的文本(以左括号为准)
+        //          这种对于 捕获的引用 也叫  反向引用
+        //      2.  正则外捕获
+        //      '@abc'.match(/@(abc)/);
+        //      ["@abc", "abc", index: 0, input: "@abc", groups: undefined]
+        //      RegExp.$1;  >>>>>  结果为： "abc"
+        //      当然，对于  $1 这个形式，在 replace 中也出现过
+        //          'hello **regex**'.replace(/\*{2}(.*)\*{2}/, '<strong>$1</strong>');
+        //      如果有多个正则，则显示最后一个
+        //      3. 捕获命名
+        //      '<App>hello regex</App>'.match(/<(?<tag>[a-zA-Z]+)>.*<\/\k<tag>>/);
+        //      ["<App>hello regex</App>", "App", index: 0, input: "<App>hello regex</App>", groups: {tag: "App"}]
+        //      在捕获组内部最前面加上?<key>，它就被命名了。
+        //      使用\k<key>语法就可以引用已经命名的捕获组。
+        //      4. 断言 (下列句子中的 y 都不是匹配结果的一部分)
+        //          x(?=y)   匹配'x'仅仅当'x'后面跟着'y'.这种叫做先行断言。
+        //          (?<=y)x  匹配'x'仅仅当'x'前面是'y'.这种叫做后行断言
+        //          x(?!y)   匹配'x'仅仅当'x'后面不跟着'y',这个叫做正向否定查找。
+        //          (?<!y)x  匹配'x'仅仅当'x'前面不跟着'y'.这种叫做后向否定查找。
+        //      5. 修饰符
+        //          在此讲一些重要的 修饰符
+        //     >>>>> m  multiline 缩写，他要与 ^ 和 $ 搭配使用
+        //          一般  ^ 和 $  是文本的开头与结尾
+        //           match(/^xyz$/m);  加了  m  后表示 行的开头与结尾
+        //     >>>>> y  与 g 差不多 ，全局匹配
+        //          但是 y 不能一下子把所有的 结果一一匹配出来
+        //          它有  laseIndex 属性，能够在下一次匹配时设定位置
+
+
+        //          ！！！！！@   @！！！！！！
+        //          ！！！！！  O  ！！！！！！
+
+
+
+        //          问题： 
+        //              'a bag with a tag has a mag'.match(/\wag/y);
+        //              y  只有在自己的 lastIndex 位置能才能匹配字符串， 
+        //              null
+        //     >>>>> s , s 要和 . 搭配使用
+        //              s 修饰符可以让  . 匹配任意单个字符 
+        //              如： 
+        //          
+        //          'abc
+        //           xyz
+        //          '.match(/c.x/s);
+        //           ["c↵x", index: 3, input: "↵abc↵xyz↵", groups: undefined]
+        //      >>>>>> u  unicode 的缩写 
+        //              有些  Unicode 字符超过一个字节，正则无法识别
+        //        '𠮷'.match(/^.$/);
+        //          null
+        //        '𠮷'.match(/^.$/u);
+        //          ["𠮷", index: 0, input: "𠮷", groups: undefined]
+
+
+
+
+        var str3 = "afoofoo";
+        console.log('非捕获  str3.match(pat3) =' + str3.match(pat3));
+        console.log('str. match(/foo{1,2} /) = ' + str3.match(pat));
+        console.log("  finally = " + pat.test('o'));
+        console.log('@abc-xyz-$abc'.replace(/([^-]+)abc/g, '{$&}'));
+        console.log('abc-xyz-abc'.replace(/abc/g, (match) => ` {
+                $ {
+                    match
+                }
+            }
+        `));
+
+        var pat5 = /abc/g;
+        console.log("first lastIndex: " + pat5.lastIndex);
+        console.log(pat5.exec('abc-xyz-abc'));
+        console.log(" lastIndex: " + pat5.lastIndex);
+        console.log("******************");
+
+        console.log(pat5.exec('abcd-xyz-abc'));
+        console.log(" lastIndex: " + pat5.lastIndex);
+        console.log("******************");
+
+        console.log(pat5.exec('abc-abc-xyz'));
+        console.log(" lastIndex: " + pat5.lastIndex);
+
+
+
+        //  需记住的几点：
+        //  1.  紧跟在量词之后加上?就可以开启非贪婪模式。怎么省事怎么来。
+        //      这里的要点是，?必须紧跟着量词，否则的话它自己就变成量词了。
+        //  2. \s  匹配一个空白字符 
+        //      是  空格\f\b\r\t\v 的总合
+        //      'a b'.match(/\w \w/);  在正则中想匹配空格  即可在正则中 空一格
+        //      ["a b", index: 0, input: "a b", groups: undefined]
+        //  3.  字符组  字符组中的字符集合只是所有的可选项，最终它只能匹配一个字符。
+        //      字符组是一个独立的世界，元字符不需要转义。(不太理解)
+        //      '$'.match(/[$&@]/);
+        //      ["$", index: 0, input: "$", groups: undefined]    
+        // >>>>>有两个字符在字符组中不一样
+        //      'regex'.match(/[^abc]/);    ^ 在字符组中表示取反，不是文本开始位置
+        //      ["r", index: 0, input: "regex", groups: undefined]
+        //>>>>>>  
+
+        //   问题：  \b(单词的边界)  翻译一下就是  ^\w|\w$|\W\w|\w\W。为啥
+        //
+
+        function foo1() {
+            return {
+                bar: "hello"
+            };
+        }
+
+        function foo2() {
+            return {
+                bar: "hello"
+            };
+        }
+        var f1 = foo1();
+        var f2 = foo2();
+        console.log(f1);
+        console.log(f2);
+    </script>
+</body>
+
+</html>

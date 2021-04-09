@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>获得手机屏幕大小</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+</head>
+
+<body>
+    <script>
+        window.onload = function() {
+            // var he = window.screen.height;
+            // var wi = window.screen.width;
+            // var userAgentInfo = navigator.userAgent;
+            // alert(userAgentInfo);
+            function IsPC() {
+                var userAgentInfo = navigator.userAgent;
+                var Agents = ["Android", "iPhone",
+                    "SymbianOS", "Windows Phone",
+                    "iPad", "iPod"
+                ];
+                var flag = true;
+                for (var v = 0; v < Agents.length; v++) {
+                    if (userAgentInfo.indexOf(Agents[v]) > 0) {
+                        flag = false;
+                        break;
+                    }
+                }
+                return flag;
+            }
+            var flag = IsPC();
+            if (flag === true) {
+                alert("pc端");
+                //写pc端js代码
+            } else {
+                alert("移动端");
+                //写移动端js代码
+            }
+        }
+    </script>
+</body>
+
+</html>

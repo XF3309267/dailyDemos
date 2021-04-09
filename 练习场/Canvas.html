@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Canvas Demo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+</head>
+
+<body>
+    <img src="images/ico1.jpg " title=" img " id="avatar">
+    <script>
+        function connn(img) {
+
+            img.color = img.src;
+            img.grayscale = createCan(img);
+            img.onmouseover = function() {
+                this.src = this.color;
+            }
+            img.onmouseout = function() {
+                this.src = this.grayscale;
+            }
+            img.onmouseout();
+        }
+
+        function createCan(img) {
+            var can = document.createElement("canvas");
+            can.width = img.width;
+            can.height = img.height;
+
+            var ctx = can.getContext("2d");
+            ctx.drawImage(img, 0, 0);
+
+
+            var c = ctx.getImageData(0, 0, img.width, img.height);
+            for (i = 0; i < c.height; i++) {
+                for (j = 0; j < c.width; j++) {
+                    var x = (i * 4) * c.width + (j * 4);
+                    var r = c.data[x];
+                    var g = c.data[x + 1];
+                    var b = c.data[x + 2];
+                    c.data[x] = c.data[x + 1] = c.data[x + 2] = (r + g + b) / 3;
+
+                }
+
+            }
+            ctx.putImageData(c, 0, 0, 0, 0, c.width, c.height);
+            return can.toDataURL();
+        }
+        window.onload = function() {
+            connn(document.getElementById('avatar'));
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <script>
+        function Person(v1, v2) {
+            var name = v1;
+            var sex = v2;
+            this.setName = function(value) {
+                name = value;
+            }
+            this.getName = function() {
+                return name;
+            }
+        }
+
+        function HPerson(v1, v2, v3) {
+            Person.call(this, v1, v2);
+            var Job = v3;
+            this.setJob = function(value) {
+                Job = value;
+            }
+            this.getJob = function() {
+                return Job;
+            }
+        }
+        var obj1 = new HPerson("张三", "22", "张三工作");
+        var obj2 = new HPerson("李四", "33", "李四工作");
+        console.log("obj1.name  = " + obj1.name);
+        console.log("obj1.sex  = " + obj1.sex);
+
+        console.log(obj1.getName());
+        obj1.setName("张三1");
+        console.log("setname  张三1  after");
+        console.log(obj1.getName());
+
+        obj1.setJob("张三工作1");
+        console.log("setJob  张三工作1  after");
+        console.log(obj1.getJob());
+
+        console.log("obj2 Job = " + obj2.getJob());
+
+        console.log("%%%%%%%%%%%%%%");
+        console.log(obj2.getName());
+        obj2.setName("李四1");
+        console.log("setname  李四1  after");
+        console.log(obj2.getName());
+        console.log(obj2.getJob());
+
+        obj2.setJob("李四工作2")
+        console.log("after 李四工作2 ");
+        console.log(obj2.getJob());
+    </script>
+    <!-- <script src="" async defer></script> -->
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <title>bubble event</title>
+   <style type="text/css">
+       body{margin:0;}
+       #one{
+           width:500px;
+            height:500px;
+            background:rgb(255,0,0);
+            border: 1px solid transparent;
+        }
+        #two{
+            width:400px;
+            height:400px;
+            margin: 0 auto;
+            margin-top: 50px;
+            background:rgb(255,50,50);
+            border: 1px solid transparent;
+        }
+        #three{
+            width:300px;
+            height:300px;
+            margin: 0 auto;
+            margin-top: 50px;
+            background:rgb(255,100,100);
+            border: 1px solid transparent;
+        }
+        #four{
+            width:200px;
+            height:200px;
+            margin: 0 auto;
+            margin-top: 50px;
+            background:rgb(255,150,150);
+        }
+    </style>
+</head>
+<body>
+    <div id='one'>
+      <div id='two'>
+        <div id='three'>
+          <div id='four'>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+        var one = document.getElementById('one');
+        var two = document.getElementById('two');
+        var three = document.getElementById('three');
+        var four = document.getElementById('four');
+
+        var useCapture = false; //false为冒泡获取【目标元素先触发】    true为捕获获取【父级元素先触发】
+        one.addEventListener('click', function(event) {
+            event || (event = window.event);
+            // console.log(event);
+            console.log('111111111');
+        }, useCapture);
+        two.addEventListener('click', function() {
+            console.log('222222222');
+        }, useCapture);
+        three.addEventListener('click', function() {
+            console.log('33333333');
+        }, useCapture);
+        four.addEventListener('click', function() {
+            console.log('444444');
+        }, useCapture);     
+
+        /*
+        false
+        冒泡
+        点击four div
+        输出结果：four three two one        
+
+        true
+        捕获
+        点击four div
+        输出结果： one two three four
+        */
+    </script>
+</body>
+</html>

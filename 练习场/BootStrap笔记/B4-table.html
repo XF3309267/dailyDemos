@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>BootStrap4 table</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+    <style>
+        .head {
+            height: 100px;
+            background-color: rgb(64, 141, 228);
+        }
+        
+        .table-striped>tbody>tr:nth-child(2n+1)>td,
+        .table-striped>tbody>tr:nth-child(2n+1)>th {}
+    </style>
+</head>
+
+<body>
+    <!-- 
+        scope 属性
+            可以将表头单元格与数据单元联系起来
+            标识某个单元是否是 列、 行、列组、行组的表头
+            属性不会在普通浏览器中产生任何视觉变化
+            屏幕阅读器额可以利用该属性
+                col             列的表头
+                row             行的表头
+                colgroup        列组的表头
+                rowgroup        行组的表头
+            
+        1.  table 必须加上  table 样式
+        2.  在 1 的基础上，+  table-dark    >>   整个 table  变成黑色
+        3.  在  行头、 列头  必须加上各自对应的  scope="col"(列头)、scope="row(行头)"
+        4.  在  <thead>  标签中加   thead-dark  或  thead-light，加上特别的颜色
+        5.  <table class="table-striped">   table   中每行颜色分明
+        6.  <table class="table-bordered">  给  table   加上线条
+        7.  table-hover     鼠标移至有明显变化
+        8.   <caption>      在  table   的最低端，用作对 table 的解释
+        9.  对  th、tr、td  加上颜色  如：bg-info   或  table-info，还有更多颜色，可自行搜索
+        10. <div class="table-responsive"> 也可在其后加上界点，如：table-responsive-md
+        开始即未来
+     -->
+    <div class="container">
+        <div class="row head mb-3">
+        </div>
+        <div class="table-responsive-sm">
+
+            <table class="table  table-striped table-bordered table-hover">
+                <caption>List of users</caption>
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td class="bg-success">Mark</td>
+                        <td class="table-info">Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Jacober</td>
+                        <td>Thorntoner</td>
+                        <td>@fater</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>Jacober4</td>
+                        <td>Thorntoner4</td>
+                        <td>@fater4</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">5</th>
+                        <td>Jacober5</td>
+                        <td>Thorntoner5</td>
+                        <td>@fater5</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="../bootstrap/jquery.min.js "></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

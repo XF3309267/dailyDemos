@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+</head>
+
+<body>
+    <div id="boxOutside" style="width:400px;height: 400px;background-color:red">
+        <div id="boxMiddle" style="width:200px;height: 200px;background-color:green">
+            <div id="inner" style="width:100px;height: 100px;background-color:blue">
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            var boxOut = document.getElementById("boxOutside");
+            var boxMid = document.getElementById("boxMiddle");
+            var boxInn = document.getElementById("inner");
+
+            var boxs = [boxOut, boxMid, boxInn];
+            for (let index = 0; index < boxs.length; index++) {
+                const element = boxs[index];
+                element.addEventListener('click', output);
+            }
+
+            function output() {
+                console.log(this.id);
+            }
+
+
+        }
+    </script>
+</body>
+
+</html>

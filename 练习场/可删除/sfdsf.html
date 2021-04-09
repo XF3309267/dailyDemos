@@ -1,0 +1,59 @@
+<html>
+
+<body>
+
+    <table width="100%" border="1">
+        <col align="right" />
+        <col align="right" />
+        <col align="right" />
+        <tr>
+            <th>ISBN</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Price add</th>
+        </tr>
+
+        <tr>
+            <td>3476896</td>
+            <td>My first HTML</td>
+            <td>$53</td>
+            <td>$53add</td>
+        </tr>
+        <tr>
+            <td>347689611</td>
+            <td>My first HTML11</td>
+            <td>$5311</td>
+            <td>$53add</td>
+        </tr>
+        <tr>
+            <td>2489604</td>
+            <td>My first CSS</td>
+            <td>$47</td>
+            <td>$53add</td>
+        </tr>
+    </table>
+
+    <script>
+        async function testAwait() {
+            console.log("before");
+            const data = await
+
+            (function() {
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        console.log("debug")
+                        resolve("debug11");
+                    }, 000);
+                })
+
+            })();
+            console.log(data);
+            return data;
+        }
+        var test = testAwait();
+        console.log("after log test");
+        console.log(test);
+    </script>
+</body>
+
+</html>

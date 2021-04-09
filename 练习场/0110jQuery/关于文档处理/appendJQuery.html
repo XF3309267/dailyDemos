@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>02/03</title>
+    <script src="../jQuery/jquery.js"></script>
+    <style>
+        .divRed{
+            background-color: red;
+        }
+        .divBlue{
+            background-color: blue;
+        }
+        #appp{
+            border: black solid 2px;
+            padding: 5px;
+            margin: 10px;
+        }
+    </style>
+    <!-- 
+        ???????????????????????
+
+        测试  appendTo( target )  target 可以是哪些内容
+
+
+     -->
+</head>
+<body>
+
+    <div id="bigDiv" style="background-color: burlywood;">
+        最外层Div--01
+    </div>
+    <div style="background-color:bisque" class="ddiv"> 
+        最外层Div--02
+    </div>
+    <div style="background-color:bisque" class="ddiv"> 
+        最外层Div--03
+    </div>
+    <div id="divpp">
+        <p id="pp" style="color:red">
+            所添加的内容
+           
+        </p>
+    </div>
+    <div id="appp" style="height: 100px; background-color: yellow;">
+        附加 Div
+        <button id="bbbb" onclick="aldl()">
+            btnp
+        </button>
+    </div>
+    <div>
+        结果：
+        所添加内容 被 移至 外在  含有  ‘baidu’  的  div 中
+        最后 ‘baidu’ div 移至  附加  Div 中
+    </div>
+    <script>
+        // 
+        function aldl() {
+            // console.log('alert all')
+            $('body').toggleClass('divBlue')
+        }
+        const arr = [$('.ddiv'),$('#bigDiv')]
+        const str = $('<div>',{text:'baidu'})
+        const ele = document.querySelectorAll('.ddiv')
+        console.log(ele.length)
+
+        setTimeout(function () {
+            
+            $('#bbbb').appendTo(document.querySelectorAll('.ddiv'))
+            console.log(str)
+
+        },2000)
+        setTimeout(function () {
+            console.log(str.tagName)
+            // arr.appendTo($('#appp'))
+            // $('#appp').append(str)
+        },3000)
+
+    </script>
+
+</body>
+</html>

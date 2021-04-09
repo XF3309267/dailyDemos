@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+    <style>
+        .demoClass {
+            background-color: rgb(240, 228, 228)
+        }
+        
+        .colred {
+            background-color: red;
+        }
+        
+        .colblue {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="align-content: center">
+        <input type="text" id="att" placeholder="特姓名" value="class ">
+        <input type="text " id="attValue" placeholder="特性值 " value="colblue ">
+        <button id="bt "> 提交</button>
+    </div>
+    <div class="demoClass " id="demoID " style="width:50px;height: 100px; ">
+        <ul>
+            <li>
+                li 1
+            </li>
+        </ul>
+    </div>
+    <div class=" " id="demoID2 " style="width:50px;height: 100px; ">
+        <ul>
+            <li>
+                li 2
+            </li>
+        </ul>
+    </div>
+    <script>
+        window.onload = function() {
+            var div = document.getElementById("demoID ");
+            var div2 = document.getElementById("demoID2 ");
+            var divCla = div.attributes["class "];
+            var tName = document.getElementById("att");
+            var tValue = document.getElementById("attValue");
+            var btt = document.getElementById("bt ");
+            console.log(tName.value);
+            console.log(tValue.value);
+            btt.onclick = function() {
+                var st = tName.value;
+                var str = tValue.value;
+                console.log(tName.value);
+                console.log(tValue.value);
+                div2.attributes[st].nodeValue = str;
+                // console.log(click);
+                //  不能动态设置元素的特性
+            };
+            // var ty = document.createAttribute("class ");
+            // ty.nodeValue = "demoClass ";
+            // div2.attributes.setNamedItem(ty);
+            div2.className = "demoClass ";
+            // div2.attributes.setNamedItem(cc);
+        }
+    </script>
+</body>
+
+</html>

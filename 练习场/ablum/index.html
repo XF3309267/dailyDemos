@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>js ablum</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+        
+        .showDiv {
+            width: 1000px;
+            height: 600px;
+            margin: 0px auto;
+        }
+        
+        .showpicture {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .showUl {
+            list-style-type: none;
+        }
+        
+        .showUl li {
+            width: 288px;
+            height: 180px;
+            float: left;
+            list-style: none;
+            /*  在没设  font-size: 0px; 时
+                li 元素 高多出 4px
+                ？？？？？？？？？？？？？？？？？？
+            */
+            font-size: 0px;
+            margin: 10px 20px;
+            border-radius: 3px;
+            box-shadow: 2px 2px 4px 0.3px #333;
+        }
+        
+        .black {
+            /*  设置为 absolute 属性，且 宽 高 都设置为 100%，
+                    背景色 设置为 黑色 且有点透明
+             */
+            position: absolute;
+            /*  宽 高 的百分比 相对 windows 窗口而言的 */
+            width: 100%;
+            height: 100%;
+            /*  很奇怪非得加上  
+                top: 0px;
+                left: 0px;
+                难道设置 absolute属性之后，默认了top left 的值
+             */
+            top: 0px;
+            left: 0px;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none;
+        }
+        
+        .showBigPicture {
+            /* 用以 装 显示大图片和 左右键按钮 
+                故在此不宜设置 显示大图的样式，
+                只需设置 位置
+            */
+            position: absolute;
+            width: 650px;
+            height: 406px;
+            border: 10px solid whitesmoke;
+            /*  在不知道父元素的宽高时，
+                可以用下列  
+                top: 50%;
+                margin-top: -203px;
+
+                不然可以直接设置 top： 父元素的高度/2 - 本身高度/2;
+             */
+            top: 50%;
+            margin-top: -213px;
+            left: 50%;
+            margin-left: -335px;
+            display: none;
+        }
+        
+        .left,
+        .right {
+            position: absolute;
+            top: 180px;
+            cursor: pointer;
+        }
+        
+        .left {
+            left: -60px;
+        }
+        
+        .right {
+            right: -60px;
+        }
+        
+        .image {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <script>
+        // 1. 每张照片点击后，呈现为大图显示，即 showBigPicture 的 src，为 a 标签中的地址
+        // 2. black showBigPicture 的 display 都为显示
+        // 3. 按钮 < ,可获取正显示图片的下标，即 a 标签集合的下标， 下标--；(若--后小于0，则赋值为 length - 1)
+        // 3. 按钮 < , 可获取正显示图片的 序号(如：big1.jpg，序号为 1)。点击 "<",则 序号--(若--后小于0，则赋值为9)，
+        //    按钮 > , 也一样 (个人想法)
+        window.onload = function() {
+            var pictureList = document.getElementsByClassName('showUl')[0].getElementsByTagName('a');
+            var showBigimg = document.getElementsByClassName('image')[0];
+            var black = document.getElementsByClassName('black')[0];
+            var showPicDiv = document.getElementsByClassName('showBigPicture')[0];
+            var pre = document.getElementsByClassName('left')[0];
+            var next = document.getElementsByClassName('right')[0];
+            console.log("pictureList.length = " + pictureList.length);
+            for (let i = 0; i < pictureList.length; i++) {
+                var cur = 0;
+                pictureList[i].index = i;
+                pictureList[i].onclick = function() {
+                    // var href = this.href;
+                    cur = this.index;
+                    indexShow(cur);
+                    changeDisplay();
+                    pre.onclick = function() {
+                        prev();
+                    };
+                    next.onclick = function() {
+                        nextt();
+                    };
+                    return false;
+                }
+
+
+            }
+
+            black.onclick = function() {
+                changeDisplay();
+            }
+
+            function prev() {
+                cur--;
+                if (cur < 0) {
+                    cur = pictureList.length - 1;
+                }
+                indexShow(cur);
+
+            }
+
+            function nextt() {
+                cur++;
+                if (cur > pictureList.length - 1) {
+                    cur = 0;
+                }
+                indexShow(cur);
+
+            }
+
+            function changeDisplay() {
+                // showPicDiv.style.display = "block";
+                // black.style.display = "block";
+                showPicDiv.style.display = showPicDiv.style.display == "block" ? "none" : "block";
+                black.style.display = black.style.display == "block" ? "none" : "block";
+            }
+
+            function indexShow(showIndex) {
+                console.log("show big picture");
+                showBigimg.src = pictureList[showIndex].href;
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+    <div class="showDiv">
+        <div class="showPicture">
+            <ul class="showUl">
+                <li>
+                    <a href="images/big1.jpg"> <img src="images/s1.jpg" alt=""> </a>
+                </li>
+                <li>
+                    <a href="images/big2.jpg"> <img src="images/s2.jpg" alt=""> </a>
+                </li>
+                <li>
+                    <a href="images/big3.jpg"> <img src="images/s3.jpg" alt=""> </a>
+                </li>
+                <li>
+                    <a href="images/big4.jpg"> <img src="images/s4.jpg" alt=""> </a>
+                </li>
+                <li>
+                    <a href="images/big5.jpg"> <img src="images/s5.jpg" alt=""> </a>
+                </li>
+                <li>
+                    <a href="images/big6.jpg"> <img src="images/s6.jpg" alt=""> </a>
+                </li>
+                <li>
+                    <a href="images/big7.jpg"> <img src="images/s7.jpg" alt=""> </a>
+                </li>
+                <li>
+                    <a href="images/big8.jpg"> <img src="images/s8.jpg" alt=""> </a>
+                </li>
+                <li>
+                    <a href="images/big9.jpg"> <img src="images/s9.jpg" alt=""> </a>
+                </li>
+            </ul>
+
+        </div>
+        <div class="black">
+        </div>
+        <div class="showBigPicture">
+            <img src="images/dirl.png" alt="" class="left">
+            <img src="images/dirr.png" alt="" class="right">
+            <img src="images/big1.jpg" alt="" class="image">
+        </div>
+
+    </div>
+</body>
+
+</html>

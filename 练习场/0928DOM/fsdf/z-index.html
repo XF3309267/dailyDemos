@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <style>
+        
+        .box{
+            position: absolute;
+            /* background-color: blue; */
+            width: 100px;
+            height: 50px;
+         
+        }
+        .img{
+            position: relative;
+            margin-left: -100px;
+            
+            /* z-index: 1;   */
+        }
+        .img1{
+            position: relative;
+            /* margin-left: -100px; */
+            border: 4px solid yellow;
+            /* z-index: 2; */
+        }
+        .item{
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+        }
+        .item-left{
+            padding-bottom: 600px;
+            margin-bottom: -600px;
+        }
+    </style>
+</head>
+<body>
+
+    <div style="position: relative; width: 400px;height: 400px;background-color: red;">
+        <div style="position: absolute; width: 200px;height: 200px;background-color: yellow;">
+
+        </div>
+    </div>
+    <!-- 
+
+        z-index 属性  给那些设置了 position 属性，且也设置了有效值（除了 默认的 static 值） 的元素才有效
+                      
+
+
+        ->  的左边是父级元素，右边 是相应的子元素
+        数值 代表 z-index 的值
+   
+        A       ->    B
+        c       ->    D
+    1. -------------------------------------
+
+        当父级元素  z-index  是相同的 数值时，  B 和 D 的  z-index 的值可以不用管
+        后来者居上 ，如上：  D 会覆盖 B ，当 A C 的 z-index 属性值相同（除了 auto）
+
+    2. ----------------------------------------
+
+        z-index 的值为 auto，就相当于没有为  该元素设置  z-index  属性
+        但是 z-index 属性值为 auto ，或没有设置 z-index 属性，该元素就管不住其 子元素的 z-index属性
+        父级元素的  z-index 有准确的值 才会有效
+     -->
+</body>
+</html>

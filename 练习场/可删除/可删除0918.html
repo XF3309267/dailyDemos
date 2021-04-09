@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>可删除</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+</head>
+
+<body>
+    <script>
+        function careateXHR() {
+            if (typeof XMLHttpRequest != "undefined") {
+                return new XMLHttpRequest();
+
+            } else if (typeof ActiveXObject != "undefined") {
+                if (typeof arguments.callee.activeXString != "string") {
+                    var versions = ["MSXML.XMLHttp.6.0", "MSXML.XMLHttp.3.0", "MSXML2.XMLHttp"],
+                        i, len;
+                    for (i = 0, len = versions.length; i < len; i++) {
+                        try {
+                            new ActiveXObject(versions[i]);
+                            arguments.callee.activeXString = versions[i];
+                            break;
+                        } catch (ex) {
+                            // 跳过
+                        }
+                    }
+                }
+                return new ActiveXObject(arguments.callee.activeXString);
+            } else {
+                throw new Error("NO XHR object availlable");
+            }
+
+        }
+        var xhr = careateXHR();
+        xhr.onreadystatechange = function() {
+            console.log("into onreadystatechange");
+            console.log(" xhr.readestate = " + xhr.readestate);
+            console.log(" xhr.status=" + xhr.status);
+
+            if (xhr.readestate == 4) {
+                console.log("into state 4");
+
+                if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+                    alert(xhr.responseText);
+                } else {
+                    alert("Request was unsuccessful : " + xhr.status);
+                }
+            }
+        };
+        xhr.open("get", "example.txt", true);
+        // xhr.send(null);
+    </script>
+</body>
+
+</html>

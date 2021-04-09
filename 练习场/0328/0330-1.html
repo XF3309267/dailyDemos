@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+      }
+      div {
+        background-color: orange;
+        border-radius: 20px;
+        padding: 20px;
+      }
+
+      /* a{
+        color: green;
+      } */
+      /* a:focus{
+        color: red;
+      } */
+      a:visited {
+        color: orchid;
+      }
+      /* li:focus{
+        color: red;
+      } */
+      #di {
+        background-color: greenyellow;
+        transition: background-color 4s eas-in-out 0.5s;
+      }
+
+      #di:target {
+        background-color: red;
+
+        transition: background-color 4s eas-in-out 5s;
+        -moz-transition: background-color 4s eas-in-out 5s;
+        -webkit-transition: background-color 4s eas-in-out 5s;
+        -o-transition: background-color 4s eas-in-out 5s;
+      }
+
+      input:checked {
+        width: 200px;
+        height: 200px;
+        transition: width ease-in-out 1s 0s;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="width: 200px; height: 200px">
+      <input type="text" />
+
+      <input type="radio" name="sex" value="girl" />
+      <input type="button" />
+      <input type="checkbox" />
+    </div>
+    <input type="radio" name="sex" value="boy" />
+    <script>
+      var addTwoNumbers = function (l1, l2) {
+        let maxLength = l1.length > l2.length ? l1.length : l2.length;
+        l1.reverse();
+        l2.reverse();
+        let isOutTen = 0;
+        let resarr = [];
+        for (let i = 0; i < maxLength; i++) {
+          
+          let danwei = i * 10 === 0 ? 1 : i * 10;
+          let num1 = l1[i] ? l1[i] : 0;
+          let num2 = l2[i] ? l2[i] : 0;
+          console.log('num1: ',num1)
+          console.log('num2: ',num2)
+
+          let sum = num1 + num2 + isOutTen;
+          console.log(sum)
+          if (sum >= 10) {
+            sum = sum % 10;
+
+            // 这里ide isOutTen 留给下一个循环
+            // 但是 留给了下一个循环，但是 i 已经结束
+            isOutTen = 1;
+            if (i === maxLength - 1) {
+              resarr[i + 1] = 1;
+            }
+          }
+          resarr[i] = sum;
+        }
+        resarr.reverse()
+        return resarr
+      };
+      let arr1 = [4,3,2]
+      let arr2 = [7,3,2]
+      
+      let ssum = addTwoNumbers(arr1,arr2)
+      console.log(arr1)
+      console.log(arr2)
+      console.log(ssum)
+    </script>
+  </body>
+</html>

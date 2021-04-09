@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> wrap 系列</title>
+    <script src="../jQuery/jquery.js"></script>
+
+    <style>
+        .container{
+            border: black dashed 2px;
+            padding: 10px;
+        }
+        .inner{
+            border:2px solid red;
+            padding: 5px;
+        }
+        .Hello{
+            border: green solid 4px;
+        }
+        .Goodbye{
+            border: blue solid 4px;
+        }
+    </style>
+
+</head>
+<body>
+    <!-- <div class="container">
+        container
+        <div class="container">
+            container
+            <div class="inner">Hello</div>
+            <div class="inner">Goodbye</div>
+        </div>
+    </div> -->
+    <p>
+        ppppp
+    </p>
+    <div id="ddiv" style="padding: 5px; background-color:burlywood;border: solid black 2px;">
+
+    </div>
+    <script>
+        // $('#ddiv').append($('p'))
+        // $('p').appendTo('#ddiv')
+        $('p').wrap(function (index,html) {
+            console.log(index)
+            console.log('====================================');
+            console.log(html);
+            console.log('====================================');
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+ <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+
+
+	<!-- JS 链接请放置 </body> 前面 -->
+    <script src="../bootstrap/jquery.min.js"></script> 
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+
+如果使用于手机端
+	请使用：
+   <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./jQuery/jquery.js"></script>
+
+</head>
+<body>
+    <div class="divv">
+        <h5>  原来的例子 效果</h5>
+        <p>
+          对  自身子集的操作。  更改  btn 按钮的 字样   1111
+        </p>
+        <button id="btt">
+          btn
+        </button>
+        <div >
+          所操作的界面
+
+        </div>
+    </div>
+    <div class="divv">
+      <h5>  原来的例子 效果</h5>
+      <p>
+        对  自身子集的操作。  更改  btn 按钮的 字样   2222
+      </p>
+      <button id="btt">
+        btn
+      </button>
+      <div >
+        所操作的界面
+      </div>
+  </div>
+    <div class="vvv">
+
+    </div>
+    <div class="vvv">
+
+    </div>
+    <script>
+        // function btnClick(event) {
+        //   console.log(event.targe)
+        // }
+        console.log($('.divv'))
+        console.log($('button'))
+        $('#btt').click(function (event) {
+          console.log(event.currentTarget.parentElement)
+          const btnParent = event.currentTarget.parentElement
+          $(btnParent).find('p').text('ppppppppppp')
+        })
+        setTimeout(function () {
+          // console.log('====================================');
+          // console.log($('#divv').length);
+          // console.log('====================================');
+          // $('.divv').appendTo($('.vvv'))
+        },2000)
+
+
+
+
+        // 对于使用 一些方法 使 dom文档元素（其内部元素绑定了一些事件）进行了复制，只要本身事件有用，其复制出来的事件也会有用
+
+        //  且注意：  对于使用的是  行内 onclick() 绑定方法的元素， 虽然 也许使用的元素   
+        // <button id="btt" onclick='btn()'>
+        //   btn
+        // </button>
+        // <button id="btt" onclick='btn()'>
+        //   btn
+        // </button>
+        //  如上   两者的点击事件都有效
+
+
+        //  >>>>>>>      html     <<<<<<<<<<
+        //
+        // <button id="btt" onclick='btn()'>
+        //   btn
+        // </button>
+        // <button id="btt" onclick='btn()'>
+        //   btn
+        // </button>
+
+        // >>>>>>     jquery      <<<<<<<<
+        //
+        // $('#btt').click(function (event) {
+        //   console.log(event.currentTarget.parentElement)
+        //   const btnParent = event.currentTarget.parentElement
+        //   $(btnParent).find('p').text('ppppppppppp')
+        // })
+
+        //  因为  选择器对于  id 的选择，匹配到一个就会停止，所以只有  第一个button  才可以触发点击事件
+        //  
+    </script>
+</body>
+</html>

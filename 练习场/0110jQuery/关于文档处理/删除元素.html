@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>删除元素</title>
+    <script src="../jQuery/jquery.js"></script>
+
+    <style>
+        .my_border{
+            border: 2px solid black;
+        }
+        .my_padding{
+            padding: 10px;
+        }
+        .my_margin{
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="my_border my_padding my_margin">
+        <h5>
+            实验：A2 是 A 的子集，若将  A 从文档中移除，A2 元素中的点击事件 是否可以运行
+        </h5>
+    </div>
+    <div id="testDiv">
+        <h4>
+            A
+        </h4>
+        <button id="btn">
+            A2
+        </button>
+    </div>
+
+
+    <!-- 
+        绑定事件
+        1.  on 
+
+        2.  bind 
+            适用于 对于一个元素 绑定多个事件。 如下：
+                a.
+                    $( "#foo" ).bind( "mouseenter mouseleave", function() {
+                        $( this ).toggleClass( "entered" );
+                    });
+                b.  不同的事件  不同的方法  （应该就不能  传递数据了  在这种情况下）
+                    $( "#foo" ).bind({
+                        click: function() {
+                            // Do something on click
+                        },
+                        mouseenter: function() {
+                            // Do something on mouseenter
+                        }
+                    });
+                c.   为 bind 中的 函数传递数据
+                    var message = "Spoon!";
+                    $( "#foo" ).bind( "click", {
+                        msg: message
+                    }, function( event ) {
+                        alert( event.data.msg );
+                    });
+                   
+     -->
+    <script>
+        
+      
+
+        const btn = $('#btn')
+
+        $('#testDiv').remove()
+        setTimeout(function(){
+            $(btn).appendTo($('body'))
+        },2000)
+        $(btn).on('click',function(){
+
+        })
+    </script>
+</body>
+</html>

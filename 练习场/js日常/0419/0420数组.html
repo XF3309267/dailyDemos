@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>js 数组练习例子</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .output {
+            width: 500px;
+            margin: 20px auto;
+        }
+    </style>
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+    <script>
+        window.onload = function() {
+            var ulList = document.querySelector(".output ul");
+            var searchInput = document.querySelector('.output input');
+            var bt = document.querySelector('.output button');
+            var showArr = [];
+            console.log("showArr.length = " + showArr.length);
+
+            bt.onclick = sub;
+            document.onkeydown = keyDown;
+
+            function keyDown() {
+                var currKey = 0,
+                    CapsLock = 0,
+                    e = e || event;
+                currKey = e.keyCode || e.which || e.charCode;
+                if (currKey == 13) {
+                    if (searchInput == document.activeElement) {
+                        sub();
+                    }
+
+                }
+            }
+
+            function sub() {
+                ulList.innerHTML = '';
+                console.log("showArr.length = " + showArr.length);
+                console.log("searchInput.value =" + searchInput.value);
+                if (searchInput.value != "" && searchInput.value != null) {
+                    showArr.unshift(searchInput.value);
+                    console.log("if  showArr.length = " + showArr.length);
+                }
+                if (showArr.length > 5) {
+                    console.log(">555");
+                    showArr.pop();
+                }
+                for (let i = 0; i < showArr.length; i++) {
+                    const element = showArr[i];
+                    var liList = document.createElement('li');
+                    liList.textContent = element;
+                    ulList.appendChild(liList);
+                }
+                searchInput.value = '';
+                searchInput.focus();
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <input type="text">
+    <div class="output">
+
+        <input type="text">
+        <button style="width:60px; height:20px ; "> Search</button>
+        <ul>
+
+        </ul>
+    </div>
+</body>
+
+</html>

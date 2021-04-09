@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.box{
+				width: 25rem;
+				height: 25rem;
+				background: red;
+			}
+			.style2{
+				width: 25rem;
+				height: 25rem;
+				background: yellow;
+			}
+			.box:hover{
+				cursor: pointer;
+				background-color: green;
+			}
+		</style>
+		<!-- 修改 css 样式 -->
+		<!-- 
+				1. obj.style.background = "red";  //举例（内嵌式）
+				2. obj.style.css.background = "width:400px;height:300px;";  //内嵌式
+				3. boj.className = "style2"; 或 obj.setAttribute("class","style2");
+				4.	<link href="css1.css" >
+					obj.setAttribute("href","css2.css");// 修改外联样式
+		 -->
+		<script type="text/javascript">
+			window.onload = function (){
+				var box = document.getElementsByClassName("box")[0];
+				//hover 伪类 是内联式
+				 // box.style.background="blue";//写的是内嵌式
+				 //内嵌式会覆盖  内联式
+				box.setAttribute("class","style2");
+				 
+			}
+		</script>
+	</head>
+	<body>
+		<div class="box">
+			boxbox
+			
+		</div>
+	</body>
+</html>

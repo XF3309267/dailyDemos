@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>js object 继承</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+</head>
+
+<body>
+    <script>
+        // function Person(first, last, age, interests) {
+        //     this.name = {
+        //         first,
+        //         last,
+        //     }
+        //     this.age = age;
+        //     this.interests = interests;
+        // }
+        // Person.prototype.greeting = function() {
+        //     alert("Hi,I\'m firstname is " + this.name.first);
+        // }
+
+        // function Teacher(first, last, age, interests, subject) {
+        //     Person.call(this, first, last, age, interests);
+        //     this.subject = subject;
+        // }
+        // var man = new Person("abc", "def", 20, "Play football");
+        // // man.greeting();
+        // var teacher1 = new Teacher("abc1", "def1", 201, "Play football1", "English")
+        // teacher1.greeting();
+        // // 每个实例对象都从原型中继承了一个constructor属性，
+        // // 该属性指向了用于构造此实例对象的构造函数。
+        // console.log(" teacher1.constructor = " + teacher.constructor);
+        // console.log(" teacher1.constructor.name = " + teacher.constructor.name);
+        // console.log(" tacher1.prototype = " + tacher1.prototype);
+        function doSomething() {}
+        doSomething.prototype.foo = "bar"; // add a property onto the prototype
+        var doSomeInstancing = new doSomething();
+        doSomeInstancing.prop = "some value"; // add a property onto the object
+        console.log("doSomeInstancing = " + doSomeInstancing);
+        console.log("doSomething.prototype.constructor = " + doSomething.prototype.constructor);
+    </script>
+</body>
+
+</html>

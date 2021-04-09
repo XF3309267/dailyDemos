@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+  .container {
+    padding-left: 220px;
+    padding-right: 220px;
+    overflow: hidden;
+    /* height: 800px; */
+  }
+  .left {
+    float: left;
+    width: 200px;
+    height: 400px;
+    background: red;
+    margin-left: -80%;
+    position: relative;
+    left: -220px;
+  }
+  .center {
+    float: left;
+    width: 80%;
+    height: 500px;
+    background: yellow;
+  }
+  .right {
+    float: left;
+    width: 200px;
+    height: 400px;
+    background: blue;
+    margin-left: -200px;
+    position: relative;
+    right: -220px;
+  }
+    .center,
+    .left,
+    .right {
+    padding-bottom: 10000px;
+    margin-bottom: -10000px;
+    }
+        div{
+            height: 100px;
+        }
+        .red{
+            background-color: rgb(83, 14, 14);
+        }
+        .blue{
+            background-color: blue;
+
+        }
+        .green{
+            background-color: green;
+        }
+        .column:nth-of-type(1) {
+            float: left;
+            width: 200px;
+            height: 300px;
+            margin-right: 10px;
+            background-color: red;
+        }
+        
+        .column:nth-of-type(2) {
+            overflow: hidden;
+            height: 300px;
+            background-color: purple;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- 
+        BFC
+        1. 内部的 Box 会在垂直方向上一个接一个的放置
+        2. 垂直方向上的距离由 margin 决定
+        3. bfc 区域不会与 float的元素 区域重叠
+        4. 计算 bfc 的高度时，浮动元素也参与计算
+        5. bfc 就是页面上的一个独立容器，容器里面的子元素不会影响外面的元素
+
+     -->
+     <!-- <div  class="red" style="padding: 0px;height: 400px;width:100%;">
+         <div class="green" style="margin-top: 50px;padding: 0px;height: 300px;">
+                <div class="blue"  style='margin-top: 100px;margin-bottom: 50px;'>
+                    3333
+                </div>
+                    <div class="blue"  style='margin-top: 60px;'>
+                        4444
+                    </div>
+         </div>
+
+     </div> -->
+
+<!-- 
+     <div class="column"></div>
+     <div class="column"></div> -->
+
+    <article class="container">
+        <div class="center">
+          <h2>圣杯布局</h2>
+        </div>
+        <div class="left"></div>
+        <div class="right"></div> 
+    </article>
+    <div style="height: 200px; background-color: orange;">
+
+    </div>
+</body>
+</html>

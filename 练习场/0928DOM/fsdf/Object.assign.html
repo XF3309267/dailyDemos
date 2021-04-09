@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <div style="width: 200px;height: 200px;background-color: red;">
+
+        </div>
+    </ul>
+    <script>
+        class P{
+            constructor(name){
+                // Object.assign(this,{name})
+                this.name = name
+            }
+        }
+        class C extends P{
+            constructor(name,age){
+                super(name)
+                // Object.assign(this,{age})
+                this.age = age
+            }
+        }
+        const obj = Object.create({foo: 1}, { // foo 是个继承属性。
+            bar: {
+                value: 2  // bar 是个不可枚举属性。
+            },
+            baz: {
+                value: 3,
+                enumerable: true  // baz 是个自身可枚举属性。
+            }
+        });
+        console.log(obj.__proto__)
+        for (const key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                const element = obj[key];
+                console.log(element)
+            }
+        }
+
+
+    </script>
+</body>
+</html>

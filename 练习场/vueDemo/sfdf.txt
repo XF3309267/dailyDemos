@@ -1,0 +1,21 @@
+Qmy6g0M/CQzcFEni2b3xyV5xvqQ3bMZQrnf5OglpuM8k4RBix67nECzAVWVKsMaQJJrLW6fYE5MEM8xDp1159LaeKHP6rbZJ+TlkpR+yYAzkhHo7Caf+p+zVPINsmjicUMY1ROEfqofRijwgVJV7ODpB7461iQY7nbzQFWig2xE=
+
+TXiQOt5IZe30SRZTUKOFyDB163LbVXsKyNHoo4GMYzlakYicOl7eITkFRPKeyEMZiAwqfbAptSX6572yeggaqC/LZ/63YZaiazi6LByLyNnCZwD7QhSMqVzYzaE1OA5oltykcqrst3zS/jB6XA61kiwmR/QJsHtK/XJmlyHjdvM=
+
+TXiQOt5IZe30SRZTUKOFyDB163LbVXsKyNHoo4GMYzlakYicOl7eITkFRPKeyEMZiAwqfbAptSX6572yeggaqC/LZ/63YZaiazi6LByLyNnCZwD7QhSMqVzYzaE1OA5oltykcqrst3zS/jB6XA61kiwmR/QJsHtK/XJmlyHjdvM=
+
+
+Access to XMLHttpRequest at 'file:///C:/jwglxt/xtgl/login_getPublicKey.html?time=1570546683613&_=1570546582183' from origin 'null' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: http, data, chrome, chrome-extension, https
+
+
+
+
+
+    $.getJSON("/jwglxt" + "/xtgl/login_getPublicKey.html?time=" + new Date().getTime(), function(data) {
+        modulus = data["modulus"];
+        // alert(modulus);
+        exponent = data["exponent"];
+    });
+$("#mm").val("TXiQOt5IZe30SRZTUKOFyDB163LbVXsKyNHoo4GMYzlakYicOl7eITkFRPKeyEMZiAwqfbAptSX6572yeggaqC/LZ/63YZaiazi6LByLyNnCZwD7QhSMqVzYzaE1OA5oltykcqrst3zS/jB6XA61kiwmR/QJsHtK/XJmlyHjdvM=");
+$("#hidMm").val("TXiQOt5IZe30SRZTUKOFyDB163LbVXsKyNHoo4GMYzlakYicOl7eITkFRPKeyEMZiAwqfbAptSX6572yeggaqC/LZ/63YZaiazi6LByLyNnCZwD7QhSMqVzYzaE1OA5oltykcqrst3zS/jB6XA61kiwmR/QJsHtK/XJmlyHjdvM=");
+document.forms[0].submit();

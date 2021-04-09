@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    var addTwoNumbers = function(l1, l2) {
+    let maxLength = l1.length>l2.length?l1.length:l2.length
+    l1 = reverseArr(l1)
+    l2 = reverseArr(l2)
+    let isOutTen = 0
+    let resarr = []
+
+    console.log(l1);
+    console.log(l2);
+
+
+
+
+    for(let i = 0; i<maxLength;i++){
+        let danwei = (i * 10 === 0)?1:(i * 10)
+        let num1 = l1[i]?l1[i]:0
+        let num2 = l2[i]?l2[i]:0
+
+        let sum = num1 + num2 + isOutTen
+        console.log('sum-------------');
+        console.log(sum);
+        if(sum>=10){
+            sum = sum % 10
+            
+           // 这里 isOutTen 留给下一个循环
+           // 但是 留给了下一个循环，但是 i 已经结束
+            isOutTen = 1
+            if(i === maxLength-1){
+                resarr[i+1] = 1
+            }
+        }else{
+            isOutTen = 0
+        }
+        resarr[i] = sum
+    }
+
+
+    
+    function reverseArr(arr){
+  console.log('reverse')
+  console.log(arr)
+        let temarr = arr
+        let tem = 0
+        for(let i = 0;i<Math.floor(temarr.length/2);i++){
+            console.log('startEle: '+temarr[i])
+            console.log('endEle: '+temarr[temarr.length-1-i])
+
+            tem = temarr[i] 
+            temarr[i] = temarr[temarr.length - 1 - i]
+            temarr[temarr.length - 1 - i] = tem
+        }
+        return temarr
+    }
+    console.log('res')
+    console.log(resarr);
+    return resarr
+};
+
+
+
+let l1 = [2,4,3]
+    let l2 = [5,6,4]
+    let res = addTwoNumbers(l1,l2)
+    console.log(res)
+  </script>
+</body>
+</html>

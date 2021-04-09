@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            height: 400px;
+            border: 1px solid black;
+        }
+        .container > div{
+            height: 100px;
+            background-color:red;
+        }
+        .container + div{
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>
+            Hello
+        </p>
+        <div>
+            Wo
+        </div>
+    </div>
+    <div>
+        bro
+    </div>
+    <div>
+        next
+    </div>
+    <script>
+    class SuperParent{
+        constructor(){
+            this.job = "Superman"
+        }
+        static sayHello(){
+        console.log('hello');
+        }
+    }
+    class Parent extends SuperParent {
+        constructor(name){
+            super()
+            this.name = name
+            this.job = "程序员"
+        }
+        static sayHello(){
+            console.log('hello');
+        }
+    }
+    Parent.prototype.sayName = function(){
+        console.log(this.name)
+    }
+    class Child extends Parent{
+        constructor(name,age){
+            super(name)
+            this.age = age
+            this.job = "childJob"
+        }
+        static sayBye(){
+        console.log('Bye');
+        }
+    }
+    Child.prototype.superJob = 'superJob'
+    let c = new Child('Jack',22)
+    let cc = new Child('Jack',22)
+    c.__proto__.pro = 'pro'
+
+    c.sayName()
+    console.log(c.__proto__ === Child.prototype)
+    console.log(c.job)
+    console.log('###########')
+    console.log(c.superJob)
+    console.log(cc.superJob)
+    console.log(cc.pro) 
+    </script>
+</body>
+</html>

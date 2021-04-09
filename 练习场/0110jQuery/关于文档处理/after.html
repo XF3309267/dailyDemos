@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>after</title>
+    <script src="../jQuery/jquery.js"></script>
+    <style>
+        .my_border{
+            border:2px solid black;
+        }
+        .my_padding{
+            padding: 10px;
+        }
+    </style>
+
+</head>
+<body>
+    <h4>
+        h4h4
+    </h4>
+    <div id="bigBox" class="my_border my_padding" >
+
+    </div>
+    <p>
+        dfddfdfdf
+    </p>
+    <script>
+        const my_div = $('<div>',{
+            text:'baidu',
+        });
+        const my_p = $('<p>',{
+            text:'my_p'
+        })
+        // const res2 =  $('#bigBox').append('<h4> h4h4h4 </h4>')
+        
+        
+        // setTimeout(function () {
+        //     $(my_p).appendTo($('#bigBox'))
+        //     // $(my_div).appendTo($('#bigBox'))
+        //     const res = $(my_p).after($('<p>  pppp  </p>'))
+        // },2000)
+        // $('#bigBox').after('<>')
+
+        setTimeout(function () {
+            $('#bigBox').after(function (index,html) {
+                console.log(index)
+                console.log(html)
+                return $('h4')
+            })
+        },3000)
+    </script>
+</body>
+</html>

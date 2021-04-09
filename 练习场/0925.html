@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+</head>
+
+<body>
+    <script>
+        //  测试  将 name 属性 的 writeable 设置为false，通过其方法是否可以更改
+        // var person = {
+        //     name: "Jack",
+        //     this.prototype.setName = function(value) {
+        //         this.name = value;
+        //     }
+        // };
+        // person.prototype.setName = function(value) {
+        //     this.name = value;
+        // }
+        // Object.defineProperty(person, "name", {
+        //     writable: false,
+        // })
+        // console.log("before person.name = " + person.name);
+        // person.setName("Bob");
+        // console.log("after preson.name = " + person.name);
+
+        function man() {
+
+        }
+        man.prototype.name = "Jack";
+        man.prototype.job = [1, 2];
+        var man1 = new man();
+        var man2 = new man();
+        man1.name = "man1Name";
+        console.log("man1.name = " + man1.name);
+        console.log("man2.name = " + man2.name);
+
+        man1.job.push(3); // 两个实例的数组一起变化，因为他们的数组名都指向同一个地址
+        // man1.job = [3,4];    man1.job  指向另外一个地址，而与 man2.job没有任何关系 
+
+        console.log("man1.job = " + man1.job);
+        console.log("man2.job = " + man2.job);
+    </script>
+</body>
+
+</html>

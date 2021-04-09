@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            text-align: center;
+        }
+        table thead,thead tr{
+            height: 2em;
+        }
+        thead tr th{
+            border: 1px solid black;
+        }
+        table,tr,td{
+            border: 1px solid black
+        }
+        table td{
+            min-width: 4em;
+        }
+    </style>
+</head>
+<body>
+    <table cellspacing='0' cellpadding='0'>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>age</th>
+                <th>score</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+
+        </tbody>
+    </table>
+    <div id="myForm">
+        <input type="button"  data-trInfo='id' id="btnID"  value='ID' />
+        <input type="button"  data-trInfo='name'  id="btnName" value='姓名'>
+        <input type="button"  data-trInfo='age' id="btnAge" value='年龄'>
+        <input type="button"  data-trInfo='score' id="btnScore" value='分数'>
+    </div>
+
+    <script>
+        var arr = [
+            {
+                id: 1,
+                name:'Jack',
+                age: 22,
+                score: 98,
+            },
+            {
+                id: 2,
+                name:'Marry',
+                age: 13,
+                score: 34,
+            },
+            {
+                id: 3,
+                name:'Ace',
+                age: 23,
+                score: 54,
+            },
+            {
+                id: 4,
+                name:'Rooki',
+                age: 12,
+                score: 66,
+            }
+        ]
+            
+        var myForm = document.getElementById('myForm')
+        var tbody = document.getElementById('tbody')
+        var arrIsPositive = {
+            id:true,
+            name:true,
+            age:true,
+            score:true,
+        }
+        myForm.onclick = function(e){
+            // e = event || window.event;
+            var target = event.target || event.scrElement;
+            var btnHtml = 'id';
+            var resultArr = [];
+            if(target.getAttribute('type') == 'button'){
+                tbody.innerHTML = '';
+                resultArr  =   collArr(arr)(btnHtml)((arrIsPositive[btnHtml]))
+                arrIsPositive[btnHtml] = !arrIsPositive[btnHtml];
+                ShowArr(resultArr)
+            }
+        }
+        collArr(arr).toString();
+        function collArr(arr){
+            var newArr = JSON.parse( JSON.stringify(arr) )
+            var sortArr = (attr)=>{
+                var isPositive = function(isPos){
+                        var res = -1;
+                        newArr.sort(function(a,b){
+                                if(isPos){
+                                    res = a[attr]<b[attr]? -1:1;
+                                }else{
+                                    res = a[attr]>  b[attr]? -1:1;
+                                }
+                                return res
+                            })
+                        return newArr
+                    }
+                    isPositive.toString = function(){
+                        newArr.sort(function(a,b){
+                            return a[attr] - b[attr]
+                        })
+                        return (
+                            newArr
+                        )
+                    }
+                    return isPositive
+            }
+            var i = 1;
+            sortArr.toString = ()=>{
+                ShowArr(newArr)
+                return null;
+            }
+            sortArr.valueOf = function(){
+                ShowArr(newArr)
+                return null;
+            }
+            return sortArr
+        }
+        function ShowArr(newArr){
+            newArr.forEach(obj => {
+                var tr,td;
+                tr = document.createElement('tr')
+                for(let i  in obj){
+                    td = document.createElement('td')
+                    td.innerHTML = obj[i]
+                    tr.append(td)
+                }
+                tbody.append(tr)
+            });
+        }
+        
+
+
+        // collArr(arr)('age');
+
+    </script>
+</body>
+</html>

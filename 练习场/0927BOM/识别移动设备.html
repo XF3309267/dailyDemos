@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> 识别移动设备</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+</head>
+
+<body>
+    <script>
+        var client = function() {
+            var engine = {
+                // 呈现引擎
+                ie: 0,
+                gecko: 0,
+                webkit: 0,
+                khtml: 0,
+                opera: 0,
+
+                ver: null
+            };
+            var browser = {
+                // 浏览器
+                ie: 0,
+                firefox: 0,
+                safari: 0,
+                konq: 0,
+                opera: 0,
+                chrome: 0,
+
+                // 具体版本号
+                ver: null
+
+            };
+            var system = {
+                win: false,
+                mac: false,
+                x11: false,
+
+                //移动设备
+                iphone: false,
+                ipod: false,
+                ipad: false,
+                ios: false,
+                android: false,
+                nokiaN: false,
+                winMobile: false
+            };
+            return {
+                engine: engine,
+                browser: browser,
+                system: system
+            };
+        }();
+    </script>
+</body>
+
+</html>

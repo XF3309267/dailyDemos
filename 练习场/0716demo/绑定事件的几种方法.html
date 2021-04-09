@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            padding: 50px;
+            margin: 20px 10px;
+            border: 2px solid black;
+            background: #EFF;
+        }
+        .showContainer{
+          
+            font-size: large;
+            font-weight: 200;
+          
+        }
+        .box {
+            height: 50px;
+            width: 50px;
+            background: rgb(33, 33, 131);
+        }
+    </style>
+</head>
+<body>
+<div class="container"  id="container" >
+
+        <div class="box" id="box" onclick="handleBoxClick()">
+            <button id="btn1" onmouseover="handleBtnMouseover()" onClick="handleBtnClick()">
+                <!-- onclick="handBtnClick()" -->
+                    btn
+                </button>
+                <span class="showcontainer" id="btn1Show">
+            </span>
+        </div>
+
+    </div>
+    <script>
+        let container = document.querySelector('#container')
+        let box = document.querySelector('#box')
+        let btn1 = document.querySelector('#btn1')
+        let btn1Show = document.querySelector('#btn1Show')
+        function handleBtnMouseover(e){
+            e = e || window.event
+            e.target = e.target || e.srcElement
+            console.log('btn MouseOver')
+            e.stopImmediatePropagation()
+        }
+        btn1.addEventListener('mouseover',function(){
+            // console.log('other mouserover')
+        })
+        function handleBtnClick(e){
+            e = e || window.event
+            e.target = e.target || e.srcElement
+            console.log('btn Click')
+            // e.stopImmediatePropagation()
+        }
+        function handleBoxClick(){
+            console.log('box Click')
+        }
+    </script>
+</body>
+</html>

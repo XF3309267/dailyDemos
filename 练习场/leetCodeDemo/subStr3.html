@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var lengthOfLongestSubstring = function (s) {
+      // 思路：
+      //  for i 循环 字符串
+      //   1. let maxLength = 0
+      //   2. let lastIndex = 0      ( 是 上一个 子串的 末尾索引 )
+      //   3. let isOutForBreak = false
+      let maxLength = 0
+          let lastIndex = 0
+          if(!s || s.length==0){
+            return 0
+          }
+          for (let i = 0 ; i < s.length ; i++){
+            if(s.length<=(lastIndex + maxLength)){
+              return maxLength
+            }
+
+            let strr = s.slice(lastIndex,lastIndex + maxLength+1)
+            // strr 中有 重复字符
+            if((new Set(strr)).size !== strr.length){
+
+              for(let i = strr.length -1;  i>=0 ; i--){
+                let resIndex = strr.slice(0,i).lastIndexOf(strr[i])
+                // 找到了
+                if(resIndex !==-1){  
+                  lastIndex += (resIndex + 1)
+                   break;
+                }
+              }
+
+            }else{
+              maxLength = maxLength + 1 
+            }
+            if (s.length <= (lastIndex + maxLength)) {
+                return maxLength
+            }
+          }
+
+    }
+
+    let str = "ggububgvfk"
+    lengthOfLongestSubstring(str)
+  </script>
+</body>
+
+</html>

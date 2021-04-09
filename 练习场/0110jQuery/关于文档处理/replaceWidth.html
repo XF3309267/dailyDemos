@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>replaceWith( )</title>
+    <script src="../jQuery/jquery.js"></script>
+    <style>
+        div{
+            background-color: blanchedalmond;
+        }
+        p{
+            color:red;
+        }
+        .my_grey{
+            background-color: cornsilk;
+        }
+    </style>
+</head>
+<body>
+   <div>
+       div11
+       <p>
+           ppp111
+       </p>
+   </div>
+   <div>
+       div22
+       <p>
+           ppp222
+       </p>
+   </div>
+
+    <script>
+        // $('p').click(function () {
+        //     $(this).replaceWith($('div'))
+        // })
+        // $('p').bind('mouseenter mouseleave',function () {
+        //     $(this).toggleClass('my_grey')
+        // })
+        const but = $('<button>',{
+            text:'bbb',
+        })
+        setTimeout(function () {
+            $('P').replaceWith(but)
+            
+        },1000)
+        setTimeout(function () {
+            // $('P').replaceWith(but)
+            console.log(but)
+            but.text('tttt');
+            // $('body').append(but)
+        },3000)
+        /*
+            const but = $('<button>',{
+                text:'bbb',
+            })
+            but 是一个 不存在于 文档中的一个元素
+            1.  若 but 使用了 其他的方法，导致文档中出现了 多个该元素
+
+            ！！！  注意：  一般出现这种情况，只有最后一个是他本身，而其他都是他的 克隆副本
+            ！！！          所以在代码中再 对 but 进行操作时，只会对  本身 进行操作
+
+        */
+
+
+    </script>
+</body>
+</html>

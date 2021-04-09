@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./tailwind.css">
+  <style>
+    /* .banner-color{
+        color: white;
+      } */
+
+    /* .banner-color::after{
+        transition:all 500 200;
+        
+        content:'';
+        background-color: blue;
+        position: absolute;
+        left:50%;
+        bottom: 0;
+        width:0;
+        height: .1em;
+      }
+      .banner-color:hover:after{
+        left:0;
+        width:100%;
+      } */
+    .navhead .logo {
+      display: block;
+      height: 22px;
+      width: 168px;
+      position: absolute;
+      left: 0px;
+      top: 25px;
+    }
+
+    .navhead .logo h1 {
+      display: block;
+      height: 22px;
+      width: 168px;
+      margin-left: 4em;
+      background: url(https://www.tencent.com/img/index/menu_logo.png) no-repeat 0 0;
+      text-indent: -9999px;
+      overflow: hidden;
+      background-size: 100% 100%;
+    }
+    .navhead:hover .logo h1 {
+      background: url(https://www.tencent.com/img/index/menu_logo_hover.png) no-repeat 0 0;
+      background-size: 100% 100%;
+    }
+
+    .navhead .headbg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 0;
+      transition: all 500 ease-in-out 1000;
+    }
+
+    .navlist .banner-color {
+      color: #fff;
+    }
+
+    .navlist:hover~.headbg {
+      transition: all 500 ease-in-out 1000;
+      height: 20rem;
+      background-color: #fff;
+    }
+
+    .navlist:hover .banner-color {
+      color: #000;
+    }
+  </style>
+</head>
+
+<body>
+  <video width="100%" id="video" autoplay="" loop="" preload="" muted="" x-webkit-airplay="true" airplay="allow"
+    webkit-playsinline="true" playsinline="true" src="https://www.tencent.com/video/index-video.mp4"
+    class="w-full fixed"></video>
+  <div class="relative flex justify-start px-20 w-full h-20 navhead  bg-opacity-0 text-black hover:h-80 ">
+    <a href="#" class="logo z-20">
+      <h1 class="">
+        tecent腾讯
+      </h1>
+    </a>
+    <ul class="block h-auto  text-2xl ml-48 flex content-start navlist">
+      <!-- 正常运行项 -->
+      <li class="block min-w-40  h-20 group z-20 ">
+        <div class="relative   py-5 h-20 text-center  flex justify-center items-center banner-color">
+          <span class=""> 员工 </span>
+          <div
+            class="absolute w-0 h-1 bg-blue-700 bottom-0 left-30 z-50 transition-all duration-500 group-hover:w-full group-hover:left-10">
+          </div>
+        </div>
+        <div class="w-full">
+          <ul class="block text-center text-xl invisible group-hover:visible">
+            <li class="pt-8 text-gray-400">人才发展</li>
+            <li class="pt-8 text-gray-400">腾讯学院</li>
+            <li class="pt-8 text-gray-400">工作环境</li>
+          </ul>
+        </div>
+      </li>
+      <!-- 正常运行项 -->
+      <li class="relative block min-w-40  h-20 group z-20 text-center">
+        <div class="relative inline-block py-5 h-20 text-center  flex justify-center items-center banner-color">
+          关于我们
+          <div
+            class="absolute w-0 h-1 bg-blue-700 bottom-0 left-30 z-50 transition-all duration-500 group-hover:w-full group-hover:left-10">
+          </div>
+        </div>
+        <div class="w-full  ">
+          <ul class="block text-center text-xl invisible group-hover:visible">
+            <li class="pt-8 text-gray-400 hover:text-blue-400">人才发展</li>
+            <li class="pt-8 text-gray-400">腾讯学院</li>
+            <li class="pt-8 text-gray-400">工作环境</li>
+          </ul>
+        </div>
+      </li>
+      <li class="relative block min-w-40  h-20 group z-20 text-center">
+        <div class="relative inline-block py-5 h-20 text-center  flex justify-center items-center banner-color">
+          公司简介
+          <div
+            class="absolute w-0 h-1 bg-blue-700 bottom-0 left-30 z-50 transition-all duration-500 group-hover:w-full group-hover:left-10">
+          </div>
+        </div>
+        <div class="w-full  ">
+          <ul class="block text-center text-xl invisible group-hover:visible">
+            <li class="pt-8 text-gray-400 hover:text-blue-400">人才发展</li>
+            <li class="pt-8 text-gray-400">腾讯学院</li>
+            <li class="pt-8 text-gray-400">工作环境</li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+    <div class="headbg"></div>
+  </div>
+</body>
+<!-- 
+  未实现点：
+  1. 导航栏 第一级，文字下面的 滑动条（未实现： 动态滑动条，即 滑动条的宽度 与 一级导航栏项宽度一样宽 ）
+
+  模仿 腾讯官网导航栏 总结：
+  div.navhead{
+    a{// 公司logo
+      
+    }
+    ul.navlist{// 导航栏 各选项
+
+      li{
+        div{// 导航栏 1级菜单
+          
+        }
+        div{// 导航栏 子菜单列表
+
+        }
+      }
+    }
+    div.headbg{// 白色背景
+
+    }
+  }
+
+
+ -->
+</html>
+.navhead{
+  position:relative;
+}
+div.navhead{
+
+  a.logo{// 公司logo
+    
+  }
+
+  .navhead .headbg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 0;
+    transition: all 500 ease-in-out 1000;
+  }
+
+  .navlist:hover~.headbg {
+    transition: all 500 ease-in-out 1000;
+    height: 20rem;
+    background-color: #fff;
+  }
+
+  //  使用 .navlist:hover 作为触发，控制 纯白色背景的 展示 与 隐藏
+  //  使用 .navlist:hover 作为触发，控制 .banner-color 字体颜色
+  //  透明背景 + 白色字        白色背景 + 黑色字 
+
+  ul.navlist{// 导航栏 各选项
+
+    //  使用 tailwindcss group  group-hover 控制子菜单列表的 展示 与 隐藏
+    //  使用 tailwindcss group  group-hover 控制子菜单列表的 展示 与 隐藏
+    li.group{
+      div.banner-color{// 导航栏 1级菜单
+        class="banner-color"
+        span            //  导航栏item内容
+        div{            //  导航栏item滑动条
+          class="group-hover:w-full group-hover:left-10"
+        }          
+      }
+      div{
+        ul{// 导航栏 子菜单列表
+          class="invisible group-hover:visible"
+        }
+      }
+    }
+  }
+
+  div.headbg{// 白色背景
+    class{
+      position: absolute
+    }
+  }
+
+}

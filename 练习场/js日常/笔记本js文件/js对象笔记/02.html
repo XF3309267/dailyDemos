@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>02 </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+    <script>
+        function test(id) {
+            // var id = 1;
+            alert("into");
+            var fso = new ActiveXObject("Scripting.FileSystemObject"); 
+            if (id == 1) {
+                var text = document.getElementById('text').value;
+                if (text) {
+                    var f = fso.createtextfile("D:\\test.txt", true); 
+                    f.writeLine(text); 
+                    f.close();
+                    alert("写入数据成功...");
+                } else {
+                    alert("输入内容不能为空...");
+                }
+            } else {
+                var ts, s; 
+                var ForReading = 1; 
+                fso = new ActiveXObject("Scripting.FileSystemObject"); 
+                ts = fso.OpenTextFile("D:\\test.txt", ForReading); 
+                s = ts.ReadLine(); 
+                document.getElementById("aa").innerHTML = s; 
+            }
+        }
+    </script>
+    <!-- 写入数据测试 -->
+    <div>
+        <input type="text" id="text">
+        <!-- <button οnclick="test()"> annniu</button> -->
+        <button onclick="test(1)">创建</button>
+
+
+    </div>
+    <!-- 读取数据测试 -->
+    <div>
+        <input id="2" type="button" value="读取测试文件内容" onclick="test(2)">
+    </div>
+    <div id="aa"></div>
+
+
+
+</body>
+
+</html>

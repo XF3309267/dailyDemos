@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>web Storage</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	 <script>
+			
+				function getE(ele) {
+				            return document.getElementById(ele);
+				        }
+				        // var text = getE("text");
+						var text = document.getElementById("text");
+						console.log("text_1.value = "+ text.value);
+				        //var btn_1 = document.getElementById("btn-1");
+				        var mag = getE("msg_1");
+				        var btn_1 = getE("btn-1");
+				        var btn_2 = getE("btn-2");
+				        var btn_3 = getE("btn-3");
+				        var btn_4 = getE("btn_4");
+				
+				        function saveSessionStorage() {
+							console.log("text_1.value = "+text.value);
+				            sessionStorage.setItem('msg',( text.value + 'session'));
+				        }
+				
+				        function loadSessionStorage() {
+							
+				            mag.innerHTML = sessionStorage.getItem('msg');
+				        }
+				
+				        function saveLoaclStorage() {
+							console.log("text_1.value = "+text.value);
+				            sessionStorage.setltem('msg', (text.value + 'local'));
+				        }
+				
+				        function loadLocalStorage() {
+				            mag.innerHTML = localStorage.getItem('msg');
+				        }
+				//         btn_1.onclick = saveSessionStorage;
+				//         btn_2.onclick = loadSessionStorage;
+				//         btn_3.onclick = saveLocalStorage;
+				 //       btn_4.onclick = loadLocalStorage;
+				
+				
+				        // 记录页面的次数
+				        var local_count = localStorage.getItem('a_count') ? localStorage.getItem('a_count') : 0;
+						console.log("local_count = "+local_count);
+						local_count = parseInt(local_count);
+				        //getE('local_count').innerHTML = local_count;
+				        localStorage.setItem('a_count', local_count + 1);
+				
+				        var session_count = sessionStorage.getItem('a_count') ? sessionStorage.getItem('a_count') : 0;
+						session_count = parseInt(session_count);
+						console.log("sessionCount = "+session_count);
+						//getE('session_count').innerHTML = session_count;
+				        sessionStorage.setItem('a_count', session_count + 1);
+			
+			
+				
+						
+	       
+	   </script>
+</head>
+
+<body>
+	
+    <p id="msg_1" class="msg"> </p>
+    <label for=""> 要保存的数据：</label>
+	<form action="" method="" name="formm">
+		 <input type="text"  value="3" id="text"><br>
+	</form>
+    <input type="button" name="btn-1 " value="session保存 " id="btn-1 " onclick="saveSessionStorage()">&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="button" name="btn-2 " value="session读取 " id="btn-2 " onclick="loadSessionStorage()"><br>
+    <input type="button" name="btn-3" value="local保存 " id="btn-3 " onclick="saveLocalStorage()">&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="button" name="btn-4" value="local读取 " id="btn-4 " onclick="loadLocalStorage()"> <br> 
+	session 计数：<span class="count " id="session_count "></span>&nbsp;&nbsp; &nbsp;&nbsp;
+	local 计数：<span class="count " id="local_count "></span>&nbsp;&nbsp;
+
+
+   
+</body>
+
+</html>

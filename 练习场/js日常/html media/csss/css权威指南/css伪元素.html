@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> css 权威指南 伪元素 </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+    <style>
+        /*  这种 鼠标事件，称为伪类 */
+        /* a:hover {
+            color: red;
+        } */
+        
+        div {
+            height: 35px;
+            width: 120px;
+            line-height: 35px;
+            text-align: center;
+        }
+        /* :target {
+            background-color: yellow;
+            font-size: 35px;
+        }
+         */
+        
+        div:active {
+            background-color: red;
+        }
+        /* div:hover {
+            background-color: yellow;
+        } */
+        
+        div:focus {
+            background-color: green;
+        }
+        
+        input:disabled {
+            background-color: ghostwhite;
+        }
+        
+        input:enabled {
+            background-color: white;
+        }
+        
+        p::-moz-selection {
+            background-color: rgb(209, 223, 12);
+        }
+        
+        p::selection {
+            background-color: rgb(209, 223, 12);
+        }
+        
+        a {
+            /* background-color: rgb(202, 199, 199); */
+            text-decoration: none;
+            color: rgb(20, 173, 233);
+            /* border: 1px rgb(202, 199, 199) solid; */
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        li {
+            width: 190px;
+            /* height: 25px; */
+            /* background-color: rgb(202, 199, 199); */
+            /* text-align: center; */
+            text-indent: 2rem;
+            list-style-type: none;
+            font-size: 40px;
+        }
+        /* li.new:after {
+            content: url("image/n.png");
+            display: line-block;
+            width: 90px;
+            height: 0px;
+            
+        } */
+        
+        li.new:after {
+            content: '<div>'123'</div>';
+        }
+        
+        #ne {
+            position: initial;
+        }
+    </style>
+
+    <script>
+        function raid() {
+            var ra1 = document.getElementById('rr1');
+            var text = document.getElementById('text');
+            if (!ra1.checked) {
+                console.log("  >>>>>>enabled ");
+                text.disabled = "";
+                text.value = "";
+                text.placeholder = '请输入';
+            } else {
+                console.log("  >>>>>>disabled ");
+                text.disabled = "disabled";
+                text.value = "不可用";
+            }
+        }
+        // raido();
+    </script>
+</head>
+
+<body>
+    <script>
+    </script>
+    <div id="t1">
+        t1t1t1
+    </div>
+    <div id="t2">
+        t2t2t2
+    </div>
+    <a href="#t1"> T1</a>
+    <a href="#t2"> T2 </a>
+    <input type="text">
+
+    <input type="radio" name="r1" id="rr1" onchange="raid();">
+    <input type="radio" name="r1" id="rr2" onchange="raid();">
+
+    <input type="text" id="text">
+    <p>
+        随风倒十分<a href="#"> object.place Holder</a>方式发送给 官方的规划 二姨太 的广告da
+    </p>
+    <ul>
+        <li class="new " id="ne"><a href="#">title1</a> </li>
+        <li class="new "><a href="#">title2</a>
+            <li><a href="#">title3</a> </li>
+            <li><a href="#">title4</a> </li>
+            <li><a href="#">title5</a> </li>
+    </ul>
+
+</body>
+
+</html>

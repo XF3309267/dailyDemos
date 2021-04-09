@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> cookie 封装与读取</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+</head>
+
+<body>
+
+    <script>
+        //  cookie 名字 ； cookie 值； expires  表示有效天数；path 表示有效路径；domain 表示域；secure 表示安全性设置
+        //  name、value、path、domain 为字符串类型，传递时要加上引号 
+        //  expires 为数值，    secure 表示布尔值，表示是否加密传输 cookie 信息 
+        function setCookie(name, value, expires, path, domain, secure) {
+            var today = new Date();
+            today.setTime(today.getTime());
+            if (expires) {
+                expires = expires * 100 * 60 * 60 * 24;
+
+            }
+            var expires_date = new Date(today.getTime() + (expires));
+            document.cookie = name + "=" + escape(value) +
+                ((expires) ? ";expires=" + expires_date.toGMTString() : "") +
+                ((path) ? ";path=" + path : "") +
+                ((domain) ? ";domain=" + domain : "") +
+                ((secure) ? ";secure" : "");
+
+        }
+
+        // 读取cookie
+        function getCookie() {
+            var a = document.cookie.split(";"); // 把cookie字符串劈开为数组
+            var o = {};
+            for (let i = 0; i < a.length; i++) {
+                const v = a[i].split("=");
+                o[v[0]] = v[1];
+            }
+            return o;
+        }
+
+        function demo() {
+            console.log("demo");
+            setCookie("cookie1", "HelloWorld", 1, "/", "", false);
+            var o = getCookie();
+            console.log(o);
+
+            for (const i in o) {
+                if (o.hasOwnProperty(i)) {
+                    //console.log("hasValue");
+
+                    const element = o[i];
+                    console.log("element:" + element);
+
+                }
+            }
+        }
+        demo();
+    </script>
+</body>
+
+</html>

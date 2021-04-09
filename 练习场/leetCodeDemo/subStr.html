@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let demoStr = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
+    function clipChilStr(localStr){  
+      let childList = []
+      let nowActiveIndex = 0
+      let maxLength = 0
+      let maxIndex = 0 
+      let startIndex = 0
+      for (let i = 0; i < localStr.length; i++) {
+        console.log('startIndex')
+        console.log(startIndex)
+        console.log(i)
+        console.log('');
+        if(!childList[nowActiveIndex]){
+          childList[nowActiveIndex] = ''
+        }
+        
+        const str1 = localStr[i];
+        console.log(childList[nowActiveIndex])
+        if(childList[nowActiveIndex].indexOf(str1) === -1){
+          console.log('!==-1')
+          if(!childList[nowActiveIndex]){
+            childList[nowActiveIndex] = ''
+          }
+          childList[nowActiveIndex] += str1
+        }else{
+          nowActiveIndex++
+          startIndex ++;
+          i = startIndex - 1
+          console.log('');
+          console.log('i-------------');
+          console.log(i)
+          console.log('');
+        }
+        console.log(childList[0])
+      }
+      for (let index = 0; index < childList.length; index++) {
+        const element = childList[index];
+        if(maxLength<element.length){
+          maxLength = element.length
+          maxIndex = index
+        }
+      }
+      return childList[maxIndex]
+    }
+
+
+
+    // let clipStr = function(restStr,maxStr=''){
+    //   let localStr = ''
+    //   let getedStr = ''
+    
+    //   if(restStr.length<=maxStr.length){
+    //       return maxStr
+    //   }
+
+    //   for (let index = 0; index < restStr.length; index++) {
+    //     // 没有重复的 字符
+    //     if(getedStr.indexOf(restStr[index]) === -1){
+          
+    //       getedStr += restStr[index]
+    //     }else{
+    //       localStr = restStr.slice(getedStr.indexOf(restStr[index])+1)
+    //       break;
+    //     }
+    //   }
+
+    //   if(maxStr.length<getedStr.length){
+    //     maxStr = getedStr
+    //   }
+
+    //   if(localStr.length==0){
+    //     return maxStr
+    //   }else{
+    //     restStr = null
+    //     getedStr = null
+    //     return clipStr(localStr,maxStr)
+    //   }
+    // }
+
+
+
+    let childStr = clipChilStr(demoStr)
+    console.log(demoStr)
+    console.log(childStr)
+  </script>
+</body>
+</html>

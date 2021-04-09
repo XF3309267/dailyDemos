@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+    <style>
+        .warp {
+            border: 1px solid red;
+            width: 170px;
+        }
+        
+        .text {
+            background: green;
+        }
+        
+        .f-l {
+            float: left;
+        }
+        
+        .borderBox {
+            box-sizing: border-box;
+        }
+        /* 
+            box-sizing:border-box;
+            在乎 border padding ，
+            border 、 padding 的宽高， 会去占取一开始设置的 width height 
+         */
+        
+        .contentBox {
+            box-sizing: content-box;
+        }
+        /* 
+            box-sizing:content-box;
+            不会占据 原本设置的宽高
+         */
+    </style>
+</head>
+
+<body>
+    <!-- <div class="warp">
+        <span class="text">这是文本4</span>
+        <span class="text f-l">这是文本3</span>
+    </div> -->
+    <div class="borderBox" style="width: 400px;height:400px;background-color:aquamarine;border: 50px black solid;">
+
+    </div>
+
+
+
+    <script>
+        window.onload = function() {
+            function ff() {
+                return [88.7, "nvzhuang", "yifu", 45, "beizhu"];
+            }
+
+            let a, b, c;
+            [a, ...c] = ff();
+            console.log(a, b);
+            console.log(c)
+        }
+    </script>
+</body>
+
+</html>

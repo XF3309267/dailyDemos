@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>js 字符串</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+    <script>
+        window.onload = function() {
+            var list = document.querySelector('.box ul');
+            list.innerHTML = '';
+            var str = ['ChrisTmas ; ok', 'birthday ', 'ChrisTmas maby', ];
+            for (var i = 0; i < str.length; i++) {
+                console.log(" indexof ; =" + str[i].indexOf(';'));
+
+
+
+                str[i] = str[i].toLowerCase();
+                console.log("str[i][0] = " + str[i][0]);
+                //str[i][0] = str[i][0].toUpperCase();
+                var frist = str[i][0];
+                str[i] = str[i].replace(frist, frist[0].toUpperCase());
+                console.log("str[i][0].toUpperCase() = " + str[i][0].toUpperCase());
+                console.log("after replace str[i][0] = " + str[i][0]);
+                //console.log("typeof str[i].indexOf('Christmas')  = " + typeof(str[i].indexOf('Christmas')));
+                // if (str[i].indexOf('Christmas') != -1) {
+                var result = str[i];
+                var liList = document.createElement('li');
+                liList.textContent = result;
+                list.appendChild(liList);
+                // }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="box">
+        <ul>
+
+        </ul>
+    </div>
+</body>
+
+</html>

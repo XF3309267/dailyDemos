@@ -1,0 +1,7 @@
+jdk-12.0.2
+
+export JAVA_HOME=/usr/local/jdk-12.0.2
+export PATH=$JAVA_HOME/bin:$PATH
+export CLASSPATH=.:$JAVA_HOMEb/dt.jar:$JAVA_HOMEb/tools.jar
+
+"http://218.204.129.252:8089/jwglxt"

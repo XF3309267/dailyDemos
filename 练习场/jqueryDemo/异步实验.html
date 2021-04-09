@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>0711 异步实验</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+    <script src="jquery.js"></script>
+</head>
+
+<body>
+    <script>
+        //  promise >> promises 的概念是由 CommonJS 小组的成员在 Promises/A 规范中提出来的。
+        //  promise 是一个对象，只需 then 这一个方法
+        //      then  方法带有如下的三个参数
+        //                  *  成功回调
+        //                  *  失败回调
+        //                  *  前进回调
+        //  1. promise 对象代表一个异步操作，其不受外界影响，有三种状态：
+        //      *  Pending      （进行中未完成）
+        //      *  Resolved     （已完成，  Fulfilled）
+        //      *  Rejected     （已失败）
+        //  2.  then  可以调用其上一个 then 返回的 promise 值   
+        //          firstAsync()
+        //          .then(function(data) {
+        //            处理得到的 data 数据
+        //            return secondAsync();
+        //          })
+        //          .then(function(data2){
+        //          处理  data2 数据（即就是 上一个 then 返回的 secondAsync(); ）
+        //  
+        // })
+        //  3.  以下的例子表示：  不是很懂  
+        //         由于异步回调中，回调函数的执行栈与原函数分离开，导致外部无法抓住异常。
+        //             function fetch(callback) {
+        //                 setTimeout(() => {
+        //                     throw Error('请求失败')
+        //                 }, 2000)
+        //             }
+        //             try {
+        //                 fetch(() => {
+        //                     console.log('请求处理') // 永远不会执行
+        //                 })
+        //             } catch (error) {
+        //                 console.log('触发异常', error) // 永远不会执行
+        //             }
+        //              程序崩溃
+        //              Uncaught Error: 请求失败     
+
+        function cook() {
+            console.log("开始做饭");
+            //  被 promoise 包围的 即是异步的内容，若异步中内容 能够
+            var p = new Promise((resolve, reject) => {
+                //  在此处填写异步操作
+                console.log("cook  异步操作......");
+                setTimeout(() => {
+                    console.log("做饭完毕");
+
+                    // 传递给下一个  then 
+                    resolve("鸡蛋炒饭");
+                    // reject("烧焦的饭");
+                }, 3000)
+            });
+            return p;
+        }
+
+        function eat(data) {
+            console.log('开始吃饭：' + data);
+
+            var p = new Promise((resolve, reject) => {
+                console.log("eat  异步操作....."); //做一些异步操作
+                setTimeout(() => {
+                    console.log('吃饭完毕!');
+                    resolve('一块碗和一双筷子');
+                }, 2000);
+            });
+            return p;
+        }
+
+        function wash(data) {
+            console.log('开始洗碗：' + data);
+            var p = new Promise((resolve, reject) => {
+                //做一些异步操作
+                console.log("wash  异步操作");
+                setTimeout(() => {
+                    console.log('洗碗完毕!');
+                    resolve('干净的碗筷');
+                }, 3000);
+            });
+            return p;
+        }
+        // cook().then(eat, function(data) {
+        //     console.log(data + "没法吃");
+        // }).then(data => {
+        //     console.log("finally result: " + data);
+
+        // });
+        cook().then(eat, function(data) {
+            console.log(data + "没法吃");
+        }).then(data => {
+            console.log("finally result: " + data);
+
+        });
+
+        function finall() {
+            setTimeout(() => {
+                console.log("最后一句  console.log");
+            }, 3000);
+            return true;
+        }
+
+        function demo() {
+            finall();
+            console.log("finall  的后面");
+        };
+        demo();
+        //.then(eat)
+
+        // const p = function() {
+        //     return new Promise((resolve, reject) => {
+        //         setTimeout(() => {
+        //             reject('Refused the request!');
+        //         }, 0);
+        //     })
+        // };
+
+        // const p2 = function() {
+        //     return new Promise((resolve, reject) => {
+        //         setTimeout(() => {
+        //             resolve(p())
+        //         }, 0);
+        //     })
+        // };
+
+        // p2().then(val => {
+        //     console.info('Status switches to fulfilled');
+        //     console.info(val);
+        // }, val => {
+        //     console.info('Status switches to reject');
+        //     console.info(val);
+        // });
+    </script>
+</body>
+
+</html>

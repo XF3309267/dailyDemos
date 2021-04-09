@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>js json </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+
+</head>
+
+<body>
+    <script>
+        function demo() {
+            var obj = {
+                name: "Jack",
+                age: 32,
+                height: 180,
+                interestes: "Play football",
+            }
+            var myString = JSON.stringify(obj);
+            var strObj = JSON.parse(myString);
+            // console.log("myString = " + myString);
+            // console.log("myString.length = " + myString.length);
+            // for (let i = 0; i < myString.length; i++) {
+            //     const element = myString[i];
+            //     console.log("myString " + i + " = " + element);
+
+            // }
+            // console.log("myString[0] = " + myString[0]);
+
+            console.log("strObj = " + strObj);
+            for (const i in strObj) {
+                if (strObj.hasOwnProperty(i)) {
+                    const element = strObj[i];
+                    console.log(i + ": " + element);
+                }
+            }
+            // alert("myString = " + myString);
+        }
+        demo();
+    </script>
+</body>
+
+</html>

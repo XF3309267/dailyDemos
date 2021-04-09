@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="a" value="">
+    <input type="text" id="b" value="">
+    <h3>
+        求两数的最大公因数：<span id='res'></span>
+    </h3>
+    <input type="button" value="结果" id="btn">
+    <script>
+        var v1 = document.getElementById('a');
+        var v2 = document.getElementById('b');
+        var bt = document.getElementById('btn');
+        var res = document.getElementById('res')
+        var value1,value2;
+        v1.addEventListener('change',function(e){
+            console.log(e.target.value)
+            value1 = e.target.value;
+        })
+        v2.addEventListener('change',function(e){
+            value2 = e.target.value;
+        })
+        function ca(a,b){
+            var max,min,temp;
+            max = Math.max(a,b)
+            min = Math.min(a,b)
+            temp = max - min
+            while(temp!=0){
+                max = Math.max(temp,min)
+                min = Math.min(temp,min)
+                temp = max -min
+            }
+            return min
+        }
+        bt.addEventListener('click',function(){
+            var re = ca(value1,value2)
+            res.innerHTML = re
+        })
+    </script>
+</body>
+</html>

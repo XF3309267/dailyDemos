@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class App {
+            constructor( name ){
+                this.name = 'App name' 
+            }
+        }
+        class Add {
+            constructor(name){
+                 this.name = 'Add name'
+            }
+        }
+        class Auu{
+            constructor(name){
+                this.name = 'Auu name'
+            }
+        }
+        function Fuu(){
+            this.name = 'Fuu name'
+        }
+        Fuu.prototype.say = function(){
+            console.log('Fuu say')
+        }
+        function  Fjj(){
+            this.name = 'Fjj name'
+        }
+        Fjj.prototype.say = function(){
+            console.log('Fjj say')
+        }
+        function Fhh(){
+            this.name = 'Fhh  name'
+        }
+        Fhh.prototype.say = function(){
+            console.log('Fhh say');
+        }
+
+        App.prototype.sayApp = function(){
+            console.log('App')
+        }
+        Add.prototype.sayAdd =  function(){
+            console.log('Add')
+        }
+        Auu.prototype.sayAuu = function(){
+            console.log('auu');
+        }
+
+        // var  app = new App()
+        // app.sayApp()                                 // App
+        // app.constructor = Add
+        // console.log(app.constructor === App)        // false              
+        // console.log(app.constructor === Add)        // true
+        // console.log(app.name);                      // App.name
+        // console.log('____________________')
+        let app = new App()
+        app.constructor = Auu
+        Add.prototype = app
+        let add = new Add()
+        console.log(add.constructor);
+
+        console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
+        console.log('Fjj.prototype: ',Fjj.prototype);
+        var fjj = new Fjj()
+        fjj.constructor = Fuu
+        Fhh.prototype = fjj
+        let fhh = new  Fhh()
+        let fuu = new Fjj()
+        console.log(fhh.constructor);
+        console.log(fuu.constructor);
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function (){
+				
+				var alivePeople =[1,3,6,8,12,];
+				var  Gpeople = [];
+				var  newPeople = [1,3,6,8,12,];
+				var restTime = 30;
+				var maxTime;
+				var minTime;
+				var result = "过程为：";
+				function indexOf(arr,item){
+					// console.log("进入 indexOf");
+					if(Array.prototype.indexOf){
+						return arr.indexOf(item);
+					}else{
+						for(var i = 0;i<arr.length;i++){
+							if(arr[i]==item)
+								return i;
+								
+						}
+					}return -1;
+				}
+				function twoPeople(ma,mi){
+					// console.log("进入 twoPeople");
+					maxTime = ma;
+					minTime = mi;
+					if(ma<mi){
+						maxTime = mi;
+						minTime = ma;
+					}
+					ma = indexOf(alivePeople,maxTime);//时间多者的下标
+					mi = indexOf(alivePeople,minTime);//时间少者的下标
+					
+// 					console.log("ma  = "+ma);
+// 					console.log("mi  = "+mi);
+// 					console.log("alivePeople.length == "+alivePeople.length );
+					alivePeople.splice(ma,1);	 // 删除数组中元素(必过桥者)
+					alivePeople.splice(mi,1);	 // 删除数组中元素(可能会回来的人)
+// 					console.log("已删除两个过桥的元素"+maxTime+"     "+minTime);
+// 					console.log("alivePeople.length == "+alivePeople.length );
+// 					for(var m = 0 ;m<alivePeople.length;m++){
+// 						console.log("alivePeople  "+m+"  = "+alivePeople[m]);
+// 					}
+					// 判断数组中是否已无元素
+					if(alivePeople.length == 0){
+						// maxTime 和 minTime 两者一同过桥,结束整个过桥过程
+						restTime = restTime - maxTime
+						result += maxTime+" 和 "+minTime+" 回家";
+// 						console.log("twoPeople  restTime  "+restTime);
+// 						console.log("twoPeople  数组中已无元素 ");
+// 						
+// 						Gpeople.push(minTime);
+// 						Gpeople.push(maxTime);
+// 						
+					}else{
+						// maxTime 和 minTime 两者一同过桥,且 minTime 返回来了
+						var add = minTime;
+						var index;
+						var boo = false;
+						Gpeople.push(maxTime); 
+						// /////////////////////////////////////////////
+						for(var minst = 0 ; minst<Gpeople.length;minst++){
+							if(Gpeople[minst]<minTime){
+								// 如果家里的人有 秒数 比较小的 ,就返回
+								// 即 家数组 删除 minTime,加入 min
+								boo = true;
+								index = minst;
+								minTime = Gpeople[minst];
+							}
+						}
+						if(boo){
+							Gpeople.splice(index,1);
+							Gpeople.push(add);
+						}
+						// 以上是对家数组的操作
+						restTime -= minTime;
+						// console.log("返回一个"+minTime+"过桥的元素");
+						
+						result += maxTime+" 和 "+minTime+" 回家,"+"且"+minTime+"返回            ";
+						restTime = restTime - maxTime - minTime;
+						alivePeople.push(minTime);
+// 						for(var m = 0 ;m<alivePeople.length;m++){
+// 							console.log("alivePeople  "+m+"  = "+alivePeople[m]);
+// 						}
+						// console.log("twoPeople  restTime  "+restTime);
+					}
+					
+					
+				}
+				// 一次过桥
+				function playCount(){
+					// console.log("进入 playCount");
+					while(true){
+						if(alivePeople.length>=2){
+							
+// 							for(var m = 0 ;m<alivePeople.length;m++){
+// 								console.log("alivePeople  "+m+"  = "+alivePeople[m]);
+// 							}
+							
+							var randomP1 = parseInt(Math.random()*(alivePeople.length),10);
+							var randomP2 = parseInt(Math.random()*(alivePeople.length),10);
+							while(true){
+								if(randomP2==randomP1){
+									randomP2 = parseInt(Math.random()*(alivePeople.length),10);
+								}else{
+// 									console.log("randomP1 = "+randomP1);
+// 									console.log("randomP2 = "+randomP1);
+									// console.log("alivePeople[randomP1] = "+alivePeople[randomP1]);
+									// console.log("alivePeople[randomP2] = "+alivePeople[randomP2]);
+									break;
+								}
+								
+								
+							}
+// 							console.log("randomP1 = "+randomP1);
+// 							console.log("randomP2 = "+randomP1);
+// 							console.log("alivePeople[randomP1] = "+alivePeople[randomP1]);
+// 							console.log("alivePeople[randomP2] = "+alivePeople[randomP2]);
+							if(restTime<0){
+								break;
+							}
+
+							twoPeople(alivePeople[randomP1],alivePeople[randomP2]);
+							// console.log("playCount  restTime  "+restTime);
+							// console.log("playCount alivePeople.length = "+alivePeople.length);
+						}else{
+							// console.log("结束过桥，数组中已无元素 , resTime = "+restTime);
+							break;
+							
+						}
+					}
+				}
+				function main(){
+					// console.log("进入 main");
+					playCount();
+					while(restTime<0){
+						Gpeople = [];
+						// console.log("进入 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>main  while");
+						result = "结果为：";
+						restTime = 30;
+						alivePeople = [1,3,6,8,12,];
+						// console.log("main while  alivePeople.length = "+alivePeople.length);
+						playCount();
+						// console.log("for  restTime"+restTime);
+						// console.log(" for restTime  typeof  "+typeof(restTime));
+						console.log("while");
+					}
+					if(restTime>=0){
+						console.log(" if restTime  "+restTime);
+						console.log("成功了 :  "+result);
+						alert("成功了"+result);
+						
+					}
+					
+					
+				
+				}
+				main();
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

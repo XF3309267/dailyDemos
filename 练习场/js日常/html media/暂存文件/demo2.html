@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+<title>Document</title>
+
+<script type="text/javascript" src="http://bmly.bamalaya.com/app/resource/js/lib/jquery-1.11.1.min.js?v=20160906"></script>
+
+</head>
+
+<body>
+
+<button id='get'>文件上传</button>
+
+</body>
+
+<script>
+
+function show(){
+
+var myFrame= document.createElement('iframe');
+var blobObj = new Blob(["fdfd"]);
+// myFrame.src = 'http://fuyuan-net.oss-cn-hangzhou.aliyuncs.com/image/201812121109275441.xls';
+myFrame.src = URL.createObjectURL(blobObj);
+
+myFrame.style.display = 'none';
+
+document.body.appendChild(myFrame);
+
+}
+
+$(document).on('click','#get',function(){
+
+show()
+
+})
+
+</script>
+
+</html>
+<!-- --------------------- 
+作者：不会飞的小鸡 
+来源：CSDN 
+原文：https://blog.csdn.net/xuyulong1993/article/details/84971098 
+版权声明：本文为博主原创文章，转载请附上博文链接！ -->

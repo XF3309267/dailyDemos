@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+// ********************正则
+
+<head>
+    <title> 字符串与二进制的互相转换</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+    <style>
+        .box {
+            width: 500px;
+            height: auto;
+            padding: 20px;
+            margin: 50px auto 0px auto;
+            border: 2px solid black;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <form action="">
+            <input type="text" placeholder="填入字符串">
+        </form>
+
+    </div>
+    <div class="box">
+        <label for="showStr"> 字符串：</label>
+        <p id="showStr"></p>
+        <label for="showCode"> 转换后的二进制码：</label>
+        <p id="showCode"></p>
+    </div>
+    <script>
+        function strToBinary(str) {
+            // 在此并未判断输入的字符串是否为 空
+            //  所以 在使用此方法之前必须判断并给予提示
+            var result = []; // 用以存放转换后的 二进制
+            var strList = str.split("");
+            for (let i = 0; i < strList.length; i++) {
+                if (i != 0) {
+                    result.push(",");
+                    console.log("i = " + i);
+                }
+                var item = strList[i];
+                var binaryStr = item.charCodeAt().toString(2);
+                result.push(binaryStr);
+            }
+            return result.join(" ");
+        }
+
+        // 二进制数转换为  字符串
+        function binaryToStr(str) {
+            var result = [];
+            var List = str.split(" ");
+            for (let i = 0; i < List.length; i++) {
+                const element = codeList[i];
+                var asciiCode = parentInt(item, 2);
+                // 将 item ， 以 二进制数为基地转换 为 十进制数 
+                var charValue = String.fromCharCode(asciiCode);
+                result.push(charValue);
+            }
+            return result.join("");
+        }
+
+        (function() {
+            var str = strToBinary("你,好.");
+            var showCode = document.getElementById("showCode");
+            showCode.innerHTML = str;
+            let date0 = new Date();
+            let date = new Date(+new Date() + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '');
+            console.log("date0 =" + date0);
+            console.log("date = " + date);
+        })();
+    </script>
+</body>
+
+</html>

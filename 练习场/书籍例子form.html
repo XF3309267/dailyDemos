@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>书籍例子form 表单</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+</head>
+
+<body>
+
+    <form>
+        <input type="text" title="文本写入">
+    </form>
+    <script>
+        function support_input_autocomplete(whichform) {
+            // var elem = document.createElement('input');
+            // return 'placeholder' in elem;
+            for (let i = 0; i < whichform.elements.length; i++) {
+                const element = whichform.elements[i];
+                if (element.type == "submit") continue;
+
+
+                element.onfocus = function() {
+                    var text = this.title || this.getAttribute('title');
+                    if (this.value == text) {
+                        this.className = '';
+                        this.value = '';
+                    }
+
+                }
+                element.onblur = function() {
+                        if (this.value == '') {
+                            this.className = 'placeholder';
+                            this.value = this.title || this.getAttribute('title');
+                        }
+                    }
+                    // element.onblur();
+            }
+        }
+
+        function prepare() {
+            for (let i = 0; i < document.forms.length; i++) {
+                const thisform = document.forms[i];
+                support_input_autocomplete(thisform)
+            }
+        }
+
+        window.onload = function() {
+            prepare();
+        }
+    </script>
+</body>
+
+</html>

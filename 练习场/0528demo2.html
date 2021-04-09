@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>js 高阶函数</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+</head>
+
+<body>
+    <script>
+        var b = new Object();
+        var a = new Object();
+        var c = new Object();
+        a.id = 1;
+        b.id = 2;
+        c.id = 3;
+        a.date = new Date(2012, 3, 12);
+        b.date = new Date(2012, 1, 15);
+        console.log("b.date-a.date = " + Boolean(b.date - a.date));
+        c.date = new Date(2012, 2, 10);
+        var arr = [a, b, c];
+        arr.sort(
+            function(x, y) {
+                console.log("x = " + x);
+                console.log("y =" + y);
+                return x.date - y.date;
+            }
+        );
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[1] == c) {
+                console.log("arr[1] == c");
+            }
+            const element = arr[i];
+            console.log(element);
+        }
+    </script>
+</body>
+
+</html>

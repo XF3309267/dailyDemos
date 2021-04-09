@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> js object </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+    <script>
+        var object1 = {
+            name: 'aaa',
+            age: '22',
+            show: function() {
+                alert("ok");
+            }
+        }
+        console.log("object1.prototype = " + object1.prototype);
+
+        function listAllProperties(o) {
+            var objectToInspect;
+            var result = [];
+
+            for (objectToInspect = o; objectToInspect !== null; objectToInspect = Object.getPrototypeOf(objectToInspect)) {
+                result = result.concat(Object.getOwnPropertyNames(objectToInspect));
+            }
+
+            return result;
+        }
+
+        var result = listAllProperties(object1);
+        console.log("result = " + result);
+        console.log("for in input =");
+
+        for (const i in object1) {
+            if (object1.hasOwnProperty(i)) {
+                const element = object1[i];
+                console.log(i);
+
+            }
+        }
+
+        console.log("Object.getOwnPropertyNames = " + Object.getOwnPropertyNames(object1));
+        var prototypeObj = Object.getPrototypeOf(object1);
+        console.log(" Object.getPrototypeOf(objct1) = " + Object.getOwnPropertyNames(prototypeObj));
+
+
+        //************************************
+        var fruit = {
+            name: "apple"
+        };
+        var fruitbear = fruit; // 将fruit的对象引用(reference)赋值给 fruitbear
+        // 也称为将fruitbear“指向”fruit对象
+        // fruit与fruitbear都指向同样的对象
+        //fruit == fruitbear // return true
+        //fruit === fruitbear // return true
+        fruitbear.name = 'banana';
+        console.log("修改 fruitbear 属性 name = ‘ banana ’，后 fruit.name = " + fruit.name);
+        //****************************
+    </script>
+</head>
+
+<body>
+    <form name="ok">
+        <p><label>Form name:<input type="text" name="text1" value="Beluga"></label>
+            <p><input name="button1" type="button" value="Show Form Name" onclick="this.form.text1.value = this.form.name">
+            </p>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> js 对象 01 </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+</head>
+
+<body>
+    <!-- 
+        1.  对象是一个包含相关数据和方法的集合(通常由一些变量和函数组成)
+        2.  对象有许多成员组成，每个成员拥有 名字，
+            如： var obj = {name:  value1 };
+            利用创建变量的方式创建对象，且创建它时就已经写出了对象内容，称之为 对象文字
+        3.  成员值可以是任意的， 字符串 、 数字、 函数、 对象
+        4.  手动写出对象内容来而创建的对象被称之为  对象的字面量
+        5.  可使用 点表示法 来访问对象的 属性 和 方法
+            如： obj.name;  obj.interests[1];   obj.bio()
+            
+        6.  >>>>>>>>>  括号表示法 (指的是： [  ] )
+            A.  obj.name  等价于  obj['name']
+            B.  点表示法  和  括号表示法 都可修改、设置成员变量的值
+            C.  但 括号表示法 可动态设置 成员变量名 (即可通过外部的 输入值 而改变)
+            
+        7.  var str = "abc"; >>>>  自动创建对象实例
+                    字符串会自动的被创建为 字符串( String )的实例，
+                    就可使用  String 的 属性 和 方法
+        8.  内建的对象 或 API 不会总是自动创建对象的实例的
+                例如；
+                    Norifications API     >>>>    允许浏览器发起系统通知 
+                    需要你为每一个你想发起的 通知 都使用构造器进行实例化
+                    var myNOtification = new mNotification('Hello!');  
+        
+        9.  >>>>>>>>>       构造函数    
+            A.  构造函数  类似于  类(Class)  
+                注： 一个构建函数通常是大写字母开头，这样便于区分构建函数和普通函数。
+                构造函数不像 类创建实例一样 全盘复制给实例，
+                而是通过叫做一个原形链的参考链链接过去， 所以并非真正的实例(？？？？？？)
+            B.  构造函数：
+                    function Person(name) {
+                        this.name = name;
+                        this.greeting = function() {
+                            alert('Hi! I\'m ' + this.name + '.');
+                        };
+                    }
+            C.  
+
+
+                
+        10.  在原型里定义函数
+        11.   Object() 构造函数
+                var  obj = new Object();后用 点表示法 或 括号表示法 设置属性和方法
+                var  obj = new Object({name: "Jack"});
+                var  obj = {name:"Jack"};(并不是 Object 构造)
+        12.   create() 方法，基于原来的对象创建对象，如：var person2 = Object.create(person1);
+        
+                
+     -->
+
+    <script>
+        var obj = {
+            name: "Bob",
+        };
+        console.log("obj.name = " + obj.name);
+        obj.name = "Jack"
+        console.log("obj.name = " + obj.name);
+        console.log(Number("1234"));
+    </script>
+</body>
+
+</html>

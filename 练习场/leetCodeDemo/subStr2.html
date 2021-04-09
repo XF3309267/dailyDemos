@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const demoStr = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~ "
+
+    var lengthOfLongestSubstring2 = function (s) {
+      let clipStr = function (restStr,maxLength = 0) {
+        console.log('-----------');
+        console.log(restStr);
+        console.log(maxLength);
+        console.log('------------');
+        console.log(' ')
+        if(restStr.length<=maxLength){
+          console.log('Length')
+          console.log(maxLength);
+          return maxLength
+        }
+        let norepeatA = restStr.slice(0,maxLength+1)
+        console.log('norepeat');
+        console.log(norepeatA);
+        if((new Set(norepeatA)).size !== norepeatA.length){
+          console.log('有重复')
+          
+          for(let i = norepeatA.length -1;  i>=0 ; i--){
+            let resIndex = norepeatA.slice(0,i).lastIndexOf(norepeatA[i])
+            console.log('MMMMMMMMMMMM');
+            console.log(norepeatA.slice(0,i));
+            console.log(norepeatA[i]);
+            console.log('MMMMMMMMMMMM');
+
+            console.log('find index')
+            console.log(resIndex)
+            if(resIndex !==-1){  
+              resIndex = resIndex + 1; 
+              return clipStr(restStr.slice(resIndex),maxLength)  
+            }
+          }
+        }else{
+          return clipStr(restStr,maxLength+1)
+        }
+
+
+
+        // 首先判断 字符串长度，是否符合要求
+        // 截取之前最大的 无重复 字串长度+1 的字符串（norepeatA） ，看现在所截取的字符串是否有 重复
+
+        //  1. 有重复 
+        //       从 该字符串(norepeatA) 的末尾 开始向前寻找，重复的字符
+        //        for i = length -1;  i>=0 ; i--
+        //          let readFindStr = norepeatA.slice(0,i+1)
+        //          let resIndex = readFindStr.lastIndexOf(norepeatA[i])
+        //          if(resIndex===-1){   }      没有找到
+        //          else{ resIndex = resIndex + 1; return clipStr(restStr.slice(resIndex),maxLength)  }     找到了            
+        //          
+        //  2. 无重复 
+        //      return clipStr(norepeatA,maxLength+1)
+
+
+
+      }
+      let ress =  clipStr(s)
+      console.log('ress')
+      console.log(ress)
+      return ress
+    }
+
+
+
+    var lengthOfLongestSubstring = function (s) {
+      let clipStr = function (restStr, maxStr = '') {
+        let localStr = ''
+        let getedStr = ''
+
+        for (let index = 0; index < restStr.length; index++) {
+          // 没有重复的 字符
+          
+          if (getedStr.indexOf(restStr[index]) === -1) {
+
+            getedStr += restStr[index]
+          } else {
+            localStr = restStr.slice(getedStr.indexOf(restStr[index]) + 1)
+            break;
+          }
+        }
+
+        if (maxStr.length < getedStr.length) {
+          maxStr = getedStr
+        }
+
+        if (localStr.length == 0) {
+          return maxStr
+        } else {
+          restStr = null
+          getedStr = null
+          return clipStr(localStr, maxStr)
+        }
+      }
+      return clipStr(s).length
+    };
+    
+
+    
+    let finalLength = lengthOfLongestSubstring2(demoStr)
+    console.log(finalLength)
+    
+  </script>
+</body>
+
+</html>

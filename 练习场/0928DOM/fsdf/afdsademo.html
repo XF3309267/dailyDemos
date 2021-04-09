@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+/* @font-face {
+	font-family: 'iconfont';
+	src: url('http://at.alicdn.com/t/font_1274897_t3pj4anz7hg.eot');
+	src: url('http://at.alicdn.com/t/font_1274897_t3pj4anz7hg.eot?#iefix') format('embedded-opentype'),
+		url('http://at.alicdn.com/t/font_1274897_t3pj4anz7hg.woff2') format('woff2'),
+		url('http://at.alicdn.com/t/font_1274897_t3pj4anz7hg.woff') format('woff'),
+		url('http://at.alicdn.com/t/font_1274897_t3pj4anz7hg.ttf') format('truetype'),
+		url('http://at.alicdn.com/t/font_1274897_t3pj4anz7hg.svg#iconfont') format('svg');
+}
+
+h1:before {
+	font-family: "iconfont" !important;
+	content: "\e601";
+	color: pink;
+	font-size: 20px;
+	width: 40px;
+	height: 40px;
+}
+p:before{
+    content:'';
+    display:inline-block;
+    width:100px;
+    height:2px;
+    background:pink;
+    margin:5px;
+ }
+ p:after{
+    content:'';
+    display:inline-block;
+    width:100px;
+    height:2px;
+    background:pink;
+    margin:5px;
+ }
+ .text-line-container{
+     padding: .4em;
+ }
+ .text-Line{
+    position: relative;
+    display: inline-block;
+   
+ }
+ .text-Line .text-RLine{
+    position: absolute;
+    top: .15em;
+    right: -.3em;
+    display: inline-block;
+    height: 100%;
+    width: 2px;
+    background-color: red;
+    transition: all .5s ease-in .5s;
+    transform-origin: bottom;
+    transform: scaleY(0);
+ }
+ .text-Line .text-LLine{
+    position: absolute;
+    top: .15em;
+    left: -.3em;
+    display: inline-block;
+    height: 100%;
+    width: 2px;
+    background-color: red;
+    transition: all .2s ease-in 1.5s;
+    transform-origin: top;
+    transform: scaleY(0);
+ }
+ .text-Line:before{
+    position: absolute;
+    top:-.2em;
+    left: .2em;
+    content: '';
+    display:inline-block;
+    width: 100%;
+    height: 2px;
+    background: red;
+    transition: all .5s ease-in 1s;
+    transform-origin:right;
+    transform: scaleX(0);
+ }
+ .text-Line:after{
+    position: absolute;
+    top:1.5em;
+    left: 0;
+    content: '';
+    display:inline-block;
+    width: 100%;
+    height: 2px;
+    background: red;
+    transition: all .5s ease-in;
+    transform-origin:left;
+    transform: scaleX(0);
+ }
+ .text-Line:hover:after, .text-Line:hover:before{
+    transform: scaleX(1.1);
+ }
+ .text-Line:hover .text-RLine,.text-Line:hover .text-LLine{
+    transform: scaleY(1.1);
+ } */
+
+
+   .relative-container{
+      /* position: relative; */
+      width: 600px;
+      height: 600px;
+      /* margin-top: 100px; */
+      background-color: rgba(23,23,23,.4);
+      padding: 50px;
+      border: 2px solid black;
+      /* position: relative; */
+   }
+   .absolute-item{
+      position: absolute;
+      width: 100px;
+      height: 100px;
+     
+     /* top: 0px; */
+   }  
+   .red{
+      background-color: red;
+      margin-top: auto;
+      /* top:10px;
+      left:20px; */
+   }
+   .green{
+      background-color: green;
+      /* top:100px; */
+   }
+    </style>
+</head>
+<body sltyle="position:relative">
+    <!-- <h1>我是标题</h1>
+    <span class="text-line-container">
+        <span class="text-Line">
+            <span class="text-LLine"></span>
+                分割线
+            <span class="text-RLine"></span>
+        </span>
+        
+    </span>
+    <span class="text-Line">如果你真的以为</span>
+
+    <p>放松的地方</p> -->
+    <div style="position: relative;width: 700px;height: 700px;padding: 100px; background-color: blue;">
+      <!-- <div >
+
+      </div>
+      <div class="relative-container"></div> -->
+      <div class="relative-container">
+         <div class="absolute-item red" style="z-index: -1;"></div>
+         <div class="absolute-item green" style="z-index: -1;"></div>
+         <div style="width: 200px;height: 200px;background-color: yellow;z-index: 3;">
+
+         </div>
+      </div>
+    </div>
+
+</body>
+</html>

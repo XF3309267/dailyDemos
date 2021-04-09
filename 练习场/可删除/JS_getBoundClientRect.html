@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>实验 getboundingClientRect</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+</head>
+
+<body>
+
+    <script>
+        window.onload = function() {
+
+            // function getboundingClientRect(ele) {
+            //     if (typeof arguments.callee.offset != "number"){
+            //         var scrollTop = document.documentElement.scrollTop;
+            //         var temp
+            //     }
+            // }
+            // var global = this;
+
+            // var sillyFunction = function(recursed) {
+            //     if (!recursed) {
+            //         //  如果 调用函数时，参数为假，返回 该函数参数为 true 的结果
+            //         return arguments.callee(true);
+            //     }
+            //     if (this !== global) {
+            //         console.log("This is: " + this);
+            //     } else {
+            //         console.log("This is the global");
+            //         console.log("This is: " + this);
+            //     }
+            // }
+            // sillyFunction(false); // this !==global
+            // sillyFunction(true); //  this == global
+
+            // function demo() {
+            //     console.log("this : " + this);
+            // }
+
+            // var obj = {
+            //     name = "jack",
+            // }
+            // console.log();
+            // demo();
+            function a1() {
+                var name = "Jack";
+                return function() {
+                    function b() {
+                        console.log("name:" + name);
+                    }
+                    return b
+                }
+
+            };
+            //  只有当 a 被执行的时候，函数 b 才会声明
+            a1()()();
+
+            // obj 是对象
+            // name = "Global111";
+            var obj = {
+                name: "Jack",
+
+                a: function() {
+                    return function() {
+                        console.log("name: " + name);
+                    }
+                }
+
+
+            };
+            obj.a()();
+
+            console.log("2222");
+
+
+            function obj2() {
+                var name = "Jack";
+
+                this.a = function() {
+                    console.log("name: " + name);
+                    // return function() {
+                    //     console.log("name: " + name);
+                    // }
+                }
+            };
+            var ob2 = new obj2();
+            // obj2();
+            console.log(ob2);
+            ob2.a();
+
+
+            console.log("3333");
+
+            var obj3 = {
+                name: "Jack",
+                a: function() {
+                    console.log(name)
+                }
+            };
+            obj3.a();
+            console.log("****************");
+
+
+
+            function inpu() {
+                console.log(this.name);
+
+            }
+            var obj3 = {
+                name: "obj3",
+                input: inpu
+            }
+            inpu.call(obj3);
+        }
+    </script>
+</body>
+
+</html>

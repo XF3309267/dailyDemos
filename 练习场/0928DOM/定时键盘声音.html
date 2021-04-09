@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> Text 类型实验</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <!-- JS 链接请放置 </body> 前面 -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div id="" class="container">
+        <div class="row justify-content-center">
+            <p id="ptext">
+                我们都是好朋友
+            </p>
+        </div>
+    </div>
+    <script>
+        var pp = document.getElementById("ptext");
+        pp.firstChild.nodeValue = "NO";
+        var textNo = document.createTextNode("Hello world!");
+        setTimeout(function() {
+            pp.firstChild.appendData("你好");
+        }, 1000);
+        setTimeout(function() {
+            pp.firstChild.insertData(0, "嘚嘚");
+        }, 2000);
+    </script>
+    <script src="../bootstrap/jquery.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <!-- <script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script> -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

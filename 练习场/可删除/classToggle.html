@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>class Toggle 实验</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <style>
+        .bgRed {
+            background-color: red;
+        }
+        
+        .bgBlue {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <button>
+                            ChangeRed
+                        </button>
+            </div>
+            <div class="col-8 bgRed" id="centerBox" style="height: 800px;">
+
+            </div>
+            <div class="col-2">
+                <button>
+                    ChangeBlue
+                </button>
+            </div>
+
+
+        </div>
+        <div class="row">
+            <form action="#">
+                <input type="text">
+                <input type="password">
+                <input type="submit">
+            </form>
+        </div>
+        <div class="row">
+            <div class="col-12" style="height:500px;background-color:rgb(162, 99, 99);">
+
+            </div>
+        </div>
+    </div>
+    <script>
+        window.onload = function() {
+            var box = document.getElementById("centerBox");
+            var btRed = document.getElementsByTagName("button")[0];
+            var btBlue = document.getElementsByTagName("button")[1];
+            var form = document.getElementsByTagName("form")[0];
+            btRed.onclick = function() {
+                // box.classList.toggle("bgRed");
+                document.forms[0].scrollIntoView();
+            }
+            btBlue.onclick = function() {
+                box.classList.toggle("bgBlue");
+            }
+        }
+    </script>
+
+
+
+    <script src="bootstrap/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

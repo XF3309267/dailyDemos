@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+</head>
+
+<body>
+    <script>
+        function MyObj(value) {
+            var pri = value;
+            MyObj.prototype.publicFunc = function(num) {
+                pri = num;
+                return pri;
+            };
+            MyObj.prototype.getInfo = function() {
+                return pri;
+            }
+        }
+        //  在原型上的函数，所有实例都可以-使用，而且实例使用的是同一个
+        //  又因为  原型函数使用了
+
+        function MyObjj(value) {
+            this.pri = value;
+            MyObjj.prototype.publicFunc = function(num) {
+                this.pri = num;
+                return this.pri;
+            };
+            MyObjj.prototype.getInfo = function() {
+                return this.pri;
+            }
+        }
+        var objj1 = new MyObjj("objj1");
+        var objj2 = new MyObjj("objj2");
+        console.log("before objj1.name  " + objj1.getInfo());
+        objj1.publicFunc("objj11");
+        console.log("after objj1.name  " + objj1.getInfo());
+
+        console.log("before objj2.name  " + objj2.getInfo());
+        objj2.publicFunc("objj22");
+        console.log("after objj2.name   " + objj2.getInfo());
+        console.log("%%%%%%%%%%%%%");
+
+
+
+        var obj1 = new MyObj("obj1");
+        var obj2 = new MyObj("obj2");
+        console.log("before result ojb1.name   " + obj1.getInfo());
+
+        console.log(obj1.publicFunc("obj11"));
+        console.log("按理结果为： obj11");
+
+
+        console.log("before result obj2.name  " + obj2.getInfo());
+
+        console.log(obj2.publicFunc("obj22"));
+        console.log("按理结果为： obj22");
+    </script>
+</body>
+
+</html>

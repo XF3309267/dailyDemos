@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>BootStrap4 标识 + 导航栏 + 按钮</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <!-- <script src="http://code.jquery.com/jquery-1.9.1.js"></script> -->
+</head>
+
+<body class="container">
+    <!-- 
+        ****************  标识
+        1.  class="sr-only"     添加  sr-only   样式，虽然无任何视觉效果，但可提供给 辅助设备信息
+        2.  <span class="badge badge-pill badge-primary">Primary</span>
+              badge             将元素外观设置为  标识的样子，最基础的样式（且无明显视觉效果）
+              badge-primary     设置颜色，也可有其他颜色。如： secondary、success、info
+        3.  <span class="badge badge-light">9</span>
+            可在
+        4.  badge-pill      药丸型  标识    
+        5.  badge  等样式也可以用以     a  标签上
+     -->
+
+
+    <!-- 
+        ***********  导航栏
+        1.  nav + aria-label="breadcrumb",
+            描述 <nav> 元素中提供的导航类型，且无实际视觉效果
+        2.  aria-current="page"， 表示 该页面在处于这一项中
+        3.  然后，  用 列表 存于导航内容
+                ol + breadcrumb 样式 、（ul 也是 ok 的）
+                li + breadcrumb-item 样式  （若要表示当前页面正处于该项标题，可加 active 样式）
+      -->
+
+
+    <!-- 
+        ***********    button
+        1.  普通按钮
+            <button type="button" class="btn btn-primary">Primary</button>
+            <input class="btn btn-primary" type="button" value="Input">
+
+            a 标签变为一个按钮  无需用东西包裹，直接加入样式即可
+            <a class="btn btn-primary" href="#" role="button">Link</a>
+
+            btn-primary 按钮颜色， 也可以换其他颜色。 -success、-info 等
+        2.  镂空按钮
+            在   颜色样式中 加入  outline，如：btn-outline-primary
+        3.  按钮尺寸
+                btn-sm      小按钮 
+                btn-lg      大按钮  
+                不加以上样式，即就是 普通的样式
+        4.  .btn-block      跨越整个 父级
+        5.  .active         表示 按钮为活跃状态（即 按下状态）
+        6.  禁用 button
+            <button type="button" class="btn btn-lg btn-primary" disabled>
+            a 标签禁用       class="btn btn-primary btn-lg disabled"  
+                即  加入  disabled 样式
+        7.  如果控件元素的HTML元素不是按钮（例如，<a>或<div>），则属性role="button" 应该添加到元素中。
+        8.  data-toggle指以什么事件触发，常用的如modal,popover,tooltips等，data-target指事件的目标。
+        9.  aria-expanded表示展开状态。默认为undefined, 
+            表示当前展开状态未知。其它可选值：true表示元素是展开的；false表示元素不是展开的。
+        9.  aria-hidden字符串。可选值为true和false,true表示元素隐藏(不可见)，false表示元素可见。
+        10. 对于正确的跨浏览器和跨平台的行为，则必须使用<a>标签
+
+
+       -->
+
+
+
+
+
+    <!-- <nav class="navbar navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
+    </nav> -->
+
+
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <a class="navbar-brand" href="#">Hidden brand</a>
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Disabled</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav> -->
+
+    <!-- navbar  fixed-top navbar-expand-md navbar-light bg-light mr-0 -->
+
+    <div class="row" style="height: 1800px; background-color: bisque; ">
+
+        <div class="col-12 pl-0 pr-0">
+            <nav class="navbar navbar-expand-md navbar-light bg-light">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                              <span class="navbar-toggler-icon"></span>
+                            </button>
+
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#">Disabled</a>
+                        </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+            </nav>
+        </div>
+
+
+
+
+
+
+        <!-- Generated markup by the plugin -->
+
+
+    </div>
+
+    <script>
+        (function() {
+            $('[data-toggle="popover"]').popover({
+                container: 'body'
+            })
+        });
+
+
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        // (function() {
+        //     'use strict';
+        //     window.addEventListener('load', function() {
+        //         // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        //         var forms = document.getElementsByClassName('needs-validation');
+        //         // Loop over them and prevent submission
+        //         var validation = Array.prototype.filter.call(forms, function(form) {
+        //             form.addEventListener('submit', function(event) {
+        //                 if (form.checkValidity() === false) {
+        //                     event.preventDefault();
+        //                     event.stopPropagation();
+        //                 }
+        //                 form.classList.add('was-validated');
+        //             }, false);
+        //         });
+        //     }, false);
+        // })();
+    </script>
+
+    <script src="../bootstrap/jquery.min.js "></script>
+    <script src="../bootstrap/js/popper.min.js"></script>
+
+
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <!-- <script src="https://cdn.bootcss.com/docsearch.js/2.5.2/docsearch.min.js"></script> -->
+
+    <script src="../bootstrap/js/docs.min.js"></script>
+</body>
+
+</html>

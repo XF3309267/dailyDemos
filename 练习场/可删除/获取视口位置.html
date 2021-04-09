@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>获取页面相对视口位置</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+    <style>
+        * {}
+    </style>
+</head>
+
+<body>
+
+    <div id="" style="height: 400px;width:400px;background-color:blue">
+    </div>
+    <div id="div1" style="height: 400px;width:400px;background-color:black">
+        <div id="div2" style="height: 200px; width: 200px;background-color:red">
+
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            function getBoundindClientRect(element) {
+                if (typeof arguments.callee.offset != "number") {
+                    var scrollTop = document.documentElement.scrollTop;
+                    var temp = document.createElement("div");
+                    temp.style.cssText = "position:absloute;left:0;top:0;";
+                    document.body.appendChild(temp);
+                    console.log("temp.getBoundingClientRect().top = " + temp.getBoundingClientRect().top);
+                    console.log("scrollTop = " + scrollTop);
+                    arguments.callee.offset = -0 - scrollTop;
+                    document.body.removeChild(temp);
+                    temp = null;
+                }
+                var rect = element.getBoundingClientRect();
+                console.log("rect.left = " + rect.left);
+                console.log("rect.right = " + rect.right);
+                console.log("rect.top = " + rect.top);
+                console.log("rect.bottom = " + rect.bottom);
+
+                var offset = arguments.callee.offset;
+
+                return {
+                    left: rect.left + offset,
+                    right: rect.right + offset,
+                    top: rect.top + offset,
+                    bottom: rect.bottom + offset
+                };
+            }
+            var div2 = document.getElementById("div2");
+            window.onscroll = function() {
+                console.log(" ");
+                var div2Location = getBoundindClientRect(div2);
+                console.log("left: " + div2Location.left);
+                console.log("right: " + div2Location.right);
+                console.log("top: " + div2Location.top);
+                console.log("bottom: " + div2Location.bottom);
+                console.log(" ");
+            }
+            div2.addEventListener('scroll', function() {
+                var div2Location = getBoundindClientRect(div2);
+                console.log("left: " + div2Location.left);
+                console.log("right: " + div2Location.right);
+                console.log("top: " + div2Location.top);
+                console.log("bottom: " + div2Location.bottom);
+            });
+
+
+        }
+    </script>
+</body>
+
+</html>
